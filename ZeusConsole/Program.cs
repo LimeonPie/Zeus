@@ -10,14 +10,15 @@ namespace ZeusConsole
     class Program
     {
 
-        private static void display(string message) {
+        static void display(string message) {
             // Ламповый вывод
             Console.WriteLine(DateTime.Now.ToLongTimeString() + " " + message);
         }
 
         static void Main(string[] args) {
             display("Process initilized");
-            display("Seconds = " + Mathematical.timeAfternoon());
+            //display("Seconds = " + Mathematical.timeAfternoon());
+            //display(Mathematical.timeInPos(50, 13).ToLongTimeString());
             Console.ReadKey();
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeoTimeZone;
 
 namespace Zeus.Engine
 {
@@ -11,8 +12,11 @@ namespace Zeus.Engine
 
         public static DateTime timeInPos(double latitude = 0, double longitude = 0) {
             // TODO!!!
-            // Расчет времени в данной точки планеты
-            return DateTime.Now;
+            // Расчет местного времени по широте и долготе
+            GeoTimeZone.TimeZoneResult zone = GeoTimeZone.TimeZoneLookup.GetTimeZone(latitude, longitude);
+            TimeZoneInfo info = TimeZoneInfo.CreateCustomTimeZone(zone.Result, TimeSpan.Zero, "Test", "Test");
+            DateTime timeHere = TimeZoneInfo.ConvertTime(DateTime.Now, info);
+            return timeHere;
         }
 
         public static double beta(double r) {
