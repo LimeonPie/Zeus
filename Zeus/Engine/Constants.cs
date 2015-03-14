@@ -16,10 +16,10 @@ namespace Zeus.Engine
         // Угловая скорость вращения Земли
         public static double earthRotVel = 7.9221158553 * Math.Pow(10, -5); 
 
+        // Главная директория
         public static string appRootPath {
             get {
-                // Очень упорото, но как по другому, пока неизвестно
-                // Zeus root path
+                // Очень упорото, но работает
                 string debug = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
                 string bin = Path.GetDirectoryName(debug);
                 string root = Path.GetDirectoryName(bin);
@@ -27,12 +27,24 @@ namespace Zeus.Engine
             }
         }
 
+        // Путь к логам
         public static string appLogsPath {
             get {
-                // Очень упорото, но как по другому, пока неизвестно
-                // Zeus logs path
-                //return new Uri(appRootPath + "\\Logs\\").LocalPath;
                 return (appRootPath + "\\Logs\\"); 
+            }
+        }
+
+        // Путь к ресурсам
+        public static string appResourcesPath {
+            get {
+                return (appRootPath + "\\Resources\\");
+            }
+        }
+
+        // Путь к джейсонам
+        public static string appJsonPath {
+            get {
+                return (appRootPath + "\\Resources\\JSON\\");
             }
         }
     }

@@ -23,7 +23,7 @@ namespace Zeus.Engine
             return (2.35 * Math.Pow(10, -4) * Math.Pow(r, 1.457));
         }
 
-        public static double n(int t) {
+        public static double n(int t = 0, int h = 0, int Z = 1000) {
             return 0;
         }
 
@@ -46,6 +46,15 @@ namespace Zeus.Engine
             double delta = Math.Atan(Math.Tan(degreesToRadians(23.5)) * Math.Sin(2*Math.PI*(day-80)/365));
             double res = Math.Sin(delta) * Math.Sin(latitude) + Math.Cos(delta) * Math.Cos(latitude) * Math.Cos(Constants.earthRotVel * timeAfternoon());
             return Math.Acos(res);
+        }
+
+        public static double q(int h) {
+            if (h == 0)
+                return 0;
+            // TODO!!!
+            // Сделать для специфического элемента
+            double n = 0;
+            return 0;
         }
     }
 }

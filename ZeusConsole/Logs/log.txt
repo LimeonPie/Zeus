@@ -1,0 +1,94 @@
+14.03.2015 19:08:08: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:10:38: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:13:22: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:27:08: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:27:51: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:29:32: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:32:38: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:35:10: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:35:41: Reading property 1-3 - value 0,0015
+14.03.2015 19:35:41: Reading property 3-5 - value 0,0065
+14.03.2015 19:35:41: Reading property 5-10 - value 0,045
+14.03.2015 19:35:41: Reading property 10-15 - value 0,15
+14.03.2015 19:35:41: Reading property 15-22.8 - value 0,36
+14.03.2015 19:35:41: Reading property 22.8-31 - value 1
+14.03.2015 19:35:41: Reading property 31-41 - value 0,07
+14.03.2015 19:35:41: Reading property 41-62 - value 0,18
+14.03.2015 19:35:41: Reading property 50-100 - value 0,6
+14.03.2015 19:35:41: Reading property 100-150 - value 2,32
+14.03.2015 19:35:41: Reading property 150-200 - value 5,4
+14.03.2015 19:35:41: Reading property 200-250 - value 8,15
+14.03.2015 19:35:41: Reading property 256.3 - value 9,65
+14.03.2015 19:35:41: Reading property 284.15 - value 10,6
+14.03.2015 19:35:41: Reading property 250-300 - value 10,08
+14.03.2015 19:35:41: Reading property 303.31 - value 11,58
+14.03.2015 19:35:41: Reading property 303.78 - value 11,6
+14.03.2015 19:35:41: Reading property 300-350 - value 14,6
+14.03.2015 19:35:41: Reading property 368.07 - value 18
+14.03.2015 19:35:41: Reading property 350-400 - value 17,51
+14.03.2015 19:35:41: Reading property 400-450 - value 21,07
+14.03.2015 19:35:41: Reading property 465.22 - value 21,8
+14.03.2015 19:35:41: Reading property 450-500 - value 21,85
+14.03.2015 19:35:41: Reading property 500-550 - value 24,53
+14.03.2015 19:35:41: Reading property 554.37 - value 24,69
+14.03.2015 19:35:41: Reading property 584.33 - value 23,2
+14.03.2015 19:35:41: Reading property 550-600 - value 22,38
+14.03.2015 19:35:41: Reading property 609.76 - value 23,1
+14.03.2015 19:35:41: Reading property 629.73 - value 23,2
+14.03.2015 19:35:41: Reading property 600-650 - value 23,22
+14.03.2015 19:35:41: Reading property 650-700 - value 29,75
+14.03.2015 19:35:41: Reading property 703.31 - value 26,3
+14.03.2015 19:35:41: Reading property 700-750 - value 30,94
+14.03.2015 19:35:41: Reading property 765.15 - value 35,46
+14.03.2015 19:35:41: Reading property 770.41 - value 26,88
+14.03.2015 19:35:41: Reading property 789.36 - value 19,26
+14.03.2015 19:35:41: Reading property 750-800 - value 30,71
+14.03.2015 19:35:41: Reading property 800-850 - value 15,05
+14.03.2015 19:35:41: Reading property 850-900 - value 46,63
+14.03.2015 19:35:41: Reading property 900-950 - value 16,99
+14.03.2015 19:35:41: Reading property 977.62 - value 0,7
+14.03.2015 19:35:41: Reading property 950-1000 - value 36,16
+14.03.2015 19:40:38: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json
+14.03.2015 19:40:38: Reading property 1-3 - value 0,0015
+14.03.2015 19:40:38: Reading property 3-5 - value 0,0065
+14.03.2015 19:40:38: Reading property 5-10 - value 0,045
+14.03.2015 19:40:38: Reading property 10-15 - value 0,15
+14.03.2015 19:40:38: Reading property 15-22.8 - value 0,36
+14.03.2015 19:40:38: Reading property 22.8-31 - value 1
+14.03.2015 19:40:38: Reading property 31-41 - value 0,07
+14.03.2015 19:40:38: Reading property 41-62 - value 0,18
+14.03.2015 19:40:38: Reading property 50-100 - value 0,6
+14.03.2015 19:40:38: Reading property 100-150 - value 2,32
+14.03.2015 19:40:38: Reading property 150-200 - value 5,4
+14.03.2015 19:40:38: Reading property 200-250 - value 8,15
+14.03.2015 19:40:38: Reading property 256.3 - value 9,65
+14.03.2015 19:40:38: Reading property 284.15 - value 10,6
+14.03.2015 19:40:38: Reading property 250-300 - value 10,08
+14.03.2015 19:40:38: Reading property 303.31 - value 11,58
+14.03.2015 19:40:38: Reading property 303.78 - value 11,6
+14.03.2015 19:40:38: Reading property 300-350 - value 14,6
+14.03.2015 19:40:38: Reading property 368.07 - value 18
+14.03.2015 19:40:38: Reading property 350-400 - value 17,51
+14.03.2015 19:40:38: Reading property 400-450 - value 21,07
+14.03.2015 19:40:38: Reading property 465.22 - value 21,8
+14.03.2015 19:40:38: Reading property 450-500 - value 21,85
+14.03.2015 19:40:38: Reading property 500-550 - value 24,53
+14.03.2015 19:40:38: Reading property 554.37 - value 24,69
+14.03.2015 19:40:38: Reading property 584.33 - value 23,2
+14.03.2015 19:40:38: Reading property 550-600 - value 22,38
+14.03.2015 19:40:38: Reading property 609.76 - value 23,1
+14.03.2015 19:40:38: Reading property 629.73 - value 23,2
+14.03.2015 19:40:38: Reading property 600-650 - value 23,22
+14.03.2015 19:40:38: Reading property 650-700 - value 29,75
+14.03.2015 19:40:38: Reading property 703.31 - value 26,3
+14.03.2015 19:40:38: Reading property 700-750 - value 30,94
+14.03.2015 19:40:38: Reading property 765.15 - value 35,46
+14.03.2015 19:40:38: Reading property 770.41 - value 26,88
+14.03.2015 19:40:38: Reading property 789.36 - value 19,26
+14.03.2015 19:40:38: Reading property 750-800 - value 30,71
+14.03.2015 19:40:38: Reading property 800-850 - value 15,05
+14.03.2015 19:40:38: Reading property 850-900 - value 46,63
+14.03.2015 19:40:38: Reading property 900-950 - value 16,99
+14.03.2015 19:40:38: Reading property 977.62 - value 0,7
+14.03.2015 19:40:38: Reading property 950-1000 - value 36,16
+14.03.2015 19:42:18: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\nitrogen.json

@@ -24,9 +24,7 @@ namespace Zeus
     {
         public MainWindow() {
             InitializeComponent();
-            System.Diagnostics.Debug.WriteLine("Root path: " + Constants.appRootPath);
-            System.Diagnostics.Debug.WriteLine("Logs path: " + Constants.appLogsPath);
-            LogManager.Session.log("Seems normal");
+            LogManager.Session.log("App is starting");
         }
     }
 }
