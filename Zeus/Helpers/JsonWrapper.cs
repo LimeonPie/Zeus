@@ -14,7 +14,7 @@ namespace Zeus.Helpers
         public static Dictionary<string, double> readJson(string filename, string key) {
             Dictionary<string, double> result = new Dictionary<string, double>();
             JObject o = JObject.Parse(File.ReadAllText(filename));
-            LogManager.Session.log("Reading json file " + filename);
+            LogManager.Session.log("Reading json file " + filename + " for key " + key);
             foreach (JProperty prop in o.Properties()) {
                 if (prop.Name.Equals(key)) {
                     if (prop.Value.Type == JTokenType.Object) {
@@ -29,6 +29,7 @@ namespace Zeus.Helpers
                     }
                 }
             }
+            LogManager.Session.log("Key " + key + " in " + filename + " was not found");
             return result;
         }
 

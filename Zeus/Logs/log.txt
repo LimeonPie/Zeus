@@ -1,5 +1,0 @@
-14.03.2015 18:56:02: Seems normal
-14.03.2015 19:20:36: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\nitrogen.json
-14.03.2015 19:20:36: Seems normal
-14.03.2015 19:22:35: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\nitrogen.json
-14.03.2015 19:22:35: Seems normal

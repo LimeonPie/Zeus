@@ -18,14 +18,6 @@ namespace ZeusConsole
 
         static void Main(string[] args) {
             display("Process initilized");
-            //display("Seconds = " + Mathematical.timeAfternoon());
-            //display(Mathematical.timeInPos(50, 13).ToLongTimeString());
-            /*Dictionary<string, double> dict = JsonWrapper.readJson(Constants.appJsonPath + "nitrogen.json", "cross-section");
-            display("Writing dict data");
-            foreach (string key in dict.Keys) {
-                Console.WriteLine("Key = " + key + ", Value = " + dict[key]);
-            }
-            display("Reading key");*/
             Console.ReadKey();
         }
     }
