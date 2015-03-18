@@ -14,22 +14,24 @@ namespace Zeus.Helpers
         public static Dictionary<string, double> readJson(string filename, string key) {
             Dictionary<string, double> result = new Dictionary<string, double>();
             JObject o = JObject.Parse(File.ReadAllText(filename));
-            LogManager.Session.log("Reading json file " + filename + " for key " + key);
+            LogManager.Session.logMessage("Reading json file " + filename + " for key " + key);
             foreach (JProperty prop in o.Properties()) {
                 if (prop.Name.Equals(key)) {
                     if (prop.Value.Type == JTokenType.Object) {
                         foreach (JProperty token in prop.Values()) {
                             result.Add(token.Name, token.Value.ToObject<double>());
                         }
+                        LogManager.Session.logMessage("Reading file " + filename + " completed");
                         return result;
                     }
                     else if (prop.Value.Type == JTokenType.String) {
                         result.Add(prop.Name, prop.Value.ToObject<double>());
+                        LogManager.Session.logMessage("Reading file " + filename + " completed");
                         return result;
                     }
                 }
             }
-            LogManager.Session.log("Key " + key + " in " + filename + " was not found");
+            LogManager.Session.logMessage("Key " + key + " in " + filename + " was not found");
             return result;
         }
 

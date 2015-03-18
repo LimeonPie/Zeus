@@ -30,10 +30,23 @@ namespace Zeus.Helpers
             }
         }
 
-        public bool log(string message) {
+        public bool logMessage(string message) {
             try {
                 StreamWriter sw = File.AppendText(currentPath);
                 sw.Write(DateTime.Now.ToUniversalTime().ToString() + ": " + message + "\n");
+                sw.Close();
+                return true;
+            }
+            catch (IOException e) {
+                System.Diagnostics.Debug.WriteLine("Error " + e.Source + ": " + e.Message);
+                return false;
+            }
+        }
+
+        private bool clearLogs() {
+            try {
+                StreamWriter sw = File.OpenWrite(currentPath);
+                sw.Write(String.Empty);
                 sw.Close();
                 return true;
             }

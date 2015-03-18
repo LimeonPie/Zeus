@@ -10,7 +10,7 @@ namespace Zeus.Engine
     public static class Constants
     {
         // Константы, которые будут нужны
-
+    	
         public const double a = 0;
 
         // Угловая скорость вращения Земли
