@@ -22,11 +22,7 @@ namespace Zeus.Engine
         public static Elements currentElement;
         private Dictionary<string, double> concentrations;
         private Dictionary<string, double> crossSections;
-        public double maxWave {
-        	get {
-        		return maxWave;
-        	}
-        }
+        public double maxWave = 0;
 
 
         private Chemical() {
@@ -49,7 +45,7 @@ namespace Zeus.Engine
             string path = Constants.appJsonPath + getFilenameForElement(el);
             concentrations = JsonWrapper.readJson(path, "concentration");
             crossSections = JsonWrapper.readJson(path, "cross-section");
-            maxWave = JsonWrapper.readJson(path, "maxWave");
+            maxWave = JsonWrapper.readJson(path, "maxWave")["maxWave"];
             currentElement = el;
         }
 
@@ -64,7 +60,7 @@ namespace Zeus.Engine
 
         // Получение значения сечения фотоионизации по высоте
         public double getCrossSectionsForWave(double length) {
-            string key = canGetCrossSectionsForWave(lenght);
+            string key = canGetCrossSectionsForWave(length);
             if (key != null) {
                 return crossSections[key];
             }

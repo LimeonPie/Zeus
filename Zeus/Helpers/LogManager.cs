@@ -45,7 +45,7 @@ namespace Zeus.Helpers
 
         private bool clearLogs() {
             try {
-                StreamWriter sw = File.OpenWrite(currentPath);
+                StreamWriter sw = new StreamWriter(File.OpenWrite(currentPath));
                 sw.Write(String.Empty);
                 sw.Close();
                 return true;

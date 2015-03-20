@@ -48,9 +48,9 @@ namespace Zeus.Engine
     	// #############
 
         // Вычисляем поток фотонов с длиной волны wave на высоте height
-        private double photonFlux(double wave, double height) {
+        private static double photonFlux(double wave, double height) {
         	double eternityFlux = 1; // Поток бесконечности - должно быть какая-то константа
-        	
+            return eternityFlux;
         }
 
         private static double degreesToRadians(double degrees) {

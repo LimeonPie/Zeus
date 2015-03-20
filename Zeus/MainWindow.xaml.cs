@@ -24,7 +24,7 @@ namespace Zeus
     {
         public MainWindow() {
             InitializeComponent();
-            LogManager.Session.log("App is starting");
+            LogManager.Session.logMessage("App is starting");
         }
     }
 }
