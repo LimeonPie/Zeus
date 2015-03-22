@@ -1,7 +1,8 @@
 {
-	"name": "Nitrogen",	
+	"name": "Nitrogen",
+	"maxWave": 100,	
 	"concentration": {
-		"nope": 0
+		"0-30000": 78.08
 	},
 	"ionization-cs": {
 		"1-3": 0.0015,	

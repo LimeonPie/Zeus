@@ -20,14 +20,15 @@ namespace Zeus.Engine
 
         private static Chemical instance;
         public static Elements currentElement;
-        private Dictionary<string, double> concentrations;
-        private Dictionary<string, double> crossSections;
+        public Dictionary<string, double> concentrations;
+        public Dictionary<string, double> atomCrossSections;
+        public Dictionary<string, double> photonCrossSections;
         public double maxWave = 0;
-
 
         private Chemical() {
             concentrations = new Dictionary<string, double>();
-            crossSections = new Dictionary<string, double>(); 
+            atomCrossSections = new Dictionary<string, double>();
+            photonCrossSections = new Dictionary<string, double>(); 
             initForElement(Elements.Nitrogen);
         }
 
@@ -44,7 +45,8 @@ namespace Zeus.Engine
         public void initForElement(Elements el) {
             string path = Constants.appJsonPath + getFilenameForElement(el);
             concentrations = JsonWrapper.readJson(path, "concentration");
-            crossSections = JsonWrapper.readJson(path, "cross-section");
+            atomCrossSections = JsonWrapper.readJson(path, "ionization-cs");
+            photonCrossSections = JsonWrapper.readJson(path, "photon-cs");
             maxWave = JsonWrapper.readJson(path, "maxWave")["maxWave"];
             currentElement = el;
         }
@@ -58,11 +60,20 @@ namespace Zeus.Engine
             else return 0;
         }
 
-        // Получение значения сечения фотоионизации по высоте
-        public double getCrossSectionsForWave(double length) {
-            string key = canGetCrossSectionsForWave(length);
+        // Получение значения сечения фотоионизации по длине волны
+        public double getAtomCSForWave(double wave) {
+            string key = canGetKeyForValue(wave, atomCrossSections);
             if (key != null) {
-                return crossSections[key];
+                return atomCrossSections[key];
+            }
+            else return 0;
+        }
+
+        // Получение значения сечения поглощения фотона по длине волны
+        public double getPhotonCSForWave(double wave) {
+            string key = canGetKeyForValue(wave, photonCrossSections);
+            if (key != null) {
+                return photonCrossSections[key];
             }
             else return 0;
         }
@@ -72,6 +83,9 @@ namespace Zeus.Engine
     	// #############
 
         // Есть ли в словаре концентраций нужные нам границы
+        // TODO!!!!
+        // Пока что в словаре концентраций только одно значение
+        // Наверно так и останется, придумать что-то получше
         private string canGetConcentrationForHeight(double height) {
             foreach (string key in concentrations.Keys) {
                 if (isInBounds(key, height)) return key;
@@ -79,10 +93,9 @@ namespace Zeus.Engine
             return null;
         }
 
-        // Есть ли в словаре сечений фотоионизации нужные нам значения
-        private string canGetCrossSectionsForWave(double lenght) {
-            foreach (string key in crossSections.Keys) {
-                if (isInBounds(key, lenght)) return key;
+        private string canGetKeyForValue(double value, Dictionary<string, double> dict) {
+            foreach (string key in dict.Keys) {
+                if (isInBounds(key, value)) return key;
             }
             return null;
         }
