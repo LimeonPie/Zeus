@@ -9,6 +9,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Zeus.Helpers
 {
+    public struct ElementView
+    {
+        public string name;
+        public Dictionary<string, double> prop;
+    }
+
     public static class JsonWrapper
     {
         public static Dictionary<string, double> readJson(string filename, string key) {
@@ -24,7 +30,7 @@ namespace Zeus.Helpers
                         LogManager.Session.logMessage("Reading file " + filename + " completed");
                         return result;
                     }
-                    else if (prop.Value.Type == JTokenType.String) {
+                    else if (prop.Value.Type != JTokenType.Array) {
                         result.Add(prop.Name, prop.Value.ToObject<double>());
                         LogManager.Session.logMessage("Reading file " + filename + " completed");
                         return result;
@@ -32,6 +38,19 @@ namespace Zeus.Helpers
                 }
             }
             LogManager.Session.logMessage("Key " + key + " in " + filename + " was not found");
+            return result;
+        }
+
+        public static List<ElementView> parseJsonForElements(string filename) {
+            List<ElementView> result = new List<ElementView>();
+            JObject o = JObject.Parse(File.ReadAllText(filename));
+            foreach (JProperty prop in o.Properties()) {
+                ElementView view = new ElementView();
+                view.name = prop.Name;
+                Dictionary<string, double> dict = JsonConvert.DeserializeObject<Dictionary<string, double>>(prop.Value.ToString());
+                view.prop = dict;
+                result.Add(view);
+            }
             return result;
         }
 

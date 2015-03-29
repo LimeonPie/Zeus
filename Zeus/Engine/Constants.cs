@@ -16,6 +16,12 @@ namespace Zeus.Engine
         // Угловая скорость вращения Земли
         public static double earthRotVel = 7.9221158553 * Math.Pow(10, -5); 
 
+        // Ускорение свободное падения
+        public static double g = 9.81;
+
+        // Постоянная Больцмана
+        public static double k = 1.3806488 * Math.Pow(10, -23);
+
         // Главная директория
         public static string appRootPath {
             get {

@@ -23,6 +23,7 @@ namespace Zeus.Engine
         public Dictionary<string, double> concentrations;
         public Dictionary<string, double> atomCrossSections;
         public Dictionary<string, double> photonCrossSections;
+        public Element[] array;
         public double maxWave = 0;
 
         private Chemical() {
@@ -49,6 +50,14 @@ namespace Zeus.Engine
             photonCrossSections = JsonWrapper.readJson(path, "photon-cs");
             maxWave = JsonWrapper.readJson(path, "maxWave")["maxWave"];
             currentElement = el;
+        }
+
+        public void initWithGasMass(string path) {
+            List<ElementView> list = JsonWrapper.parseJsonForElements(path);
+            array = new Element[list.Count];
+            for (int i = 0; i < array.Length; i++) {
+                array[i] = new Element(list.ElementAt(i).name, list.ElementAt(i).prop);
+            }
         }
 
         // Получение значения концентрации по высоте

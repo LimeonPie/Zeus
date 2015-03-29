@@ -33,7 +33,8 @@ namespace Zeus.Helpers
         public bool logMessage(string message) {
             try {
                 StreamWriter sw = File.AppendText(currentPath);
-                sw.Write(DateTime.Now.ToUniversalTime().ToString() + ": " + message + "\n");
+                sw.Write(DateTime.Now.ToUniversalTime().ToString() + ": " + message);
+                sw.WriteLine();
                 sw.Close();
                 return true;
             }

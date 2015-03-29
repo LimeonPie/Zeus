@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GeoTimeZone;
+
 
 namespace Zeus.Engine
 {
@@ -13,13 +13,6 @@ namespace Zeus.Engine
     	// ############
     	// ###PUBLIC###
     	// ############
-
-        public static DateTime timeInPos(double latitude = 0, double longitude = 0) {
-            GeoTimeZone.TimeZoneResult zone = GeoTimeZone.TimeZoneLookup.GetTimeZone(latitude, longitude);
-            TimeZoneInfo info = TimeZoneInfo.CreateCustomTimeZone(zone.Result, TimeSpan.Zero, "Patience", "Time");
-            DateTime timeHere = TimeZoneInfo.ConvertTime(DateTime.Now, info);
-            return timeHere;
-        }
 
         public static double beta(double r) {
             return (2.35 * Math.Pow(10, -4) * Math.Pow(r, 1.457));
@@ -74,19 +67,13 @@ namespace Zeus.Engine
             else return 0; 
         }
 
-        // Время отсчитываемое от местного полудня
-        private static double timeAfternoon(double latitude, double longitude) {
-            TimeSpan current = timeInPos(latitude, longitude).TimeOfDay;
-            return current.TotalSeconds - 12*3600;
-        }
-
         // Вычисляем hi зенитный угол Солнца
         // TODO!!!! Функция Чепмена!
         // При больших зенитных углах > 80 нужно заменить sec (hi) на функцию Чемпена
         private static double hi(double latitude, double longitude) {
-            int day = timeInPos(latitude, longitude).DayOfYear;
+            int day = Time.timeInPos(latitude, longitude).DayOfYear;
             double delta = Math.Atan(Math.Tan(degreesToRadians(23.5)) * Math.Sin(2*Math.PI*(day-80)/365));
-            double res = Math.Sin(delta) * Math.Sin(latitude) + Math.Cos(delta) * Math.Cos(latitude) * Math.Cos(Constants.earthRotVel * timeAfternoon(latitude, longitude));
+            double res = Math.Sin(delta) * Math.Sin(latitude) + Math.Cos(delta) * Math.Cos(latitude) * Math.Cos(Constants.earthRotVel * Time.timeAfterNoon(latitude, longitude));
             return Math.Acos(res);
         }
 
