@@ -72,11 +72,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Engine\Chemical.cs" />
+    <Compile Include="Engine\DataLoader.cs" />
     <Compile Include="Engine\Constants.cs" />
     <Compile Include="Engine\Element.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Engine\Mathematical.cs" />
+    <Compile Include="Engine\Sphere.cs" />
     <Compile Include="Engine\Time.cs" />
     <Compile Include="Helpers\JsonWrapper.cs" />
     <Compile Include="Helpers\LogManager.cs" />

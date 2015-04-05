@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Zeus.Engine;
 
 namespace Zeus.Helpers
 {
@@ -41,16 +42,20 @@ namespace Zeus.Helpers
             return result;
         }
 
-        public static List<ElementView> parseJsonForElements(string filename) {
-            List<ElementView> result = new List<ElementView>();
+        public static List<Element> parseJsonForElements(string filename) {
+            List<Element> result = new List<Element>();
             JObject o = JObject.Parse(File.ReadAllText(filename));
             foreach (JProperty prop in o.Properties()) {
-                ElementView view = new ElementView();
-                view.name = prop.Name;
-                Dictionary<string, double> dict = JsonConvert.DeserializeObject<Dictionary<string, double>>(prop.Value.ToString());
-                view.prop = dict;
-                result.Add(view);
+                Element el = JsonConvert.DeserializeObject<Element>(prop.Value.ToString());
+                result.Add(el);
             }
+            return result;
+        }
+
+        public static Element deserializeJsonToElement(string filename) {
+            JObject o = JObject.Parse(File.ReadAllText(filename));
+            JProperty prop = o.Properties().ElementAt(0);
+            Element result = JsonConvert.DeserializeObject<Element>(prop.Value.ToString());
             return result;
         }
 
