@@ -14,7 +14,10 @@ namespace Zeus.Engine
         public const double a = 0;
 
         // Угловая скорость вращения Земли
-        public static double earthRotVel = 7.9221158553 * Math.Pow(10, -5); 
+        public static double earthRotVel = 7.9221158553 * Math.Pow(10, -5);
+ 
+        // Дельта t
+        public static double dt = 1;
 
         // Ускорение свободное падения
         public static double g = 9.81;

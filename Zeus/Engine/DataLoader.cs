@@ -20,7 +20,7 @@ namespace Zeus.Engine
 
         private static DataLoader instance;
 
-        public static Element currentElement;
+        public static Element activeElement;
         public List<Element> neutralElements;
 
         private DataLoader() { 
@@ -40,7 +40,7 @@ namespace Zeus.Engine
         public void initForElement(Elements el) {
             string path = Constants.appJsonPath + getFilenameForElement(el);
             List<Element> list = JsonWrapper.parseJsonForElements(path);
-            currentElement = list.ElementAt(0);
+            activeElement = list.ElementAt(0);
             if (list.Count != 1) {
                 LogManager.Session.logMessage("Well, there is multiple elements in " + path);
             }
