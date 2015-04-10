@@ -12,8 +12,8 @@ namespace Zeus.Engine
 
         public int botBoundary;
         public int topBoundary;
-        public int longitude;
-        public int latitude;
+        public double longitude;
+        public double latitude;
         public double delta;
         private int capacity;
         public double ne0;
@@ -39,14 +39,19 @@ namespace Zeus.Engine
             ninGrid[0] = nin0;
         }
 
-        public void n() {
+        public double n(double latitude, double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
             double height = 0;
+            double result = neGrid[0] + nipGrid[0] + ninGrid[0];
             for (int i = 1; i < capacity; i++) {
                 height = i * delta;
                 neGrid[i] = ne(i, neGrid[i - 1], height);
                 nipGrid[i] = niPositive(i, nipGrid[i - 1], height);
                 ninGrid[i] = niNegative(i, ninGrid[i - 1], height);
+                result += neGrid[i] + nipGrid[i] + ninGrid[i];
             }
+            return result;
         }
 
         public double q(Element el, double height) {
