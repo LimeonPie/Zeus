@@ -9,9 +9,6 @@ namespace Zeus.Engine
 {
     public static class Constants
     {
-        // Константы, которые будут нужны
-    	
-        public const double a = 0;
 
         // Угловая скорость вращения Земли
         public static double earthRotVel = 7.9221158553 * Math.Pow(10, -5);

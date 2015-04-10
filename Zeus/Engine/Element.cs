@@ -10,12 +10,15 @@ namespace Zeus.Engine
     public class Element
     {
 
+        public string name;
         public short index;
         public double m;
         public double n0;
         public double maxWave;
         public Dictionary<string, double> atomCrossSections;
         public Dictionary<string, double> photonCrossSections;
+        public double recombCoeff;
+        public double radius;
 
         public Element() {
 
@@ -89,12 +92,12 @@ namespace Zeus.Engine
             if (data.TryGetValue(key, out value)) {
                 if (value > min && value < max) return true;
                 else {
-                    LogManager.Session.logMessage("Element with name <" + ">, " + key + " out of range");
+                    LogManager.Session.logMessage("Element  <" + name + "> key[" + key + "] out of range");
                     return false;
                 }
             }
             else {
-                LogManager.Session.logMessage("Element " + data["index"] + " has no " + key + " field in dict");
+                LogManager.Session.logMessage("Element <" + name + "> has no key [" + key + "] field in dict");
                 return false;
             }
         }

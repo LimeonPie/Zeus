@@ -1,5 +1,6 @@
 {
 	"oxygen": {
+	"name": "oxygen",
     "index": 8,
     "maxWave": 100,
     "m": 16,

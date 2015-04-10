@@ -15,9 +15,9 @@ namespace Zeus.Engine
         }
 
         // Вычисляем поток фотонов с длиной волны wave на высоте height
-        private static double photonFlux(double wave, double latitude, double longitude, double height) {
+        public static double photonFlux(Element el, double wave, double latitude, double longitude, double height) {
         	double eternityFlux = 1; // Поток бесконечности - должно быть какая-то константа
-            double flux = DataLoader.Instance.getPhotonCSForWave(wave) * DataLoader.Instance.getConcentrationForHeight(height);
+            double flux = el.getPhotonCSForWave(wave) * el.getNForHeight(height);
             double tay = -sec(hi(latitude, longitude)) * flux;
             return eternityFlux * Math.Exp(-tay);
         }

@@ -1,5 +1,6 @@
 {
 	"nitrogen": {
+		"name": "nitrogen",
 		"index": 7,
 		"maxWave": 100,
 		"m": 14,	

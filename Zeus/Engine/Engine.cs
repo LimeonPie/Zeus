@@ -10,6 +10,7 @@ namespace Zeus.Engine
     public class Engine
     {
         private static Engine instance;
+        private Sphere lowAtmosphere;
 
         private Engine() {
             

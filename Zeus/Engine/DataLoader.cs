@@ -20,7 +20,7 @@ namespace Zeus.Engine
 
         private static DataLoader instance;
 
-        public static Element activeElement;
+        public Element activeElement;
         public List<Element> neutralElements;
 
         private DataLoader() { 

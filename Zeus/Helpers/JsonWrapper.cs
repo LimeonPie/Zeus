@@ -10,11 +10,6 @@ using Zeus.Engine;
 
 namespace Zeus.Helpers
 {
-    public struct ElementView
-    {
-        public string name;
-        public Dictionary<string, double> prop;
-    }
 
     public static class JsonWrapper
     {

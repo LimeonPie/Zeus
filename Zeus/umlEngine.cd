@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zeus.Engine.Constants">
+    <Position X="11.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAQgAAAAAABAAAAAAAAAAAAAAAAAAIgAQAAIAAAAA=</HashCode>
+      <FileName>Engine\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.DataLoader">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAQAAIBAAAAAAABAAABAQAAAAAAAAAA=</HashCode>
+      <FileName>Engine\DataLoader.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="activeElement" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="neutralElements" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Zeus.Engine.Element">
+    <Position X="13.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABCAAgQAAAAAAAAAAAgAAEAwAAAgIAgAAAAABAAA=</HashCode>
+      <FileName>Engine\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Engine">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="lowAtmosphere" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zeus.Engine.Mathematical">
+    <Position X="13.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAIAQABAAAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Engine\Mathematical.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Sphere">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAACAAAAACAIgAAAAgAAAAAAAECAAAEAAgAQ=</HashCode>
+      <FileName>Engine\Sphere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Time">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
