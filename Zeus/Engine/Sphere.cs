@@ -72,7 +72,7 @@ namespace Zeus.Engine
 
         public double stickTo(double neN, double height) {
             double result = 0;
-            foreach (Element el in DataLoader.Instance.neutralElements) {
+            foreach (Element el in DataLoader.Instance.aerosolElements) {
                 double b = Mathematical.beta(el.radius);
                 result += b * neN * el.getNForHeight(height);
             }

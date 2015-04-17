@@ -21,7 +21,7 @@ namespace Zeus.Engine
         private static DataLoader instance;
 
         public Element activeElement;
-        public List<Element> neutralElements;
+        public List<Element> aerosolElements;
 
         private DataLoader() { 
             initForElement(Elements.Nitrogen);
@@ -48,7 +48,7 @@ namespace Zeus.Engine
 
         // Загружаем газовый состав
         public void initWithNeutralParticles(string path) {
-            neutralElements = JsonWrapper.parseJsonForElements(path);
+            aerosolElements = JsonWrapper.parseJsonForElements(path);
         }
 
         private string getFilenameForElement(Elements el) {
