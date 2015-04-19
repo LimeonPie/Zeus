@@ -1,23 +1,36 @@
 {	
-	"argon": {
-    	"name": "argon",
-    	"index": 18,
-    	"m": 0.3,
-    	"n0": 150,
-    	"radius": 1
-  	},
-  	"hydrogen" : {
-  		"name": "hydrogen",
-    	"index": 1,
-    	"m": 0.3,
-    	"n0": 30,
-    	"radius": 1
-  	},
-  	"helium" : {
-  		"name": "helium",
-    	"index": 2,
-    	"m": 0.3,
-    	"n0": 340,
-    	"radius": 1
+	"longitude": 45,
+	"latitude": 45,
+	"ne0": 0,
+	"nip0": 0,
+	"nin0": 0,
+	"delta": 1,
+	"botBoundary": 0,
+	"topBoundary": 80000,
+	"aerosols": {
+		"argon": {
+    		"name": "argon",
+    		"index": 18,
+    		"m": 0.3,
+    		"n0": 150,
+    		"radius": 1,
+      		"recombCoeff": 1
+  		},
+  		"hydrogen" : {
+  			"name": "hydrogen",
+    		"index": 1,
+    		"m": 0.3,
+    		"n0": 30,
+      		"recombCoeff": 1,
+    		"radius": 1
+  		},
+  		"helium" : {
+  			"name": "helium",
+    		"index": 2,
+    		"m": 0.3,
+    		"n0": 340,
+      		"recombCoeff": 1,
+    		"radius": 1
+  		}
   	}
 }

@@ -18,6 +18,11 @@ namespace ZeusConsole
 
         static void Main(string[] args) {
             display("Process initilized");
+            /*Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
+            display("Bot = " + Engine.Instance.lowAtmosphere.botBoundary.ToString());
+            display("Top = " + Engine.Instance.lowAtmosphere.topBoundary.ToString());
+            display("Delta = " + Engine.Instance.lowAtmosphere.delta.ToString());
+            display("Active element conc = " + Engine.Instance.lowAtmosphere.activeElement.n0.ToString());*/
             Console.ReadKey();
         }
     }

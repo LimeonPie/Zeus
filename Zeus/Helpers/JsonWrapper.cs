@@ -13,6 +13,48 @@ namespace Zeus.Helpers
 
     public static class JsonWrapper
     {
+
+        public static InputData parseInputData(string filename) {
+            InputData data = new InputData();
+            JObject o = JObject.Parse(File.ReadAllText(filename));
+            LogManager.Session.logMessage("Reading json file " + filename);
+            foreach (JProperty prop in o.Properties()) {
+                switch (prop.Name) {
+                    case "longitude":
+                        data.longitude = prop.Value.ToObject<double>();
+                        break;
+                    case "latitude":
+                        data.latitude = prop.Value.ToObject<double>();
+                        break;
+                    case "ne0":
+                        data.ne0 = prop.Value.ToObject<double>();
+                        break;
+                    case "nin0":
+                        data.nin0 = prop.Value.ToObject<double>();
+                        break;
+                    case "nip0":
+                        data.nip0 = prop.Value.ToObject<double>();
+                        break;
+                    case "delta":
+                        data.delta = prop.Value.ToObject<double>();
+                        break;
+                    case "botBoundary":
+                        data.botBoundary = prop.Value.ToObject<double>();
+                        break;
+                    case "topBoundary":
+                        data.topBoundary = prop.Value.ToObject<double>();
+                        break;
+                    case "aerosols":
+                        data.aerosols = parseJsonForElements(prop.Value.ToString());
+                        break;
+                    default:
+                        LogManager.Session.logMessage("Unknown key " + prop.Name);
+                        break;
+                }
+            }
+            return data;
+        }
+
         public static Dictionary<string, double> readJson(string filename, string key) {
             Dictionary<string, double> result = new Dictionary<string, double>();
             JObject o = JObject.Parse(File.ReadAllText(filename));
@@ -37,9 +79,9 @@ namespace Zeus.Helpers
             return result;
         }
 
-        public static List<Element> parseJsonForElements(string filename) {
+        public static List<Element> parseJsonForElements(string json) {
             List<Element> result = new List<Element>();
-            JObject o = JObject.Parse(File.ReadAllText(filename));
+            JObject o = JObject.Parse(json);
             foreach (JProperty prop in o.Properties()) {
                 Element el = JsonConvert.DeserializeObject<Element>(prop.Value.ToString());
                 result.Add(el);

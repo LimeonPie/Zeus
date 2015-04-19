@@ -72,7 +72,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Engine\DataLoader.cs" />
     <Compile Include="Engine\Constants.cs" />
     <Compile Include="Engine\Element.cs" />
     <Compile Include="Engine\Engine.cs" />
