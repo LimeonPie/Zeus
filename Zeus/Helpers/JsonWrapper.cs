@@ -11,6 +11,12 @@ using Zeus.Engine;
 namespace Zeus.Helpers
 {
 
+    //
+    // Дорогой Я из будущего
+    // Ты зашел сюда потому что враппер перестал работать
+    // Впрочем ничего нового
+    // 20.04.2015
+
     public static class JsonWrapper
     {
 

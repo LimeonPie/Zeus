@@ -11,28 +11,30 @@
         </Menu>
         <StatusBar Height="18" VerticalAlignment="Bottom"/>
         <Grid Margin="0,27,0,18">
-            <Frame Content="Content" ClipToBounds="True" Background="#FFB6AAAA" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="1,0,290,0"/>
-            <GroupBox Header="Settings" Margin="507,0,3,0" HorizontalAlignment="Right">
-                <StackPanel Height="500" Width="275" Margin="0,0,-2,0">
+            <Border Margin="5,0,290,10" BorderThickness="5" BorderBrush="#FFE0DADA">
+                <Frame Content="Content" ClipToBounds="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="3"/>
+            </Border>
+            <GroupBox Header="Settings" Margin="0,0,3,10" HorizontalAlignment="Right">
+                <StackPanel Width="275" Margin="0,1,-2,-1">
                     <StackPanel Height="27" Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Газовый состав" Width="161"/>
-                        <Button Content="Открыть" Margin="0,0,30,0" Width="81"/>
+                        <Button x:Name="inputFileButton" Content="Открыть" Margin="0,0,30,0" Width="81" Click="inputFileButton_Click"/>
                     </StackPanel>
                     <GroupBox Header="Координаты" Height="98" Margin="0,9.7,0,0">
                         <StackPanel Height="89" Margin="0,-1,-2,-1" Width="265">
                             <StackPanel Height="26" Orientation="Horizontal" Margin="0,10,0,0">
                                 <Label Content="Широта" Width="114"/>
-                                <TextBox TextWrapping="Wrap" Text="0
+                                <TextBox x:Name="latitudeTextBox" TextWrapping="Wrap" Text="0
                                          " Width="120"/>
                             </StackPanel>
                             <StackPanel Height="26" Orientation="Horizontal" Margin="0,10,0,0">
                                 <Label Content="Долгота" Width="114"/>
-                                <TextBox TextWrapping="Wrap" Text="0
+                                <TextBox x:Name="longitudeTextBox" TextWrapping="Wrap" Text="0
                                          " Width="120"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
-                    <Button Content="Расчет" Margin="0,10,20,0" HorizontalAlignment="Right" Width="100" Height="27"/>
+                    <Button x:Name="calculateButton" Content="Расчет" Margin="0,10,20,0" HorizontalAlignment="Right" Width="100" Height="27"/>
                 </StackPanel>
             </GroupBox>
         </Grid>
