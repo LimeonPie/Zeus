@@ -59,39 +59,8 @@ namespace Zeus.Engine
                 nipGrid[i] = niPositive(i, nipGrid[i - 1], height);
                 ninGrid[i] = niNegative(i, ninGrid[i - 1], height);
                 result += neGrid[i] + nipGrid[i] + ninGrid[i];
+                LogManager.Session.logMessage(String.Format("{0} stage is [{1}; {2}; {3}]", i, neGrid[i], nipGrid[i], ninGrid[i]));
             }
-            return result;
-        }
-
-        public double q(Element el, double height) {
-            double n = el.getNForHeight(height);
-            int wave = 0;
-            double sum = 0;
-            while (wave <= el.maxWave) {
-                sum += Mathematical.photonFlux(el, wave, latitude, longitude, height) * el.getAtomCSForWave(wave);
-            }
-            return n*sum;
-        }
-
-        public double recombinate(Element el, double elN, double neN) {
-            double result = 0;
-            result = el.recombCoeff * elN / neN;
-            return result;
-        }
-
-        public double stickTo(double neN, double height) {
-            double result = 0;
-            foreach (Element el in aerosolElements) {
-                double b = Mathematical.beta(el.radius);
-                result += b * neN * el.getNForHeight(height);
-            }
-            return result;
-        }
-
-        public double neutralize(double niP, double niN) {
-            double result = 0;
-            double gamma = 0.5; // Коэффициент нейтрализации
-            result = gamma * niP * niN;
             return result;
         }
 
@@ -103,11 +72,13 @@ namespace Zeus.Engine
             creation += ionization;
             // Потери
             double loss = 0;
-            double recombination = recombinate(activeElement, nePrev, neGrid[step - 1]);
+            double recombination;
+            if (step == 1) recombination = recombinate(activeElement, ionization, ionization);
+            else recombination = recombinate(activeElement, nePrev, neGrid[step - 1]);
             loss += recombination;
             double sticking = stickTo(neGrid[step - 1], height);
             loss += sticking;
-            return (nePrev + (creation - loss)*Constants.dt);
+            return (nePrev + (creation - loss) * Constants.dt);
         }
 
         // Концентрация положительных ионов
@@ -118,7 +89,9 @@ namespace Zeus.Engine
             creation += ionization;
             // Потери
             double loss = 0;
-            double recombination = recombinate(activeElement, nipPrev, neGrid[step - 1]);
+            double recombination;
+            if (step == 1) recombination = recombinate(activeElement, ionization, ionization);
+            else recombination = recombinate(activeElement, nipPrev, neGrid[step - 1]);
             loss += recombination;
             double neutralization = neutralize(nipGrid[step - 1], ninGrid[step - 1]);
             loss += neutralization;
@@ -136,6 +109,55 @@ namespace Zeus.Engine
             double neutralization = neutralize(nipGrid[step - 1], ninGrid[step - 1]);
             loss += neutralization;
             return (ninPrev + (creation - loss) * Constants.dt);
+        }
+
+        // Скорость фотоионизации
+        private double q(Element el, double height) {
+            double sum = 0;
+            foreach (string key in el.atomCrossSections.Keys) {
+                double flux = photonFlux(el, key, height);
+                sum += flux * el.getAtomCSValueForKey(key);
+            }
+            double conc = el.getNForHeight(height);
+            double earthIonization = 7E+6 + Constants.Q * Math.Exp(-2.362 * height);
+            double result = el.getNForHeight(height) * sum + earthIonization;
+            return result;
+            //return earthIonization;
+        }
+
+        // Вычисляем поток фотонов с длиной волны wave на высоте height
+        private double photonFlux(Element el, string key, double height) {
+            double eternityFlux = Constants.eternityFlux;
+            double flux = el.getPhotonCSValueForKey(key) * el.getNForHeight(height);
+            double hi = Mathematical.hi(latitude, longitude);
+            double tay =-Mathematical.sec(hi) * flux; // Hope that is not critical
+            double exp = Math.Exp(-tay);
+            double result = eternityFlux * exp;
+            return result;
+        }
+
+        // Рекомбинация
+        private double recombinate(Element el, double elN, double neN) {
+            double result = 0;
+            result = neN * el.recombCoeff * elN;
+            return result;
+        }
+
+        // Прилипание
+        private double stickTo(double neN, double height) {
+            double result = 0;
+            foreach (Element el in aerosolElements) {
+                double beta = Mathematical.beta(el.radius);
+                result += beta * neN * el.getNForHeight(height);
+            }
+            return result;
+        }
+
+        // Нейтрализация
+        private double neutralize(double niP, double niN) {
+            double result = 0;
+            result = Constants.gamma * niP * niN;
+            return result;
         }
     }
 }

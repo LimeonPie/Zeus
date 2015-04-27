@@ -102,17 +102,19 @@ namespace Zeus.Helpers
             return result;
         }
 
-        public static void writeJson(Dictionary<string, string> dict, string filename) {
-            StreamWriter sw = new StreamWriter(filename);
+        public static void writeJson(Dictionary<int, double> dict, string filename) {
+            string path = Constants.appJsonPath + filename;
+            StreamWriter sw = new StreamWriter(path);
             JsonWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.Indented;
             writer.WriteStartObject();
-            foreach (string key in dict.Keys) {
-                writer.WritePropertyName(key);
-                writer.WriteValue(dict[key]);
+            foreach (int key in dict.Keys) {
+                writer.WritePropertyName(key.ToString());
+                writer.WriteValue(dict[key].ToString());
             }
             writer.WriteEndObject();
             sw.Close();
+            LogManager.Session.logMessage("Writing " + path + " has been completed");
         }
     }
 }

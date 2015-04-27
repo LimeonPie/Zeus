@@ -52,6 +52,15 @@ namespace Zeus.Engine
             lowAtmosphere = new Sphere(data, active);
         }
 
+        public void launchComputations() {
+            lowAtmosphere.n();
+        }
+
+        public Dictionary<int, double> convertArrayToDict(double[] array) {
+            Dictionary<int, double> dict = array.Select((value, index) => new { value, index }).ToDictionary(pair => pair.index, pair => pair.value);
+            return dict;
+        }
+
         public void setCoordinates(double longitude, double latitude) {
             lowAtmosphere.changeCoordinates(longitude, latitude);
         }

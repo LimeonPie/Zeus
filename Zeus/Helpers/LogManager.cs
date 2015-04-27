@@ -19,6 +19,7 @@ namespace Zeus.Helpers
                 FileStream stream = File.OpenWrite(currentPath);
                 stream.Close();
             }
+            clearLogs();
         }
 
         public static LogManager Session {
@@ -33,8 +34,7 @@ namespace Zeus.Helpers
         public bool logMessage(string message) {
             try {
                 StreamWriter sw = File.AppendText(currentPath);
-                sw.Write(DateTime.Now.ToUniversalTime().ToString() + ": " + message);
-                sw.WriteLine();
+                sw.WriteLine(DateTime.Now.ToUniversalTime().ToString() + ": " + message);
                 sw.Close();
                 return true;
             }

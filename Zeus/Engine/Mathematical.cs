@@ -11,15 +11,11 @@ namespace Zeus.Engine
     {
 
         public static double beta(double r) {
-            return (2.35 * Math.Pow(10, -4) * Math.Pow(r, 1.457));
+            return(2.35 * Math.Pow(10, -4) * Math.Pow(r, 1.457));
         }
 
-        // Вычисляем поток фотонов с длиной волны wave на высоте height
-        public static double photonFlux(Element el, double wave, double latitude, double longitude, double height) {
-        	double eternityFlux = 1; // Поток бесконечности - должно быть какая-то константа
-            double flux = el.getPhotonCSForWave(wave) * el.getNForHeight(height);
-            double tay = -sec(hi(latitude, longitude)) * flux;
-            return eternityFlux * Math.Exp(-tay);
+        public static double celsiusToKelvins(double celsius) {
+            return (celsius + 273);
         }
 
         public static double degreesToRadians(double degrees) {
