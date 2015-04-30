@@ -18,7 +18,7 @@ namespace Zeus.Engine
         public double t;
         public double n0; /*{
             get {
-                return Convert.ToDecimal(Constants.p / (t * Constants.k));
+                return (Constants.p * (0.72E+23) )/ t;
                 //return Convert.ToDecimal((this.nPercent * Constants.Na) / (100 * Constants.Vm));
                 // Убираем умножение на постоянную Авогардо, потому что слишком много
                 //return Convert.ToDecimal((this.nPercent) / (100 * Constants.Vm));
@@ -36,10 +36,9 @@ namespace Zeus.Engine
 
         public double getNForHeight(double height) {
             double result = n0;
-            double power = -this.m * Constants.g * height / (Constants.R * t);
+            double power = -this.m * (1E-3) * Constants.g * height / (Constants.R * t);
             double exp = Math.Exp(power);
-            result = n0 * Math.Exp(power);
-            return result;
+            return result * exp;
         }
 
         public double tryGetValueForKey(string key, Dictionary<string, double> dict) {
