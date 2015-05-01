@@ -116,5 +116,29 @@ namespace Zeus.Helpers
             sw.Close();
             LogManager.Session.logMessage("Writing " + path + " has been completed");
         }
+
+        public static void writeJsonOutputData(outputData[] data, string filename) {
+            string path = Constants.appJsonPath + filename;
+            StreamWriter sw = new StreamWriter(path);
+            JsonWriter writer = new JsonTextWriter(sw);
+            writer.Formatting = Formatting.Indented;
+            writer.WriteStartObject();
+            foreach (outputData part in data) {
+                writer.WritePropertyName(part.height.ToString());
+                writer.WriteStartObject();
+                writer.WritePropertyName("ne");
+                writer.WriteValue(part.ne.ToString("#.###E0"));
+                writer.WritePropertyName("nip");
+                writer.WriteValue(part.nip.ToString("#.###E0"));
+                writer.WritePropertyName("nin");
+                writer.WriteValue(part.nin.ToString("#.###E0"));
+                writer.WritePropertyName("total");
+                writer.WriteValue(part.total.ToString("#.###E0"));
+                writer.WriteEndObject();
+            }
+            writer.WriteEndObject();
+            sw.Close();
+            LogManager.Session.logMessage("Writing " + path + " has been completed");
+        }
     }
 }

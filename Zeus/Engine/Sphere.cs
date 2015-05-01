@@ -15,7 +15,7 @@ namespace Zeus.Engine
         public double longitude;
         public double latitude;
         public double delta;
-        private int capacity;
+        public int capacity;
         public double ne0;
         public double[] neGrid;
         public double nip0;
@@ -36,7 +36,7 @@ namespace Zeus.Engine
             this.activeElement = active;
             this.latitude = data.latitude;
             this.longitude = data.longitude;
-            this.capacity = (int)((topBoundary - botBoundary) / delta);
+            this.capacity = (int)((topBoundary - botBoundary) / delta) + 1;
             neGrid = new double[this.capacity];
             neGrid[0] = ne0;
             nipGrid = new double[this.capacity];
@@ -59,7 +59,6 @@ namespace Zeus.Engine
                 nipGrid[i] = niPositive(i, nipGrid[i - 1], height);
                 ninGrid[i] = niNegative(i, ninGrid[i - 1], height);
                 result += neGrid[i] + nipGrid[i] + ninGrid[i];
-                LogManager.Session.logMessage(String.Format("{0} stage is [{1}; {2}; {3}]", i, neGrid[i], nipGrid[i], ninGrid[i]));
             }
             return result;
         }
@@ -139,7 +138,6 @@ namespace Zeus.Engine
             double result = 0;
             if (elN <= 0 || neN <= 0) return result;
             result = neN * el.recombCoeff * elN;
-            System.Diagnostics.Debug.WriteLine("Recombination: " + elN + " * " + neN + " = " + result);
             return result;
         }
 
@@ -152,7 +150,6 @@ namespace Zeus.Engine
                 if (beta < 0) continue;
                 double aerosol = el.getNForHeight(height);
                 result += beta * (1E-6) * aerosol;
-                System.Diagnostics.Debug.WriteLine("Z = Beta (" + beta + ") * aerosol[" + el.index + "]: " + result);
             }
             result *= neN;
             return result;

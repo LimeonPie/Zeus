@@ -26,6 +26,15 @@ namespace Zeus.Engine
         public List<Element> aerosols;
     };
 
+    public struct outputData 
+    {
+        public double height;
+        public double ne;
+        public double nip;
+        public double nin;
+        public double total;
+    };
+
     public class Engine
     {
         private static Engine instance;
@@ -63,6 +72,18 @@ namespace Zeus.Engine
 
         public void setCoordinates(double longitude, double latitude) {
             lowAtmosphere.changeCoordinates(longitude, latitude);
+        }
+
+        public void saveToFile() {
+            outputData[] data = new outputData[lowAtmosphere.capacity];
+            for (int i = 0; i < lowAtmosphere.capacity; i++) {
+                data[i].height = i * lowAtmosphere.delta;
+                data[i].ne = lowAtmosphere.neGrid[i];
+                data[i].nip = lowAtmosphere.nipGrid[i];
+                data[i].nin = lowAtmosphere.ninGrid[i];
+                data[i].total = data[i].ne + data[i].nip + data[i].nin;
+            }
+            JsonWrapper.writeJsonOutputData(data, "\\output.json");
         }
 
         // Загружаем основной элемент

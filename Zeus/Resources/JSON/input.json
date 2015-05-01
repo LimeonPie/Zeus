@@ -16,7 +16,7 @@
     		"n0": 1.7E+16,
     		"t": 273,
     		"radius": 0.1E-12,
-      		"recombCoeff": 0.5
+      	"recombCoeff": 0.5
   		},
   		"helium" : {
   			"name": "helium",
@@ -25,7 +25,7 @@
     		"nPercent": 13.9,
     		"n0": 3.7E+17,
     		"t": 273,
-      		"recombCoeff": 0.5,
+      	"recombCoeff": 0.5,
     		"radius": 0.3E-12
   		}
   	}
