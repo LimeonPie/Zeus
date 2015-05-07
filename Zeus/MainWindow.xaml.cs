@@ -26,7 +26,7 @@ namespace Zeus
     {
         public MainWindow() {
             InitializeComponent();
-            LogManager.Session.logMessage("App is starting");
+            LogManager.Session.logMessage("Program is starting");
         }
 
         private void inputFileButton_Click(object sender, RoutedEventArgs e) {
@@ -34,6 +34,7 @@ namespace Zeus
             openFileDialog.Filter = "Json files (*.json)|*.json";
             if (openFileDialog.ShowDialog() == true) {
                 System.Diagnostics.Debug.WriteLine(openFileDialog.FileName);
+                LogManager.Session.logMessage("Opening " + openFileDialog.FileName + " input file");
             }
         }
     }
