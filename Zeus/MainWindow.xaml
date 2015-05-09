@@ -1,68 +1,70 @@
-﻿<Window x:Class="Zeus.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Zeus" Height="600" Width="800" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinWidth="800" MinHeight="600">
+        xmlns:l="clr-namespace:Zeus.Properties"
+        xmlns:oxy="http://oxyplot.org/wpf" x:Name="mainWindow" x:Class="Zeus.MainWindow"
+        Title="{x:Static l:Resources.MainWindowTitle}" Height="600" Width="800" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinWidth="800" MinHeight="600">
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Открыть"/>
-                <MenuItem Header="Сохранить"/>
-                <MenuItem Header="Настройки"/>
+            <MenuItem Header="{x:Static l:Resources.FileMenuText}">
+                <MenuItem x:Name="openFileMenu" Header="{x:Static l:Resources.FileOpenText}" Click="OnOpenFile"/>
+                <MenuItem x:Name="saveFileMenu" Header="{x:Static l:Resources.FileSaveText}" Click="OnSave"/>
+                <MenuItem x:Name="closeFileMenu" Header="{x:Static l:Resources.FileCloseText}" Click="OnClose"/>
             </MenuItem>
-            <MenuItem Header="Редактировать">
-                <MenuItem Header="Отменить"/>
-                <MenuItem Header="Вернуть"/>
-                <MenuItem Header="Вырезать"/>
-                <MenuItem Header="Копировать"/>
-                <MenuItem Header="Вставить"/>
+            <MenuItem Header="{x:Static l:Resources.EditMenuText}">
+                <MenuItem x:Name="undoEditMenu" Header="{x:Static l:Resources.EditUndoText}" Command="ApplicationCommands.Undo"/>
+                <MenuItem x:Name="redoEditMenu" Header="{x:Static l:Resources.EditRedoText}" Command="ApplicationCommands.Redo"/>
+                <MenuItem x:Name="cutEditMenu" Header="{x:Static l:Resources.EditCutText}"/>
+                <MenuItem x:Name="copyEditMenu" Header="{x:Static l:Resources.EditCopyText}" Command="ApplicationCommands.Copy"/>
+                <MenuItem x:Name="pasteEditMenu" Header="{x:Static l:Resources.EditPasteText}"/>
             </MenuItem>
-            <MenuItem Header="Вид"/>
-            <MenuItem Header="Помощь">
-                <MenuItem Header="Сведения"/>
-                <MenuItem Header="Справка"/>
+            <MenuItem Header="{x:Static l:Resources.ViewMenuText}"/>
+            <MenuItem Header="{x:Static l:Resources.HelpMenuText}">
+                <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}"/>
+                <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}"/>
             </MenuItem>
         </Menu>
         <StatusBar x:Name="statusBar" Height="31" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <StatusBarItem>
-                <Label x:Name="statusLabel" Content="Label" VerticalAlignment="Center" MinWidth="527"/>
+                <Label x:Name="statusLabel" Content="" VerticalAlignment="Center" MinWidth="527"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar x:Name="progressBar" Height="21" VerticalAlignment="Center" MinWidth="163"/>
             </StatusBarItem>
             <StatusBarItem>
-                <Label x:Name="procentLabel" Content="Label" VerticalAlignment="Center" MinWidth="80"/>
+                <Label x:Name="procentLabel" Content="" VerticalAlignment="Center" MinWidth="80"/>
             </StatusBarItem>
         </StatusBar>
         <Grid Margin="0,27,0,31">
             <Border Margin="5,0,290,10" BorderThickness="5" BorderBrush="#FFE0DADA">
-                <Frame Content="Content" ClipToBounds="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="3"/>
+                <oxy:PlotView x:Name="plotView"/>
             </Border>
-            <GroupBox Header="Панель управления" Margin="0,0,3,10" HorizontalAlignment="Right">
+            <GroupBox Header="{x:Static l:Resources.ControlPanelText}" Margin="0,0,3,10" HorizontalAlignment="Right">
                 <StackPanel Width="275" Margin="0,1,-2,-1">
                     <StackPanel Height="27" Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Газовый состав" Width="161"/>
-                        <Button x:Name="inputFileButton" Content="Открыть" Margin="20,0,30,0" Width="81" Click="inputFileButton_Click"/>
+                        <Label Content="{x:Static l:Resources.ElementContentText}" Width="161"/>
+                        <Button x:Name="inputFileButton" Content="{x:Static l:Resources.FileOpenText}" Margin="20,0,30,0" Width="81" Click="OnOpenFile"/>
                     </StackPanel>
-                    <GroupBox Header="Данные" Height="205" Margin="0,9.7,0,0">
+                    <GroupBox Header="{x:Static l:Resources.DataText}" Height="205" Margin="0,9.7,0,0">
                         <StackPanel Margin="0,-1,-2,-3" Width="265">
                             <StackPanel Height="25" Orientation="Horizontal" Margin="0,10,0,0">
-                                <Label Content="Широта" Width="114" VerticalAlignment="Center"/>
+                                <Label Content="{x:Static l:Resources.LatitudeText}" Width="114" VerticalAlignment="Center"/>
                                 <TextBox x:Name="latitudeTextBox" TextWrapping="Wrap" Width="62" VerticalAlignment="Center" Margin="0,4,0,3" IsReadOnly="True"/>
                             </StackPanel>
                             <StackPanel Height="26" Orientation="Horizontal" Margin="0,10,0,0">
-                                <Label Content="Долгота" Width="114" VerticalAlignment="Center"/>
+                                <Label Content="{x:Static l:Resources.LongitudeText}" Width="114" VerticalAlignment="Center"/>
                                 <TextBox x:Name="longitudeTextBox" TextWrapping="Wrap" Width="62" VerticalAlignment="Center" Margin="0,4" IsReadOnly="True"/>
                             </StackPanel>
                             <StackPanel Height="94" Margin="0,10,0,0">
-                                <Label Content="Элементы" VerticalAlignment="Center" Margin="0,0,169,0"/>
+                                <Label Content="{x:Static l:Resources.ElementsText}" VerticalAlignment="Center" Margin="0,0,169,0"/>
                                 <TextBlock x:Name="elementsPanel" TextWrapping="Wrap" Margin="10,0,0,0"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
-                    <Button x:Name="calculateButton" Content="Расчет" Margin="0,10,10,0" HorizontalAlignment="Right" Width="100" Height="27"/>
-                    <GroupBox x:Name="resultBox" Header="Результат" Height="76" Margin="0,10,0,0">
+                    <Button x:Name="calculateButton" Content="{x:Static l:Resources.LaunchButtonText}" Margin="0,10,10,0" HorizontalAlignment="Right" Width="100" Height="27" Click="OnLaunch"/>
+                    <GroupBox x:Name="resultBox" Header="{x:Static l:Resources.ResultText}" Height="76" Margin="0,10,0,0">
                         <StackPanel Margin="0,0,-2,0" Width="265">
-                            <TextBlock x:Name="resultTextBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,5,0,0"/>
+                            <TextBlock x:Name="resultTextBlock" TextWrapping="Wrap" Margin="0,5,0,0"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -71,3 +73,4 @@
 
     </Grid>
 </Window>
+

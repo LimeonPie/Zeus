@@ -118,75 +118,75 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ControlPanelText" xml:space="preserve">
-    <value>Control Panel</value>
+    <value>Панель управления</value>
   </data>
   <data name="DataText" xml:space="preserve">
-    <value>Data</value>
+    <value>Данные</value>
   </data>
   <data name="EditCopyText" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копировать</value>
   </data>
   <data name="EditCutText" xml:space="preserve">
-    <value>Cut</value>
+    <value>Вырезать</value>
   </data>
   <data name="EditMenuText" xml:space="preserve">
-    <value>Edit</value>
+    <value>Правка</value>
   </data>
   <data name="EditPasteText" xml:space="preserve">
-    <value>Paste</value>
+    <value>Вставить</value>
   </data>
   <data name="EditRedoText" xml:space="preserve">
-    <value>Redo</value>
+    <value>Вернуть</value>
   </data>
   <data name="EditUndoText" xml:space="preserve">
-    <value>Undo</value>
+    <value>Отменить</value>
   </data>
   <data name="ElementContentText" xml:space="preserve">
-    <value>Element Content</value>
+    <value>Газовый состав</value>
   </data>
   <data name="ElementsText" xml:space="preserve">
-    <value>Elements</value>
+    <value>Элементы</value>
   </data>
   <data name="FileCloseText" xml:space="preserve">
-    <value>Close</value>
+    <value>Закрыть</value>
   </data>
   <data name="FileMenuText" xml:space="preserve">
-    <value>File</value>
+    <value>Файл</value>
   </data>
   <data name="FileOpenText" xml:space="preserve">
-    <value>Open</value>
+    <value>Открыть</value>
   </data>
   <data name="FileSaveText" xml:space="preserve">
-    <value>Save</value>
+    <value>Сохранить</value>
   </data>
   <data name="FileSettingsText" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="HelpAboutText" xml:space="preserve">
-    <value>About</value>
+    <value>О программе</value>
   </data>
   <data name="HelpInfoText" xml:space="preserve">
-    <value>View Help</value>
+    <value>Справка</value>
   </data>
   <data name="HelpMenuText" xml:space="preserve">
-    <value>Help</value>
+    <value>Помощь</value>
   </data>
   <data name="LatitudeText" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Широта</value>
   </data>
   <data name="LaunchButtonText" xml:space="preserve">
-    <value>Launch</value>
+    <value>Запустить</value>
   </data>
   <data name="LongitudeText" xml:space="preserve">
-    <value>Longitude</value>
+    <value>Долгота</value>
   </data>
   <data name="MainWindowTitle" xml:space="preserve">
-    <value>Zeus</value>
+    <value>Зевс</value>
   </data>
   <data name="ResultText" xml:space="preserve">
-    <value>Result</value>
+    <value>Результат</value>
   </data>
   <data name="ViewMenuText" xml:space="preserve">
-    <value>View</value>
+    <value>Вид</value>
   </data>
 </root>

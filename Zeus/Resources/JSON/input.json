@@ -4,7 +4,7 @@
 	"ne0": 0,
 	"nip0": 0,
 	"nin0": 0,
-	"delta": 10000,
+	"delta": 1000,
 	"botBoundary": 0,
 	"topBoundary": 80000,
 	"aerosols": {

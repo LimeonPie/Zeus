@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 using Zeus.Helpers;
 
 namespace Zeus.Engine
 {
+
+    public class SphereEventArgs : EventArgs
+    {
+        public int state { get; set; }
+        public double result { get; set; }
+    }
+
     public class Sphere
     {
 
@@ -24,6 +32,11 @@ namespace Zeus.Engine
         public double[] ninGrid;
         public List<Element> aerosolElements;
         public Element activeElement;
+
+        public event EventHandler<SphereEventArgs> stateCalculated;
+        public event EventHandler<SphereEventArgs> calculationsDone;
+
+        public BackgroundWorker worker;
 
         public Sphere(InputData data, Element active) {
             this.ne0 = data.ne0;
@@ -43,6 +56,21 @@ namespace Zeus.Engine
             nipGrid[0] = nip0;
             ninGrid = new double[this.capacity];
             ninGrid[0] = nin0;
+            worker = new BackgroundWorker();
+        }
+
+        protected virtual void OnStateCalculated(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = stateCalculated;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnCalculationsDone(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = calculationsDone;
+            if (handler != null) {
+                handler(this, e);
+            }
         }
 
         public void changeCoordinates(double longitude, double latitude) {
@@ -59,7 +87,17 @@ namespace Zeus.Engine
                 nipGrid[i] = niPositive(i, nipGrid[i - 1], height);
                 ninGrid[i] = niNegative(i, ninGrid[i - 1], height);
                 result += neGrid[i] + nipGrid[i] + ninGrid[i];
+                // Вызываем эвент о каждой стадии
+                SphereEventArgs args = new SphereEventArgs();
+                args.state = i;
+                args.result = result;
+                OnStateCalculated(args);
             }
+            // Сообщаем что закончили вычисления
+            SphereEventArgs finalArgs = new SphereEventArgs();
+            finalArgs.state = capacity;
+            finalArgs.result = result;
+            OnCalculationsDone(finalArgs);
             return result;
         }
 
