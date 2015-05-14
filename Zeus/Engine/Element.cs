@@ -18,10 +18,11 @@ namespace Zeus.Engine
         public double t;
         public double n0; /*{
             get {
-                return (Constants.p * (0.72E+23) )/ t;
+                return (Constants.p * (0.72E+23))/t;
                 //return Convert.ToDecimal((this.nPercent * Constants.Na) / (100 * Constants.Vm));
                 // Убираем умножение на постоянную Авогардо, потому что слишком много
                 //return Convert.ToDecimal((this.nPercent) / (100 * Constants.Vm));
+                // дичь какая-то
             }
         }*/
         public double maxWave;

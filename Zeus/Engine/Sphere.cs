@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,9 +36,7 @@ namespace Zeus.Engine
         public event EventHandler<SphereEventArgs> stateCalculated;
         public event EventHandler<SphereEventArgs> calculationsDone;
 
-        public BackgroundWorker worker;
-
-        public Sphere(InputData data, Element active) {
+        public Sphere(inputData data, Element active) {
             this.ne0 = data.ne0;
             this.nip0 = data.nip0;
             this.nin0 = data.nin0;
@@ -56,7 +54,6 @@ namespace Zeus.Engine
             nipGrid[0] = nip0;
             ninGrid = new double[this.capacity];
             ninGrid[0] = nin0;
-            worker = new BackgroundWorker();
         }
 
         protected virtual void OnStateCalculated(SphereEventArgs e) {

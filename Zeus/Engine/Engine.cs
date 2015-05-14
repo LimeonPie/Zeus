@@ -13,7 +13,7 @@ namespace Zeus.Engine
         Oxygen
     };
 
-    public struct InputData
+    public struct inputData
     {
         public double longitude;
         public double latitude;
@@ -57,7 +57,7 @@ namespace Zeus.Engine
         public void initSphereWithInputFile(string path) {
             inputFilename = path;
             Element active = loadActiveElement(ActiveElement.Nitrogen);
-            InputData data = JsonWrapper.parseInputData(path);
+            inputData data = JsonWrapper.parseInputData(path);
             lowAtmosphere = new Sphere(data, active);
         }
 

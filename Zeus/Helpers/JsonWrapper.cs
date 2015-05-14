@@ -20,17 +20,25 @@ namespace Zeus.Helpers
     public static class JsonWrapper
     {
 
-        public static InputData parseInputData(string filename) {
-            InputData data = new InputData();
+        public static inputData parseInputData(string filename) {
+            inputData data = new inputData();
             JObject o = JObject.Parse(File.ReadAllText(filename));
             LogManager.Session.logMessage("Reading json file " + filename);
             foreach (JProperty prop in o.Properties()) {
                 switch (prop.Name) {
                     case "longitude":
-                        data.longitude = prop.Value.ToObject<double>();
+                        double longitude = prop.Value.ToObject<double>();
+                        if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
+                           data.longitude = longitude; 
+                        }
+                        else data.longitude = 45;
                         break;
                     case "latitude":
-                        data.latitude = prop.Value.ToObject<double>();
+                        double latitude = prop.Value.ToObject<double>();
+                        if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
+                           data.latitude = latitude; 
+                        }
+                        else data.latitude = 45;
                         break;
                     case "ne0":
                         data.ne0 = prop.Value.ToObject<double>();
