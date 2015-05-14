@@ -7,6 +7,12 @@ using Zeus.Helpers;
 
 namespace Zeus.Engine
 {
+
+    // Основной класс, ответственен за
+    // Управление работой комплекса
+    // Взаимодействием с UI
+    // Да в принципе все
+
     public enum ActiveElement
     {
         Nitrogen,

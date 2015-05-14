@@ -8,6 +8,10 @@ using System.Globalization;
 
 namespace Zeus.Engine
 {
+
+	// Класс элемента, будь то аэрозоль или элемент атмосферы
+	// Служит для хранения и получения данных
+
     public class Element
     {
 
