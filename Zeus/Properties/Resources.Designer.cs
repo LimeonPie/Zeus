@@ -61,6 +61,33 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculating {0} level....
+        /// </summary>
+        public static string CalculationsCurrentState {
+            get {
+                return ResourceManager.GetString("CalculationsCurrentState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculations ended, click OK to continue working with program.
+        /// </summary>
+        public static string CalculationsEndAlertDescText {
+            get {
+                return ResourceManager.GetString("CalculationsEndAlertDescText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculations ended.
+        /// </summary>
+        public static string CalculationsEndText {
+            get {
+                return ResourceManager.GetString("CalculationsEndText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control Panel.
         /// </summary>
         public static string ControlPanelText {
@@ -129,6 +156,15 @@ namespace Zeus.Properties {
         public static string EditUndoText {
             get {
                 return ResourceManager.GetString("EditUndoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electron Concentration.
+        /// </summary>
+        public static string ElectronConc {
+            get {
+                return ResourceManager.GetString("ElectronConc", resourceCulture);
             }
         }
         
@@ -255,6 +291,24 @@ namespace Zeus.Properties {
         public static string MainWindowTitle {
             get {
                 return ResourceManager.GetString("MainWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Negative Ion Concentration.
+        /// </summary>
+        public static string NegativeIonConc {
+            get {
+                return ResourceManager.GetString("NegativeIonConc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Positive Ion Concentration.
+        /// </summary>
+        public static string PositiveIonConc {
+            get {
+                return ResourceManager.GetString("PositiveIonConc", resourceCulture);
             }
         }
         

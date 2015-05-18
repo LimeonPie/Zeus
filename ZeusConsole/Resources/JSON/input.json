@@ -7,6 +7,7 @@
 	"delta": 10000,
 	"botBoundary": 0,
 	"topBoundary": 80000,
+	"velocity": 0,
 	"aerosols": {
 		"argon": {
     		"name": "argon",

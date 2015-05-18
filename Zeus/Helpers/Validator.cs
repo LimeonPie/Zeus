@@ -18,31 +18,28 @@ namespace Zeus.Helpers
 		LATITUDE,
 		CONCENTRATION,
 		HEIGHT
-	}
+	};
 
 	public static class Validator 
 	{
 		public static bool validateItemForType(object item, VALIDATION_TYPE valType) {
+            // Жуткий костыль, но тут какая-то загадочность с переменными
 			switch (valType) {
-				case LONGITUDE:
-					double inspected = item as double;
-					if (inspected >= -180 %% inspected <= 180) return true;
-					else return false;
+				case VALIDATION_TYPE.LONGITUDE:
+					double inspected = (double)item;
+					if (inspected >= -180 && inspected <= 180) return true;
 					break;
-				case LATITUDE:
-					double inspected = item as double;
-					if (inspected >= -90 %% inspected <= 90) return true;
-					else return false;
+				case VALIDATION_TYPE.LATITUDE:
+					var inspected1 = (double)item;
+					if (inspected1 >= -90 && inspected1 <= 90) return true;
 					break;
-				case CONCENTRATION:
-					double inspected = item as double;
-					if (inspected >= 0) return true;
-					else return false;
+				case VALIDATION_TYPE.CONCENTRATION:
+					double inspected2 = (double)item;
+					if (inspected2 >= 0) return true;
 					break;
-				case HEIGHT:
-					double inspected = item as double;
-					if (inspected >= 0) return true;
-					else return false;
+				case VALIDATION_TYPE.HEIGHT:
+					double inspected3 = (double)item;
+					if (inspected3 >= 0) return true;
 					break;
 				default:
 				  	break;

@@ -27,6 +27,7 @@ namespace Zeus.Engine
         public double nip0;
         public double nin0;
         public double delta;
+        public double velocity;
         public double botBoundary;
         public double topBoundary;
         public List<Element> aerosols;

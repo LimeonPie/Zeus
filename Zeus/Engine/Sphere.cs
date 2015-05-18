@@ -79,6 +79,11 @@ namespace Zeus.Engine
             this.longitude = longitude;
         }
 
+        public double electricity() {
+            double result = 1;
+            return result;
+        }
+
         public double n() {
             double height = 0;
             double result = neGrid[0] + nipGrid[0] + ninGrid[0];

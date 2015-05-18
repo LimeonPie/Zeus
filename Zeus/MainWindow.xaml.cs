@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using Zeus.Helpers;
 using Zeus.Engine;
+using OxyPlot;
+using OxyPlot.Wpf;
 
 namespace Zeus
 {
@@ -37,7 +39,7 @@ namespace Zeus
             double longitude = Engine.Engine.Instance.lowAtmosphere.longitude;
             longitudeTextBox.Text = longitude.ToString();
             latitudeTextBox.Text = latitude.ToString();
-            foreach (Element el in Engine.Engine.Instance.lowAtmosphere.aerosolElements) {
+            foreach (Zeus.Engine.Element el in Engine.Engine.Instance.lowAtmosphere.aerosolElements) {
                 elementsPanel.Text += String.Format("{0} = {1}\n", el.name, el.n0);
             }
         }
@@ -47,17 +49,24 @@ namespace Zeus
             statusLabel.Content = message;
         }
 
+        private void drawPlot() {
+            SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
+            plotView.Model = model.CurrentModel;
+        }
+
         private void OnCalculationsEnded(object sender, SphereEventArgs e) {
-            MessageBoxResult alert = MessageBox.Show("The End", "The End", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            writeToStatusBar(Properties.Resources.CalculationsEndText);
+            MessageBoxResult alert = MessageBox.Show(Properties.Resources.CalculationsEndAlertDescText, Properties.Resources.CalculationsEndText, MessageBoxButton.OK, MessageBoxImage.Asterisk);
             if (alert == MessageBoxResult.OK) {
                 resultTextBlock.Text = String.Format("Result = {0}", e.result.ToString("#.###E0"));
             }
-            clearStatusWithDelay(2000);   
+            clearStatusWithDelay(2000);
+            drawPlot();
         }
 
         private void OnProgressValueChanged(object sender, SphereEventArgs e) {
             double value = ((double)(e.state+1) / (double)Engine.Engine.Instance.lowAtmosphere.capacity) * 100;
-            writeToStatusBar("Считаем " + e.state + " стадию...");
+            writeToStatusBar(String.Format(Properties.Resources.CalculationsCurrentState, e.state));
             progressBar.Value = value;
             procentLabel.Content = Math.Round(value).ToString() + " %";
         }

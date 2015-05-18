@@ -4,9 +4,10 @@
 	"ne0": 0,
 	"nip0": 0,
 	"nin0": 0,
-	"delta": 1000,
+	"delta": 10000,
 	"botBoundary": 0,
 	"topBoundary": 80000,
+	"velocity": 0,
 	"aerosols": {
 		"argon": {
     		"name": "argon",
