@@ -1,1 +1,4 @@
 ﻿
+19.05.2015 11:18:34: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+19.05.2015 11:18:35: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\\output.json has been completed
+19.05.2015 11:21:32: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
