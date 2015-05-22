@@ -31,6 +31,7 @@ namespace Zeus.Engine
         public double botBoundary;
         public double topBoundary;
         public List<Element> aerosols;
+        public Dictionary<string, double> temperature;
     };
 
     public struct outputData 
@@ -40,6 +41,9 @@ namespace Zeus.Engine
         public double nip;
         public double nin;
         public double total;
+        public double neVel;
+        public double nipVel;
+        public double ninVel;
     };
 
     public class Engine
@@ -68,8 +72,10 @@ namespace Zeus.Engine
             lowAtmosphere = new Sphere(data, active);
         }
 
-        public void launchComputations() {
+        public double launchComputations() {
             lowAtmosphere.n();
+            double electricity = lowAtmosphere.electricity();
+            return electricity;
         }
 
         public Dictionary<int, double> convertArrayToDict(double[] array) {
@@ -89,6 +95,9 @@ namespace Zeus.Engine
                 data[i].nip = lowAtmosphere.nipGrid[i];
                 data[i].nin = lowAtmosphere.ninGrid[i];
                 data[i].total = data[i].ne + data[i].nip + data[i].nin;
+                data[i].neVel = lowAtmosphere.neVelGrid[i];
+                data[i].nipVel = lowAtmosphere.nipVelGrid[i];
+                data[i].ninVel = lowAtmosphere.ninVelGrid[i];
             }
             JsonWrapper.writeJsonOutputData(data, "\\output.json");
         }

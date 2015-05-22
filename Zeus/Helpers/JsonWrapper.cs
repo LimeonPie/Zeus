@@ -27,17 +27,17 @@ namespace Zeus.Helpers
                 switch (prop.Name) {
                     case "longitude":
                         double longitude = prop.Value.ToObject<double>();
-                        if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
+                        /*if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
                            data.longitude = longitude; 
                         }
-                        else data.longitude = 45;
+                        else data.longitude = 45;*/
                         break;
                     case "latitude":
                         double latitude = prop.Value.ToObject<double>();
-                        if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
+                        /*if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
                            data.latitude = latitude; 
                         }
-                        else data.latitude = 45;
+                        else data.latitude = 45;*/
                         break;
                     case "ne0":
                         data.ne0 = prop.Value.ToObject<double>();
@@ -62,6 +62,9 @@ namespace Zeus.Helpers
                         break;
                     case "aerosols":
                         data.aerosols = parseJsonForElements(prop.Value.ToString());
+                        break;
+                    case "temperature":
+                        data.temperature = deserializeJsonToDict(prop.Value.ToString());
                         break;
                     default:
                         LogManager.Session.logMessage("Unknown key " + prop.Name);
@@ -112,6 +115,12 @@ namespace Zeus.Helpers
             return result;
         }
 
+        public static Dictionary<string, double> deserializeJsonToDict(string json) {
+            JObject o = JObject.Parse(json);
+            Dictionary<string, double> result = JsonConvert.DeserializeObject<Dictionary<string, double>>(o.ToString());
+            return result;
+        }
+
         public static void writeJson(Dictionary<int, double> dict, string filename) {
             string path = Constants.appJsonPath + filename;
             StreamWriter sw = new StreamWriter(path);
@@ -144,6 +153,12 @@ namespace Zeus.Helpers
                 writer.WriteValue(part.nin.ToString("#.###E0"));
                 writer.WritePropertyName("total");
                 writer.WriteValue(part.total.ToString("#.###E0"));
+                writer.WritePropertyName("neVel");
+                writer.WriteValue(part.neVel.ToString("#.###E0"));
+                writer.WritePropertyName("nipVel");
+                writer.WriteValue(part.nipVel.ToString("#.###E0"));
+                writer.WritePropertyName("ninVel");
+                writer.WriteValue(part.ninVel.ToString("#.###E0"));
                 writer.WriteEndObject();
             }
             writer.WriteEndObject();

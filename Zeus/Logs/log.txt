@@ -108,3 +108,6 @@
 18.05.2015 10:44:57: Program is starting
 18.05.2015 10:45:01: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
 18.05.2015 10:45:01: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+22.05.2015 19:59:48: Program is starting
+22.05.2015 19:59:53: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+22.05.2015 19:59:54: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json

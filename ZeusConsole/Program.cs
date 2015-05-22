@@ -19,8 +19,9 @@ namespace ZeusConsole
         static void Main(string[] args) {
             display("Process initilized");
             Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
-            Engine.Instance.launchComputations();
+            double electro = Engine.Instance.launchComputations();
             Engine.Instance.saveToFile();
+            display("Electro = " + electro.ToString());
             Console.ReadKey();
         }
     }

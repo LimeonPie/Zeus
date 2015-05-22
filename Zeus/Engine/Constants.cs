@@ -10,6 +10,27 @@ namespace Zeus.Engine
     public static class Constants
     {
 
+        // Масса электрона
+        public static double eMass = 9.10938281E-31;
+
+        // Масса электрона обратная (для деления)
+        public static double eMassReverse = 0.10977692E+31;
+
+        // Масса протона
+        public static double protonMass = 1.6726217E-27;
+
+        // Масса протона обратная (для деления)
+        public static double protonMassReverse = 0.59786382E+27;
+
+        // Масса нейтрона
+        public static double neutronMass = 1.6749273E-27;
+
+        // Масса нейтрона обратная (для деления)
+        public static double neutronMassReverse = 0.59704083E+27;
+
+        // Элементарный электрический заряд
+        public static double qe = 1.60217657E-19;
+
         // Фоновая объемность радона
         public static double Q = 27.6;
 
@@ -32,7 +53,7 @@ namespace Zeus.Engine
         public static double Vm = 22.413;
 
         // Угловая скорость вращения Земли
-        public static double earthRotVel = 7.92E-5;
+        public static double earthRotVel = 7.9221158553E-5;
  
         // Дельта t
         public static double dt = 1;
