@@ -54,6 +54,9 @@ namespace Zeus.Helpers
                     case "velocity":
                         data.velocity = prop.Value.ToObject<double>();
                         break;
+                    case "time":
+                        data.time = prop.Value.ToObject<string>();
+                        break;
                     case "botBoundary":
                         data.botBoundary = prop.Value.ToObject<double>();
                         break;

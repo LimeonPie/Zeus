@@ -5,6 +5,7 @@
 	"nip0": 0,
 	"nin0": 0,
 	"delta": 10000,
+	"time": "13:00",
 	"botBoundary": 0,
 	"topBoundary": 80000,
 	"velocity": 0,

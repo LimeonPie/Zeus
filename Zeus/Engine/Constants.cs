@@ -62,7 +62,7 @@ namespace Zeus.Engine
         public static double g = 9.81;
 
         // Постоянная Больцмана
-        public static double k = 1.38E-23;
+        public static double k = 1.3806488E-23;
 
         // Главная директория
         public static string appRootPath {

@@ -27,6 +27,7 @@ namespace Zeus.Engine
         public double nip0;
         public double nin0;
         public double delta;
+        public string time;
         public double velocity;
         public double botBoundary;
         public double topBoundary;
@@ -70,6 +71,7 @@ namespace Zeus.Engine
             Element active = loadActiveElement(ActiveElement.Nitrogen);
             inputData data = JsonWrapper.parseInputData(path);
             lowAtmosphere = new Sphere(data, active);
+            Time.usedTime = DateTime.Parse(data.time);
         }
 
         public double launchComputations() {

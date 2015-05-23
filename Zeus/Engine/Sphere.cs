@@ -94,21 +94,6 @@ namespace Zeus.Engine
             this.longitude = longitude;
         }
 
-        public double electricity() {
-            double result = 1;
-            int last = capacity - 1;
-            result *= Constants.qe * ninGrid[last] * ninVelGrid[last] + Constants.qe * nipGrid[last] * nipVelGrid[last] - Constants.qe * neGrid[last] * neVelGrid[last];
-            return result;
-        }
-
-        public double velocity(double velPev, double nCur, double nPrev, double mass, double height) {
-            double result = 0;
-            double t1 = temperatureForHeight(height);
-            double t0 = temperatureForHeight(height - delta);
-            result += velPev +(Constants.k * mass * (nCur*t1 - nPrev*t0))/delta - Constants.g;
-            return result;
-        }
-
         public double n() {
             double height = 0;
             double result = neGrid[0] + nipGrid[0] + ninGrid[0];
@@ -121,9 +106,9 @@ namespace Zeus.Engine
                 ninGrid[i] = niNegative(i, ninGrid[i - 1], height);
 
                 // Скорость
-                neVelGrid[i] = velocity(neVelGrid[i - 1], neGrid[i], neGrid[i - 1], Constants.eMassReverse, height);
-                nipVelGrid[i] = velocity(nipVelGrid[i - 1], nipGrid[i], nipGrid[i - 1], Constants.protonMassReverse, height);
-                ninVelGrid[i] = velocity(ninVelGrid[i - 1], ninGrid[i], ninGrid[i - 1], Constants.protonMassReverse, height);
+                neVelGrid[i] = velocity(neVelGrid[i - 1], neGrid[i], neGrid[i - 1], Constants.eMass, height);
+                nipVelGrid[i] = velocity(nipVelGrid[i - 1], nipGrid[i], nipGrid[i - 1], Constants.protonMass, height);
+                ninVelGrid[i] = velocity(ninVelGrid[i - 1], ninGrid[i], ninGrid[i - 1], Constants.protonMass, height);
 
                 result += neGrid[i] + nipGrid[i] + ninGrid[i];
                 // Вызываем эвент о каждой стадии
@@ -138,6 +123,26 @@ namespace Zeus.Engine
             finalArgs.result = result;
             OnCalculationsDone(finalArgs);
             totalConcentration = result;
+            return result;
+        }
+
+        // Находим силу тока
+        public double electricity() {
+            double result = 1;
+            int last = capacity - 1;
+            result *= Constants.qe * ninGrid[last] * ninVelGrid[last] + Constants.qe * nipGrid[last] * nipVelGrid[last] - Constants.qe * neGrid[last] * neVelGrid[last];
+            return result;
+        }
+
+        // Нахождение скорости частицы
+        public double velocity(double velPrev, double nCur, double nPrev, double mass, double height) {
+            double result = 0;
+            if (nCur == 0 && nPrev == 0) return result;
+            double t1 = temperatureForHeight(height);
+            double t0 = temperatureForHeight(height - delta);
+            double deltaMass = delta * mass;
+            double chislitel = Constants.k * (nCur * t1 - nPrev * t0);
+            result += velPrev - (Constants.k * (nCur * t1 - nPrev * t0)) / (delta * mass * nCur) + Constants.g;
             return result;
         }
 

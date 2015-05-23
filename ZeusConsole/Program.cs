@@ -19,6 +19,8 @@ namespace ZeusConsole
         static void Main(string[] args) {
             display("Process initilized");
             Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
+            display("Timezone is = " + Time.timeInPos(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude).ToShortTimeString());
+            display("Time in seconds is = " + Time.timeAfterNoon(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude));
             double electro = Engine.Instance.launchComputations();
             Engine.Instance.saveToFile();
             display("Electro = " + electro.ToString());
