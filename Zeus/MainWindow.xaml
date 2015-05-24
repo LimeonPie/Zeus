@@ -37,7 +37,28 @@
         </StatusBar>
         <Grid Margin="0,27,0,31">
             <Border Margin="5,0,290,10" BorderThickness="5" BorderBrush="#FFE0DADA">
-                <oxy:PlotView x:Name="plotView" Model="{Binding CurrentModel}" />
+                <TabControl x:Name="tabControl">
+                    <TabItem x:Name="electronTab" Header="{x:Static l:Resources.ElectronConcShort}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="electronPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="IonPositiveTab" Header="{x:Static l:Resources.PositiveIonShort}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="ionPositivePlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="IonNegativeTab" Header="{x:Static l:Resources.NegativeIonShort}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="ionNegativePlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="AllChargesTab" Header="{x:Static l:Resources.AllChargesText}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="allChargesPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </Border>
             <GroupBox Header="{x:Static l:Resources.ControlPanelText}" Margin="0,0,3,10" HorizontalAlignment="Right">
                 <StackPanel Width="275" Margin="0,1,-2,-1">

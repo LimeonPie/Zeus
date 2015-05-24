@@ -89,7 +89,7 @@ namespace Zeus.Engine
             lowAtmosphere.changeCoordinates(longitude, latitude);
         }
 
-        public void saveToFile() {
+        public void saveToFile(string filename) {
             outputData[] data = new outputData[lowAtmosphere.capacity];
             for (int i = 0; i < lowAtmosphere.capacity; i++) {
                 data[i].height = i * lowAtmosphere.delta;
@@ -101,7 +101,13 @@ namespace Zeus.Engine
                 data[i].nipVel = lowAtmosphere.nipVelGrid[i];
                 data[i].ninVel = lowAtmosphere.ninVelGrid[i];
             }
-            JsonWrapper.writeJsonOutputData(data, "\\output.json");
+            if (filename != null && !filename.Equals(string.Empty)) {
+                JsonWrapper.writeJsonOutputData(data, filename);
+            }
+            else {
+                string path = Constants.appJsonPath + "\\output.json";
+                JsonWrapper.writeJsonOutputData(data, path);
+            }
         }
 
         // Загружаем основной элемент

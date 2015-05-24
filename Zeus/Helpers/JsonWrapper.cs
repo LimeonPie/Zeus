@@ -27,17 +27,17 @@ namespace Zeus.Helpers
                 switch (prop.Name) {
                     case "longitude":
                         double longitude = prop.Value.ToObject<double>();
-                        /*if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
+                        if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
                            data.longitude = longitude; 
                         }
-                        else data.longitude = 45;*/
+                        else data.longitude = 45;
                         break;
                     case "latitude":
                         double latitude = prop.Value.ToObject<double>();
-                        /*if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
+                        if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
                            data.latitude = latitude; 
                         }
-                        else data.latitude = 45;*/
+                        else data.latitude = 45;
                         break;
                     case "ne0":
                         data.ne0 = prop.Value.ToObject<double>();
@@ -139,8 +139,7 @@ namespace Zeus.Helpers
             LogManager.Session.logMessage("Writing " + path + " has been completed");
         }
 
-        public static void writeJsonOutputData(outputData[] data, string filename) {
-            string path = Constants.appJsonPath + filename;
+        public static void writeJsonOutputData(outputData[] data, string path) {
             StreamWriter sw = new StreamWriter(path);
             JsonWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.Indented;

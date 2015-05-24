@@ -22,7 +22,7 @@ namespace ZeusConsole
             display("Timezone is = " + Time.timeInPos(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude).ToShortTimeString());
             display("Time in seconds is = " + Time.timeAfterNoon(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude));
             double electro = Engine.Instance.launchComputations();
-            Engine.Instance.saveToFile();
+            Engine.Instance.saveToFile(string.Empty);
             display("Electro = " + electro.ToString());
             Console.ReadKey();
         }

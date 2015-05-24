@@ -47,16 +47,26 @@ namespace Zeus
         }
 
         private void drawPlot() {
-            SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
-            plotView.Model = model.CurrentModel;
+            //SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
+            //plotView.Model = model.CurrentModel;
+            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON);
+            electronPlotView.Model = electronModel.CurrentModel;
+
+            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS);
+            ionPositivePlotView.Model = ionPlusModel.CurrentModel;
+
+            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS);
+            ionNegativePlotView.Model = ionMinusModel.CurrentModel;
+
+            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL);
+            allChargesPlotView.Model = allModel.CurrentModel;
+            
         }
 
         private void OnCalculationsEnded(object sender, SphereEventArgs e) {
             writeToStatusBar(Properties.Resources.CalculationsEndText);
             MessageBoxResult alert = MessageBox.Show(Properties.Resources.CalculationsEndAlertDescText, Properties.Resources.CalculationsEndText, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            if (alert == MessageBoxResult.OK) {
-                resultTextBlock.Text = String.Format("Result = {0}", e.result.ToString("#.###E0"));
-            }
+            resultTextBlock.Text = String.Format("{0} = {1}", Zeus.Properties.Resources.Electricity, e.result.ToString("#.###E0"));
             clearStatusWithDelay(2000);
             drawPlot();
         }
@@ -76,7 +86,21 @@ namespace Zeus
         }
 
         private void OnSave(object sender, RoutedEventArgs e) {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Json files (*.json)|*.json";
+            saveFileDialog.AddExtension = true;
+            if (saveFileDialog.ShowDialog() == true) {
+                LogManager.Session.logMessage("Saving to " + saveFileDialog.FileName + " output file");
+                try {
+                    Engine.Engine.Instance.saveToFile(saveFileDialog.FileName);
+                    writeToStatusBar(Zeus.Properties.Resources.SaveStatusSucces);
+                    clearStatusWithDelay(2000);
+                }
+                catch (IOException error) {
+                    MessageBoxResult alert = MessageBox.Show(error.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    LogManager.Session.logMessage("Cannot save output file to " + saveFileDialog.FileName + " cause of " + error.Message);
+                }
+            }
         }
 
         // Открытие файла
@@ -84,13 +108,19 @@ namespace Zeus
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Json files (*.json)|*.json";
             if (openFileDialog.ShowDialog() == true) {
-                System.Diagnostics.Debug.WriteLine(openFileDialog.FileName);
                 LogManager.Session.logMessage("Opening " + openFileDialog.FileName + " input file");
-                Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
-                setInformation();
+                try {
+                    Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
+                    setInformation();
+                    Engine.Engine.Instance.lowAtmosphere.stateCalculated += OnProgressValueChanged;
+                    Engine.Engine.Instance.lowAtmosphere.calculationsDone += OnCalculationsEnded;
+                }
+                catch (IOException error) {
+                    MessageBoxResult alert = MessageBox.Show(error.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    LogManager.Session.logMessage("Cannot open input file " + openFileDialog.FileName + " cause of " + error.Message);
+                }
+                
             }
-            Engine.Engine.Instance.lowAtmosphere.stateCalculated += OnProgressValueChanged;
-            Engine.Engine.Instance.lowAtmosphere.calculationsDone += OnCalculationsEnded;
         }
 
         // Запуск расчета

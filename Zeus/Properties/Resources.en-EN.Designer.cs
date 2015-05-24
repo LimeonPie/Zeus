@@ -61,6 +61,24 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All charges concentrations.
+        /// </summary>
+        public static string AllChargesConc {
+            get {
+                return ResourceManager.GetString("AllChargesConc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string AllChargesText {
+            get {
+                return ResourceManager.GetString("AllChargesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculating {0} level....
         /// </summary>
         public static string CalculationsCurrentState {
@@ -84,6 +102,15 @@ namespace Zeus.Properties {
         public static string CalculationsEndText {
             get {
                 return ResourceManager.GetString("CalculationsEndText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Concentration.
+        /// </summary>
+        public static string Concentration {
+            get {
+                return ResourceManager.GetString("Concentration", resourceCulture);
             }
         }
         
@@ -160,11 +187,29 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Electricity.
+        /// </summary>
+        public static string Electricity {
+            get {
+                return ResourceManager.GetString("Electricity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Electron Concentration.
         /// </summary>
         public static string ElectronConc {
             get {
                 return ResourceManager.GetString("ElectronConc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electron.
+        /// </summary>
+        public static string ElectronConcShort {
+            get {
+                return ResourceManager.GetString("ElectronConcShort", resourceCulture);
             }
         }
         
@@ -183,6 +228,15 @@ namespace Zeus.Properties {
         public static string ElementsText {
             get {
                 return ResourceManager.GetString("ElementsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -228,6 +282,15 @@ namespace Zeus.Properties {
         public static string FileSettingsText {
             get {
                 return ResourceManager.GetString("FileSettingsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        public static string Height {
+            get {
+                return ResourceManager.GetString("Height", resourceCulture);
             }
         }
         
@@ -304,6 +367,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ion-.
+        /// </summary>
+        public static string NegativeIonShort {
+            get {
+                return ResourceManager.GetString("NegativeIonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Positive Ion Concentration.
         /// </summary>
         public static string PositiveIonConc {
@@ -313,11 +385,29 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ion+.
+        /// </summary>
+        public static string PositiveIonShort {
+            get {
+                return ResourceManager.GetString("PositiveIonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
         public static string ResultText {
             get {
                 return ResourceManager.GetString("ResultText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File has been succesfully saved.
+        /// </summary>
+        public static string SaveStatusSucces {
+            get {
+                return ResourceManager.GetString("SaveStatusSucces", resourceCulture);
             }
         }
         

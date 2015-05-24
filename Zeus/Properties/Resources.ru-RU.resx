@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllChargesConc" xml:space="preserve">
+    <value>Концентрации всех частиц</value>
+  </data>
+  <data name="AllChargesText" xml:space="preserve">
+    <value>Все</value>
+  </data>
   <data name="CalculationsCurrentState" xml:space="preserve">
     <value>Считаю {0} стадию...</value>
   </data>
@@ -125,6 +131,9 @@
   </data>
   <data name="CalculationsEndText" xml:space="preserve">
     <value>Вычисления завершены</value>
+  </data>
+  <data name="Concentration" xml:space="preserve">
+    <value>Концентрация</value>
   </data>
   <data name="ControlPanelText" xml:space="preserve">
     <value>Панель управления</value>
@@ -150,14 +159,23 @@
   <data name="EditUndoText" xml:space="preserve">
     <value>Отменить</value>
   </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Ток</value>
+  </data>
   <data name="ElectronConc" xml:space="preserve">
     <value>Концентрация электронов</value>
+  </data>
+  <data name="ElectronConcShort" xml:space="preserve">
+    <value>Электроны</value>
   </data>
   <data name="ElementContentText" xml:space="preserve">
     <value>Газовый состав</value>
   </data>
   <data name="ElementsText" xml:space="preserve">
     <value>Элементы</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
   </data>
   <data name="FileCloseText" xml:space="preserve">
     <value>Закрыть</value>
@@ -173,6 +191,9 @@
   </data>
   <data name="FileSettingsText" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Высота</value>
   </data>
   <data name="HelpAboutText" xml:space="preserve">
     <value>О программе</value>
@@ -196,13 +217,22 @@
     <value>Зевс</value>
   </data>
   <data name="NegativeIonConc" xml:space="preserve">
-    <value>Концентрация отрицатеьных ионов</value>
+    <value>Концентрация отрицательных ионов</value>
+  </data>
+  <data name="NegativeIonShort" xml:space="preserve">
+    <value>Ионы-</value>
   </data>
   <data name="PositiveIonConc" xml:space="preserve">
     <value>Концентрация положительных ионов</value>
   </data>
+  <data name="PositiveIonShort" xml:space="preserve">
+    <value>Ионы+</value>
+  </data>
   <data name="ResultText" xml:space="preserve">
     <value>Результат</value>
+  </data>
+  <data name="SaveStatusSucces" xml:space="preserve">
+    <value>Файл успешно сохранен</value>
   </data>
   <data name="ViewMenuText" xml:space="preserve">
     <value>Вид</value>
