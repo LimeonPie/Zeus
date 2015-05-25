@@ -25,6 +25,24 @@ namespace Zeus.Engine
             else return 0;    
         }
 
+        public static bool compareWithFault(double value1, double value2, double fault) {
+            double diff = Math.Abs(value1 - value2);
+            if (diff <= fault) return true;
+            else return false;
+        }
+
+        public static void arrayWithInitial<T>(this T[] array, T value) {
+            for (int i = 0; i < array.Length; i++) {
+                array[i] = value;
+            }
+        }
+
+        public static void concentrationArrayWithInitial(ref Concentration[] array, Concentration value) {
+            for (int i = 0; i < array.Length; i++) {
+                array[i] = value;
+            }
+        }
+
         public static double radiansToDegrees(double radians) {
             if (radians != 0) return (radians * 180 / Math.PI);
             else return 0; 

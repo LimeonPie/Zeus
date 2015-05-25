@@ -43,8 +43,14 @@ namespace Zeus.Engine
         // Коэффициент нейтрализации
         public static double gamma = 3E-12;
 
+        // Лимит количества итераций по умолчанию
+        public static int iterationLimitDefault = 10000;
+
         // Поток фотонов на входе в атмосфер
         public static double eternityFlux = 3.8E+8;
+
+        // Лимит атмосферы
+        public static double atmosphereLimit = 690000;
 
         // Постоянная Авокадо
         public static double Na = 6.02E+23;

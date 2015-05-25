@@ -46,6 +46,24 @@ namespace Zeus.Engine
             return result * exp;
         }
 
+        public double getFullNFromHeight(double height) {
+            double result = getNForHeight(height);
+            for (double step = height + 1; step <= Constants.atmosphereLimit; step++) {
+                double conc = getNForHeight(step);
+                if (Mathematical.compareWithFault(result, result + conc, 0.1)) {
+                    /*System.Diagnostics.Debug.WriteLine("End up on " + step + " metres");
+                    System.Diagnostics.Debug.WriteLine("New conc was " + conc);
+                    System.Diagnostics.Debug.WriteLine("Old conc was " + result);
+                    System.Diagnostics.Debug.WriteLine("Sum will be " + (result + conc));*/
+                    return result;
+                }
+                else {
+                    result += conc;
+                }
+            }
+            return result;
+        }
+
         public double tryGetValueForKey(string key, Dictionary<string, double> dict) {
             if (String.IsNullOrEmpty(key)) return 0;
             double value = dict[key];

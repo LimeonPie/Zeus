@@ -27,6 +27,8 @@ namespace Zeus.Engine
         public double nip0;
         public double nin0;
         public double delta;
+        public double epsilum;
+        public int iterationLimit;
         public string time;
         public double velocity;
         public double botBoundary;
@@ -71,7 +73,7 @@ namespace Zeus.Engine
             Element active = loadActiveElement(ActiveElement.Nitrogen);
             inputData data = JsonWrapper.parseInputData(path);
             lowAtmosphere = new Sphere(data, active);
-            Time.usedTime = DateTime.Parse(data.time);
+            if (data.time != null) Time.usedTime = DateTime.Parse(data.time);
         }
 
         public double launchComputations() {
@@ -93,9 +95,9 @@ namespace Zeus.Engine
             outputData[] data = new outputData[lowAtmosphere.capacity];
             for (int i = 0; i < lowAtmosphere.capacity; i++) {
                 data[i].height = i * lowAtmosphere.delta;
-                data[i].ne = lowAtmosphere.neGrid[i];
-                data[i].nip = lowAtmosphere.nipGrid[i];
-                data[i].nin = lowAtmosphere.ninGrid[i];
+                data[i].ne = lowAtmosphere.neGrid[i].value;
+                data[i].nip = lowAtmosphere.nipGrid[i].value;
+                data[i].nin = lowAtmosphere.ninGrid[i].value;
                 data[i].total = data[i].ne + data[i].nip + data[i].nin;
                 data[i].neVel = lowAtmosphere.neVelGrid[i];
                 data[i].nipVel = lowAtmosphere.nipVelGrid[i];

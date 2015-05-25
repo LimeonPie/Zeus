@@ -243,3 +243,22 @@
 24.05.2015 16:27:30: Writing C:\Users\Миняев.glados\Desktop\test.json has been completed
 24.05.2015 16:44:58: Program is starting
 24.05.2015 16:45:46: Program is starting
+25.05.2015 8:36:48: Program is starting
+25.05.2015 8:37:19: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 8:37:20: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+25.05.2015 12:06:39: Program is starting
+25.05.2015 20:32:05: Program is starting
+25.05.2015 20:32:11: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 20:32:12: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+25.05.2015 20:33:03: Program is starting
+25.05.2015 20:33:07: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 20:33:07: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+25.05.2015 20:44:35: Program is starting
+25.05.2015 20:44:38: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 20:44:38: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+25.05.2015 20:52:24: Program is starting
+25.05.2015 20:52:27: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 20:52:28: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+25.05.2015 21:01:24: Program is starting
+25.05.2015 21:01:28: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+25.05.2015 21:01:28: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json

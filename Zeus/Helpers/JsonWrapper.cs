@@ -51,6 +51,12 @@ namespace Zeus.Helpers
                     case "delta":
                         data.delta = prop.Value.ToObject<double>();
                         break;
+                    case "epsilum":
+                        data.epsilum = prop.Value.ToObject<double>();
+                        break;
+                    case "iterationLimit":
+                        data.iterationLimit = prop.Value.ToObject<int>();
+                        break;
                     case "velocity":
                         data.velocity = prop.Value.ToObject<double>();
                         break;

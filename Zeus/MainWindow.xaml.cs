@@ -49,16 +49,16 @@ namespace Zeus
         private void drawPlot() {
             //SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
             //plotView.Model = model.CurrentModel;
-            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON);
+            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE);
             electronPlotView.Model = electronModel.CurrentModel;
 
-            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS);
+            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS_LINE);
             ionPositivePlotView.Model = ionPlusModel.CurrentModel;
 
-            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS);
+            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS_LINE);
             ionNegativePlotView.Model = ionMinusModel.CurrentModel;
 
-            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL);
+            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE);
             allChargesPlotView.Model = allModel.CurrentModel;
             
         }
