@@ -24,8 +24,7 @@ namespace ZeusConsole
             double electro = Engine.Instance.launchComputations();
             Engine.Instance.saveToFile(string.Empty);
             display("Electro = " + electro.ToString());
-            display("Conc from 200 = " + Engine.Instance.lowAtmosphere.activeElement.getFullNFromHeight(200));
-            display("Conc from 20000 = " + Engine.Instance.lowAtmosphere.activeElement.getFullNFromHeight(20000));
+            display("Enter key...");
             Console.ReadKey();
         }
     }

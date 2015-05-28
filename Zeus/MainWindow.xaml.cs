@@ -32,10 +32,18 @@ namespace Zeus
 
         // Запись в лейблы информации из файла
         private void setInformation() {
+            // Записываем входную информацию
             double latitude = Engine.Engine.Instance.lowAtmosphere.latitude;
             double longitude = Engine.Engine.Instance.lowAtmosphere.longitude;
-            longitudeTextBox.Text = longitude.ToString();
-            latitudeTextBox.Text = latitude.ToString();
+            double gridStep = Engine.Engine.Instance.lowAtmosphere.delta;
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", Zeus.Properties.Resources.LongitudeText, longitude);
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", Zeus.Properties.Resources.LatitudeText, latitude);
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", Zeus.Properties.Resources.EternityFlux, Constants.eternityFlux.ToString("#.###E0"));
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", Zeus.Properties.Resources.GridStep, gridStep);
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", "dt", Constants.dt);
+            inputDataTextBlock.Text += String.Format("{0} = {1}\n", Zeus.Properties.Resources.TimeInterval, Constants.timeInterval);
+
+            // Записываем входные элементы
             foreach (Zeus.Engine.Element el in Engine.Engine.Instance.lowAtmosphere.aerosolElements) {
                 elementsPanel.Text += String.Format("{0} = {1}\n", el.name, el.n0);
             }
@@ -49,17 +57,42 @@ namespace Zeus
         private void drawPlot() {
             //SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
             //plotView.Model = model.CurrentModel;
-            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE);
+            bool needLog = false;
+            if (normalPlot.IsChecked == true) needLog = false;
+            else if (logPlot.IsChecked == true) needLog = true;
+
+            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE, needLog);
             electronPlotView.Model = electronModel.CurrentModel;
 
-            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS_LINE);
+            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS_LINE, needLog);
             ionPositivePlotView.Model = ionPlusModel.CurrentModel;
 
-            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS_LINE);
+            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS_LINE, needLog);
             ionNegativePlotView.Model = ionMinusModel.CurrentModel;
 
-            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE);
+            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE, needLog);
             allChargesPlotView.Model = allModel.CurrentModel;
+
+            SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog);
+            electronVelocityPlotView.Model = electronVelocityModel.CurrentModel;
+
+            SpherePlotModel ionPlusVelocityModel = new SpherePlotModel(PLOT.ION_PLUS_VELOCITY_LINE, needLog);
+            ionPlusVelocityPlotView.Model = ionPlusVelocityModel.CurrentModel;
+
+            SpherePlotModel ionMinusVelocityModel = new SpherePlotModel(PLOT.ION_MINUS_VELOCITY_LINE, needLog);
+            ionMinusVelocityPlotView.Model = ionMinusVelocityModel.CurrentModel;
+
+            SpherePlotModel fluxModel = new SpherePlotModel(PLOT.FLUX_LINE, needLog);
+            eternityFluxPlotView.Model = fluxModel.CurrentModel;
+
+            SpherePlotModel activeElementModel = new SpherePlotModel(PLOT.ACTIVE_ELEMENT_LINE, needLog);
+            nitrogenPlotView.Model = activeElementModel.CurrentModel;
+
+            SpherePlotModel aerosolsModel = new SpherePlotModel(PLOT.AEROSOL_LINE, needLog);
+            aerosolPlotView.Model = aerosolsModel.CurrentModel;
+
+            SpherePlotModel temperatureModel = new SpherePlotModel(PLOT.TEMPERATURE_HEAT, needLog);
+            temperaturePlotView.Model = temperatureModel.CurrentModel;
             
         }
 
@@ -130,6 +163,10 @@ namespace Zeus
 
         private void OnClose(object sender, RoutedEventArgs e) {
             this.Close();
+        }
+
+        private void OnRedraw(object sender, RoutedEventArgs e) {
+            drawPlot();
         }
     }
 }

@@ -54,8 +54,11 @@ namespace Zeus.Helpers
                     case "epsilum":
                         data.epsilum = prop.Value.ToObject<double>();
                         break;
-                    case "iterationLimit":
-                        data.iterationLimit = prop.Value.ToObject<int>();
+                    case "timeInterval":
+                        data.timeInterval = prop.Value.ToObject<int>();
+                        break;
+                    case "eternityFlux":
+                        data.eternityFlux = prop.Value.ToObject<int>();
                         break;
                     case "velocity":
                         data.velocity = prop.Value.ToObject<double>();

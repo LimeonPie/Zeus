@@ -37,7 +37,7 @@ namespace Zeus.Engine
             }
         }
 
-        public static void concentrationArrayWithInitial(ref Concentration[] array, Concentration value) {
+        public static void concentrationArrayWithInitial(ref IterationUnit[] array, IterationUnit value) {
             for (int i = 0; i < array.Length; i++) {
                 array[i] = value;
             }

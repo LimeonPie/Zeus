@@ -61,6 +61,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aerosol.
+        /// </summary>
+        public static string Aerosol {
+            get {
+                return ResourceManager.GetString("Aerosol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All charges concentrations.
         /// </summary>
         public static string AllChargesConc {
@@ -214,6 +223,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E velocity.
+        /// </summary>
+        public static string ElectronVelocity {
+            get {
+                return ResourceManager.GetString("ElectronVelocity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Element Content.
         /// </summary>
         public static string ElementContentText {
@@ -237,6 +255,15 @@ namespace Zeus.Properties {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flux.
+        /// </summary>
+        public static string EternityFlux {
+            get {
+                return ResourceManager.GetString("EternityFlux", resourceCulture);
             }
         }
         
@@ -286,6 +313,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grid step.
+        /// </summary>
+        public static string GridStep {
+            get {
+                return ResourceManager.GetString("GridStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Height.
         /// </summary>
         public static string Height {
@@ -322,6 +358,24 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I- velocity.
+        /// </summary>
+        public static string IonMinusVelocity {
+            get {
+                return ResourceManager.GetString("IonMinusVelocity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I+ velocity.
+        /// </summary>
+        public static string IonPlusVelocity {
+            get {
+                return ResourceManager.GetString("IonPlusVelocity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Latitude.
         /// </summary>
         public static string LatitudeText {
@@ -336,6 +390,15 @@ namespace Zeus.Properties {
         public static string LaunchButtonText {
             get {
                 return ResourceManager.GetString("LaunchButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log.
+        /// </summary>
+        public static string LogPlotMode {
+            get {
+                return ResourceManager.GetString("LogPlotMode", resourceCulture);
             }
         }
         
@@ -376,6 +439,24 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nitrogen.
+        /// </summary>
+        public static string Nitrogen {
+            get {
+                return ResourceManager.GetString("Nitrogen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string NormalPlotMode {
+            get {
+                return ResourceManager.GetString("NormalPlotMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Positive Ion Concentration.
         /// </summary>
         public static string PositiveIonConc {
@@ -394,6 +475,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Redraw.
+        /// </summary>
+        public static string Redraw {
+            get {
+                return ResourceManager.GetString("Redraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
         public static string ResultText {
@@ -408,6 +498,42 @@ namespace Zeus.Properties {
         public static string SaveStatusSucces {
             get {
                 return ResourceManager.GetString("SaveStatusSucces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        public static string Temperature {
+            get {
+                return ResourceManager.GetString("Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature Distribution.
+        /// </summary>
+        public static string TemperatureDistribution {
+            get {
+                return ResourceManager.GetString("TemperatureDistribution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time interval.
+        /// </summary>
+        public static string TimeInterval {
+            get {
+                return ResourceManager.GetString("TimeInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Velocity.
+        /// </summary>
+        public static string Velocity {
+            get {
+                return ResourceManager.GetString("Velocity", resourceCulture);
             }
         }
         

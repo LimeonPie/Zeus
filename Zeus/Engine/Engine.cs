@@ -28,7 +28,8 @@ namespace Zeus.Engine
         public double nin0;
         public double delta;
         public double epsilum;
-        public int iterationLimit;
+        public double eternityFlux;
+        public int timeInterval;
         public string time;
         public double velocity;
         public double botBoundary;
@@ -74,6 +75,9 @@ namespace Zeus.Engine
             inputData data = JsonWrapper.parseInputData(path);
             lowAtmosphere = new Sphere(data, active);
             if (data.time != null) Time.usedTime = DateTime.Parse(data.time);
+            if (data.eternityFlux != 0) Constants.eternityFlux = data.eternityFlux;
+            if (data.timeInterval != 0) Constants.timeInterval = data.timeInterval;
+            else data.timeInterval = Constants.timeInterval;
         }
 
         public double launchComputations() {
@@ -95,13 +99,13 @@ namespace Zeus.Engine
             outputData[] data = new outputData[lowAtmosphere.capacity];
             for (int i = 0; i < lowAtmosphere.capacity; i++) {
                 data[i].height = i * lowAtmosphere.delta;
-                data[i].ne = lowAtmosphere.neGrid[i].value;
-                data[i].nip = lowAtmosphere.nipGrid[i].value;
-                data[i].nin = lowAtmosphere.ninGrid[i].value;
+                data[i].ne = lowAtmosphere.electronGrid[i].value;
+                data[i].nip = lowAtmosphere.ionPlusGrid[i].value;
+                data[i].nin = lowAtmosphere.ionMinusGrid[i].value;
                 data[i].total = data[i].ne + data[i].nip + data[i].nin;
-                data[i].neVel = lowAtmosphere.neVelGrid[i];
-                data[i].nipVel = lowAtmosphere.nipVelGrid[i];
-                data[i].ninVel = lowAtmosphere.ninVelGrid[i];
+                data[i].neVel = lowAtmosphere.electronVelocityGrid[i].value;
+                data[i].nipVel = lowAtmosphere.ionPlusVelocityGrid[i].value;
+                data[i].ninVel = lowAtmosphere.ionMinusVelocityGrid[i].value;
             }
             if (filename != null && !filename.Equals(string.Empty)) {
                 JsonWrapper.writeJsonOutputData(data, filename);

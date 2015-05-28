@@ -5,31 +5,32 @@
 	"nip0": 0,
 	"nin0": 0,
 	"delta": 1000,
-  "epsilum": 0.001,
-  "iterationLimit": 100,
+  	"epsilum": 0.001,
+  	"eternityFlux": 0.6E+4,
+  	"timeInterval": 1,
 	"time": "13:00",
 	"botBoundary": 0,
 	"topBoundary": 80000,
 	"velocity": 0,
 	"aerosols": {
 		"argon": {
-    		"name": "argon",
+    		"name": "Particle 1",
     		"index": 18,
     		"m": 40,
     		"nPercent": 0.658,
     		"n0": 1.7E+16,
     		"t": 273,
     		"radius": 0.1E-12,
-      	"recombCoeff": 0.5
+      		"recombCoeff": 0.5
   		},
   		"helium" : {
-  			"name": "helium",
+  			"name": "Particle 2",
     		"index": 2,
     		"m": 4,
     		"nPercent": 13.9,
     		"n0": 3.7E+17,
     		"t": 273,
-      	"recombCoeff": 0.5,
+      		"recombCoeff": 0.5,
     		"radius": 0.3E-12
   		}
   	},

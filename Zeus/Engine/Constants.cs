@@ -47,10 +47,10 @@ namespace Zeus.Engine
         public static int iterationLimitDefault = 10000;
 
         // Поток фотонов на входе в атмосфер
-        public static double eternityFlux = 3.8E+8;
+        public static double eternityFlux = 0.6E+5; // 3.8E+8 0.6E+5
 
         // Лимит атмосферы
-        public static double atmosphereLimit = 690000;
+        public static double atmosphereLimit = 80000;
 
         // Постоянная Авокадо
         public static double Na = 6.02E+23;
@@ -63,6 +63,9 @@ namespace Zeus.Engine
  
         // Дельта t
         public static double dt = 1;
+
+        // Период времени
+        public static int timeInterval = 1;
 
         // Ускорение свободное падения
         public static double g = 9.81;

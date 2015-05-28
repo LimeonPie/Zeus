@@ -41,7 +41,8 @@ namespace Zeus.Engine
 
         public double getNForHeight(double height) {
             double result = n0;
-            double power = -this.m * (1E-3) * Constants.g * height / (Constants.R * t);
+            double temperature = Sphere.temperatureForHeight(height);
+            double power = -this.m * (1E-3) * Constants.g * height / (Constants.R * temperature);
             double exp = Math.Exp(power);
             return result * exp;
         }
@@ -50,16 +51,7 @@ namespace Zeus.Engine
             double result = getNForHeight(height);
             for (double step = height + 1; step <= Constants.atmosphereLimit; step++) {
                 double conc = getNForHeight(step);
-                if (Mathematical.compareWithFault(result, result + conc, 0.1)) {
-                    /*System.Diagnostics.Debug.WriteLine("End up on " + step + " metres");
-                    System.Diagnostics.Debug.WriteLine("New conc was " + conc);
-                    System.Diagnostics.Debug.WriteLine("Old conc was " + result);
-                    System.Diagnostics.Debug.WriteLine("Sum will be " + (result + conc));*/
-                    return result;
-                }
-                else {
-                    result += conc;
-                }
+                result += conc;
             }
             return result;
         }

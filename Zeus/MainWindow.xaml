@@ -58,6 +58,41 @@
                             <oxy:PlotView x:Name="allChargesPlotView" Model="{Binding CurrentModel}" />
                         </Grid>
                     </TabItem>
+                    <TabItem x:Name="NitrogenTab" Header="{x:Static l:Resources.Nitrogen}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="nitrogenPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="eternityFluxTab" Header="{x:Static l:Resources.EternityFlux}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="eternityFluxPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="aerosolTab" Header="{x:Static l:Resources.Aerosol}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="aerosolPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="electronVelocityTab" Header="{x:Static l:Resources.ElectronVelocity}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="electronVelocityPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="ionPlusVelocityTab" Header="{x:Static l:Resources.IonPlusVelocity}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="ionPlusVelocityPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="ionMinusVelocityTab" Header="{x:Static l:Resources.IonMinusVelocity}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="ionMinusVelocityPlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="temperatureTab" Header="{x:Static l:Resources.Temperature}">
+                        <Grid Background="#FFE5E5E5">
+                            <oxy:PlotView x:Name="temperaturePlotView" Model="{Binding CurrentModel}" />
+                        </Grid>
+                    </TabItem>
                 </TabControl>
             </Border>
             <GroupBox Header="{x:Static l:Resources.ControlPanelText}" Margin="0,0,3,10" HorizontalAlignment="Right">
@@ -66,19 +101,14 @@
                         <Label Content="{x:Static l:Resources.ElementContentText}" Width="161"/>
                         <Button x:Name="inputFileButton" Content="{x:Static l:Resources.FileOpenText}" Margin="20,0,30,0" Width="81" Click="OnOpenFile"/>
                     </StackPanel>
-                    <GroupBox Header="{x:Static l:Resources.DataText}" Height="205" Margin="0,9.7,0,0">
+                    <GroupBox Header="{x:Static l:Resources.DataText}" Height="260" Margin="0,9.7,0,0">
                         <StackPanel Margin="0,-1,-2,-3" Width="265">
-                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,10,0,0">
-                                <Label Content="{x:Static l:Resources.LatitudeText}" Width="114" VerticalAlignment="Center"/>
-                                <TextBox x:Name="latitudeTextBox" TextWrapping="Wrap" Width="62" VerticalAlignment="Center" Margin="0,4,0,3" IsReadOnly="True"/>
-                            </StackPanel>
-                            <StackPanel Height="26" Orientation="Horizontal" Margin="0,10,0,0">
-                                <Label Content="{x:Static l:Resources.LongitudeText}" Width="114" VerticalAlignment="Center"/>
-                                <TextBox x:Name="longitudeTextBox" TextWrapping="Wrap" Width="62" VerticalAlignment="Center" Margin="0,4" IsReadOnly="True"/>
+                            <StackPanel Height="93" Orientation="Vertical" Margin="0,10,0,0">
+                                <TextBlock x:Name="inputDataTextBlock" TextWrapping="Wrap"/>
                             </StackPanel>
                             <StackPanel Height="94" Margin="0,10,0,0">
                                 <Label Content="{x:Static l:Resources.ElementsText}" VerticalAlignment="Center" Margin="0,0,169,0"/>
-                                <TextBlock x:Name="elementsPanel" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                                <TextBlock x:Name="elementsPanel" TextWrapping="Wrap" Margin="0"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -88,6 +118,11 @@
                             <TextBlock x:Name="resultTextBlock" TextWrapping="Wrap" Margin="0,5,0,0"/>
                         </StackPanel>
                     </GroupBox>
+                    <StackPanel Height="27" Orientation="Horizontal" Margin="0,5,0,0">
+                        <RadioButton x:Name="normalPlot" Content="{x:Static l:Resources.NormalPlotMode}" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="82" IsChecked="True" GroupName="plotType"/>
+                        <RadioButton x:Name="logPlot" Content="{x:Static l:Resources.LogPlotMode}" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="82" GroupName="plotType"/>
+                        <Button x:Name="redrawButton" Content="{x:Static l:Resources.Redraw}" Margin="20,0,30,0" Width="81" Click="OnRedraw"/>
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
         </Grid>
