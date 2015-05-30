@@ -18,7 +18,7 @@
     		"index": 18,
     		"m": 40,
     		"nPercent": 0.658,
-    		"n0": 1.7E+16,
+    		"n0": 1.8E+18,
     		"t": 273,
     		"radius": 0.1E-12,
       		"recombCoeff": 0.5
@@ -28,7 +28,7 @@
     		"index": 2,
     		"m": 4,
     		"nPercent": 13.9,
-    		"n0": 3.7E+17,
+    		"n0": 4E+20,
     		"t": 273,
       		"recombCoeff": 0.5,
     		"radius": 0.3E-12

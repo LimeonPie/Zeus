@@ -54,6 +54,8 @@ namespace Zeus.Engine
         public IterationUnit[] ionMinusVelocityGrid;
         public double ninVel0;
         public List<Element> aerosolElements;
+        public Dictionary<double, double> fullNCalculated;
+        public Dictionary<double, double> qCalculated;
         public static Dictionary<string, double> temperature;
         public Element activeElement;
 
@@ -73,6 +75,7 @@ namespace Zeus.Engine
             this.activeElement = active;
             this.latitude = data.latitude;
             this.longitude = data.longitude;
+            temperature = data.temperature;
             this.capacity = (int)((topBoundary - botBoundary) / delta) + 1;
             electronGrid = new IterationUnit[this.capacity];
             ionPlusGrid = new IterationUnit[this.capacity];
@@ -80,6 +83,7 @@ namespace Zeus.Engine
             electronVelocityGrid = new IterationUnit[this.capacity];
             ionPlusVelocityGrid = new IterationUnit[this.capacity];
             ionMinusVelocityGrid = new IterationUnit[this.capacity];
+            
             for (int i = 0; i < this.capacity; i++) {
                 electronGrid[i] = new IterationUnit(ne0, false);
                 ionPlusGrid[i] = new IterationUnit(nip0, false);
@@ -88,8 +92,16 @@ namespace Zeus.Engine
                 ionPlusVelocityGrid[i] = new IterationUnit(data.velocity, false);
                 ionMinusVelocityGrid[i] = new IterationUnit(data.velocity, false);
             }
-            temperature = data.temperature;
+
+            // Предвычисление полных концентраций и
+            // потока частицы на разной высоте
+            fullNCalculated = new Dictionary<double, double>();
+            preCalculateN();
+            qCalculated = new Dictionary<double, double>();
+            preCalculateQ();
         }
+
+        // Эвенты
 
         protected virtual void OnStateCalculated(SphereEventArgs e) {
             EventHandler<SphereEventArgs> handler = stateCalculated;
@@ -110,6 +122,20 @@ namespace Zeus.Engine
             this.longitude = longitude;
         }
 
+        private void preCalculateN() {
+            for (int step = 0; step < capacity; step++) {
+                double level = step * delta;
+                fullNCalculated.Add(level, activeElement.getFullNFromHeight(level));
+            }
+        }
+
+        private void preCalculateQ() {
+            for (int step = 0; step < capacity; step++) {
+                double level = step * delta;
+                qCalculated.Add(level, q2(activeElement, level)); // было просто q
+            }
+        }
+
         public double n() {
             double height = 0;
             double result = ne0 + nip0 + nin0;
@@ -121,13 +147,14 @@ namespace Zeus.Engine
                 aerosolMass += el.m / Constants.Na;
             }
             aerosolMass *= (1E-3);
-            aerosolMass -= Constants.eMass;
+            aerosolMass -= aerosolElements.Count * Constants.eMass;
 
             for (int i = 1; i < capacity; i++) {
                 height = i * delta;
 
                 int iteration = 1;
                 bool everythingSuits = false;
+                // Итерация по концентрациям
                 while ((iteration <= iterationLimit) && !everythingSuits) {
                     double electrons = ne(i, electronGrid[i].value, height);
                     if (Mathematical.compareWithFault(electrons, electronGrid[i].value, epsilum)) {
@@ -163,6 +190,7 @@ namespace Zeus.Engine
                 ionPlusGrid[i].value = niPositive(i, ionPlusGrid[i].value, height);
                 ionMinusGrid[i].value = niNegative(i, ionMinusGrid[i].value, height);*/
 
+                // Итерация по скорости посередине
                 // Скорость
                 if (i > 1) {
                     iteration = 1;
@@ -197,6 +225,8 @@ namespace Zeus.Engine
                     } 
                 }
 
+                // :(
+                // Итерация по скорости конечная
                 if (i == (capacity - 1)) {
                     iteration = 1;
                     everythingSuits = false;
@@ -281,13 +311,7 @@ namespace Zeus.Engine
             return result;
         }
 
-        private double p(double n, double t) {
-            double result = 1;
-            result = Constants.k * n * t;
-            return result;
-        }
-
-        // Нахождение скорости частицы
+        // Нахождение скорости частицы от предыдущего узла
         public double velocity(double velPrev, double nPrev, double nCur, double mass, double height) {
             double result = 0;
             double tCur = temperatureForHeight(height);
@@ -296,7 +320,14 @@ namespace Zeus.Engine
             //double p0 = p(nPrev, tPrev);
             //double diff = p1 - p0;
             double gradient = (p(nCur, tCur) - p(nPrev, tPrev)) / delta;
-            result += velPrev + Constants.dt * ( -gradient / (mass * nCur) - Constants.g);
+            result += velPrev + Constants.dt * (-gradient / (mass * nCur) - Constants.g);
+            return result;
+        }
+
+        // Сила давления на частицу
+        private double p(double n, double t) {
+            double result = 1;
+            result = Constants.k * n * t;
             return result;
         }
 
@@ -304,7 +335,8 @@ namespace Zeus.Engine
         public double ne(int step, double nePrev, double height) {
             // Создание
             double creation = 0;
-            double ionization = q(activeElement, height);
+            //double ionization = q(activeElement, height);
+            double ionization = qCalculated[height];
             creation += ionization;
             // Потери
             double loss = 0;
@@ -320,7 +352,8 @@ namespace Zeus.Engine
         public double niPositive(int step, double nipPrev, double height) {
             // Создание
             double creation = 0;
-            double ionization = q(activeElement, height);
+            //double ionization = q(activeElement, height);
+            double ionization = qCalculated[height];
             creation += ionization;
             // Потери
             double loss = 0;
@@ -345,7 +378,16 @@ namespace Zeus.Engine
             return (ninPrev + (creation - loss) * Constants.dt);
         }
 
+        public double qHeaps(double height) {
+            double latToRad = Mathematical.degreesToRadians(latitude);
+            double sin = Math.Pow(Math.Sin(latToRad), 4);
+            double part = Constants.A + Constants.B * sin;
+            double result = part * fullNCalculated[height];
+            return (result/(1E+6));
+        }
+
         // Скорость фотоионизации
+        // По Намгаладзе
         public double q(Element el, double height) {
             double sum = 0;
             foreach (string key in el.atomCrossSections.Keys) {
@@ -360,15 +402,30 @@ namespace Zeus.Engine
         }
 
         // Вычисляем поток фотонов с длиной волны wave на высоте height
+        // По Намгаладзе
         public double photonFlux(Element el, string key, double height) {
             double eternityFlux = Constants.eternityFlux;
             // Включаем расширенный поток
             // flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getNForHeight(height);
-            double flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getFullNFromHeight(height);
+            // Так все работало, но долго
+            //double flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getFullNFromHeight(height);
+            if (height >= 40000 && height <= 70000) {
+                double conc = fullNCalculated[height];
+                System.Diagnostics.Debug.WriteLine("Full conc = " + conc + " on height " + height);
+            }
+            double diff = topBoundary - height;
+            double flux = el.getPhotonCSValueForKey(key) * (1E-4) * diff * fullNCalculated[height];
             double hi = Mathematical.hi(latitude, longitude);
+            double sec = Mathematical.sec(hi);
             double tay = Mathematical.sec(hi) * flux; 
             double exp = Math.Exp(-tay);
             double result = eternityFlux * exp;
+            return result;
+        }
+
+        public double q2(Element el, double height) {
+            double result;
+            result = el.getNForHeight(height) * (1E-18);
             return result;
         }
 

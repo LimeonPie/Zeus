@@ -10,6 +10,10 @@ namespace Zeus.Engine
     public static class Constants
     {
 
+        // Для формул по Хипсу
+        public static double A = 1.74E-18;
+        public static double B = 2.84E-17;
+
         // Масса электрона
         public static double eMass = 9.10938281E-31;
 

@@ -161,3 +161,19 @@
 27.05.2015 10:46:14: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\\output.json has been completed
 27.05.2015 10:47:33: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
 27.05.2015 10:52:11: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\\output.json has been completed
+28.05.2015 19:54:48: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 19:54:48: Unknown key iterationLimit
+28.05.2015 19:55:52: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 19:55:52: Unknown key iterationLimit
+28.05.2015 19:56:11: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 19:56:11: Unknown key iterationLimit
+28.05.2015 20:17:28: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 20:17:28: Unknown key iterationLimit
+28.05.2015 21:17:32: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 21:17:32: Unknown key iterationLimit
+28.05.2015 21:19:37: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 21:19:37: Unknown key iterationLimit
+28.05.2015 21:22:00: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+28.05.2015 21:22:00: Unknown key iterationLimit
+30.05.2015 10:33:51: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+30.05.2015 10:33:51: Unknown key iterationLimit

@@ -18,13 +18,15 @@ namespace ZeusConsole
 
         static void Main(string[] args) {
             display("Process initilized");
+
             Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
-            display("Timezone is = " + Time.timeInPos(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude).ToShortTimeString());
-            display("Time in seconds is = " + Time.timeAfterNoon(Engine.Instance.lowAtmosphere.latitude, Engine.Instance.lowAtmosphere.longitude));
-            double electro = Engine.Instance.launchComputations();
-            Engine.Instance.saveToFile(string.Empty);
-            display("Electro = " + electro.ToString());
-            display("Enter key...");
+            // Запуск вычислений
+            //double electro = Engine.Instance.launchComputations();
+            double longitude = Engine.Instance.lowAtmosphere.longitude;
+            double latitude = Engine.Instance.lowAtmosphere.latitude;
+            display("Cos(hi) = " + Mathematical.hi(latitude, longitude));
+
+            display("Press any key...");
             Console.ReadKey();
         }
     }

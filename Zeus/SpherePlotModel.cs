@@ -36,6 +36,8 @@ namespace Zeus
     {
 
         public PlotModel CurrentModel { get; private set; }
+        public double delta { get; set; }
+        public double capacity { get; set; }
 
         public SpherePlotModel(string title, double[] data) {
             this.CurrentModel = new PlotModel { Title = title };
@@ -49,6 +51,14 @@ namespace Zeus
 
         public SpherePlotModel(PLOT plotType, bool needLog) {
             this.CurrentModel = new PlotModel();
+            /*if (Engine.Engine.Instance.lowAtmosphere.delta < 1000) {
+                delta = 1000;
+                capacity = (Engine.Engine.Instance.lowAtmosphere.topBoundary - Engine.Engine.Instance.lowAtmosphere.botBoundary) / delta + 1;
+            }*/
+            //else {
+                delta = Engine.Engine.Instance.lowAtmosphere.delta;
+                capacity = Engine.Engine.Instance.lowAtmosphere.capacity;
+            //}
             switch (plotType) {
                 case PLOT.ELECTRON_BAR:
                     createElectronBarModel(needLog);
@@ -102,10 +112,10 @@ namespace Zeus
         }
 
         public void createFluxModel(bool needLog) {
-            this.CurrentModel.Title = "Flux";
+            this.CurrentModel.Title = Zeus.Properties.Resources.EternityFlux;
 
             LinearAxis xAxis = new LinearAxis() {
-                Title = "flux",
+                Title = Zeus.Properties.Resources.EternityFlux,
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
                 StringFormat = "#.###E0",
@@ -123,16 +133,14 @@ namespace Zeus
 
             LineSeries series = new LineSeries();
 
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double flux = 0;
-                //string key = Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.ElementAt(0);
-                foreach (string key in Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys) {
-                    flux += Engine.Engine.Instance.lowAtmosphere.photonFlux(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
-                }
-                double mid = flux / (Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.Count);
-                if (needLog) mid = Math.Log10(mid);
-                series.Points.Add(new DataPoint(mid, height));
+                string key = Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.ElementAt(0);
+                //flux = Engine.Engine.Instance.lowAtmosphere.photonFlux(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
+                flux = Engine.Engine.Instance.lowAtmosphere.qHeaps(height);
+                if (needLog) flux = Math.Log10(flux);
+                series.Points.Add(new DataPoint(flux, height));
             }
             this.CurrentModel.Series.Add(series);
         }
@@ -158,8 +166,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
                 series.Points.Add(new DataPoint(conc, height));
@@ -184,12 +192,12 @@ namespace Zeus
             };
 
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
+            for (int i = 0; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
                 series.Items.Add(item);
-                xAxis.Labels.Add((Engine.Engine.Instance.lowAtmosphere.delta * i).ToString());
+                xAxis.Labels.Add((delta * i).ToString());
             }
             this.CurrentModel.Series.Add(series);
             this.CurrentModel.Axes.Add(xAxis);
@@ -216,8 +224,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
                 series.Points.Add(new DataPoint(conc, height));
@@ -242,12 +250,12 @@ namespace Zeus
             };
 
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
+            for (int i = 0; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
                 series.Items.Add(item);
-                xAxis.Labels.Add((Engine.Engine.Instance.lowAtmosphere.delta * i).ToString());
+                xAxis.Labels.Add((delta * i).ToString());
             }
             this.CurrentModel.Series.Add(series);
             this.CurrentModel.Axes.Add(xAxis);
@@ -274,8 +282,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
                 series.Points.Add(new DataPoint(conc, height));
@@ -300,12 +308,12 @@ namespace Zeus
             };
             
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
+            for (int i = 0; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
                 series.Items.Add(item);
-                xAxis.Labels.Add((Engine.Engine.Instance.lowAtmosphere.delta * i).ToString());
+                xAxis.Labels.Add((delta * i).ToString());
             }
             this.CurrentModel.Series.Add(series);
             this.CurrentModel.Axes.Add(xAxis);
@@ -344,8 +352,8 @@ namespace Zeus
             ionMinusSeries.Title = Zeus.Properties.Resources.NegativeIonShort;
             ionMinusSeries.Color = OxyColors.Green;
 
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double electron = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 double ionPlus = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 double ionMinus = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
@@ -389,7 +397,7 @@ namespace Zeus
                 Position = AxisPosition.Bottom,
             };
 
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
+            for (int i = 0; i < capacity; i++) {
                 double electron = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 double ionPlus = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 double ionMinus = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
@@ -402,7 +410,7 @@ namespace Zeus
                 ionPlusSeries.Items.Add(new ColumnItem(ionPlus));
                 ionMinusSeries.Items.Add(new ColumnItem(ionMinus));
 
-                xAxis.Labels.Add((Engine.Engine.Instance.lowAtmosphere.delta * i).ToString());
+                xAxis.Labels.Add((delta * i).ToString());
             }
 
             this.CurrentModel.Series.Add(electronSeries);
@@ -507,8 +515,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double electronVelocity = Engine.Engine.Instance.lowAtmosphere.electronVelocityGrid[i].value;
                 if (needLog) electronVelocity = Math.Log10(electronVelocity);
                 series.Points.Add(new DataPoint(electronVelocity, height));
@@ -537,8 +545,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double ionPlusVelocity = Engine.Engine.Instance.lowAtmosphere.ionPlusVelocityGrid[i].value;
                 if (needLog) ionPlusVelocity = Math.Log10(ionPlusVelocity);
                 series.Points.Add(new DataPoint(ionPlusVelocity, height));
@@ -567,8 +575,8 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < Engine.Engine.Instance.lowAtmosphere.capacity; i++) {
-                double height = i * Engine.Engine.Instance.lowAtmosphere.delta;
+            for (int i = 0; i < capacity; i++) {
+                double height = i * delta;
                 double ionMinusVelocity = Engine.Engine.Instance.lowAtmosphere.ionMinusVelocityGrid[i].value;
                 if (needLog) ionMinusVelocity = Math.Log10(ionMinusVelocity);
                 series.Points.Add(new DataPoint(ionMinusVelocity, height));

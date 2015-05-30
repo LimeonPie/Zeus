@@ -6,7 +6,7 @@
 		"m": 28,
 		"t": 273,	
 		"nPercent": 78.08,
-		"n0": 2.65E+25,
+		"n0": 2E+25,
 		"recombCoeff": 5.9E-13,
 		"radius": 92E-12,
 		"atomCrossSections": {

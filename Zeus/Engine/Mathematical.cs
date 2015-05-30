@@ -49,17 +49,15 @@ namespace Zeus.Engine
         }
 
         // Вычисляем hi зенитный угол Солнца
-        // TODO!!!! Функция Чепмена!
-        // При больших зенитных углах > 80 нужно заменить sec (hi) на функцию Чемпена
         public static double hi(double latitude, double longitude) {
             int day = Time.timeInPos(latitude, longitude).DayOfYear;
             double delta = Math.Atan(Math.Tan(degreesToRadians(23.5)) * Math.Sin(2*Math.PI*(day-80)/365));
-            double res = Math.Sin(delta) * Math.Sin(degreesToRadians(latitude)) + Math.Cos(delta) * Math.Cos(degreesToRadians(latitude)) * Math.Cos(Constants.earthRotVel * Time.timeAfterNoon(latitude, longitude));
-            return Math.Acos(res);
+            double cos = Math.Sin(delta) * Math.Sin(degreesToRadians(latitude)) + Math.Cos(delta) * Math.Cos(degreesToRadians(latitude)) * Math.Cos(Constants.earthRotVel * Time.timeAfterNoon(latitude, longitude));
+            return cos;
         }
 
-        public static double sec(double anger) {
-            return (1 / Math.Cos(anger));
+        public static double sec(double cos) {
+            return (1 /cos);
         }
     }
 }
