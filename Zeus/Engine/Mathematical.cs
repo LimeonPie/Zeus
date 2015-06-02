@@ -12,8 +12,8 @@ namespace Zeus.Engine
 
         public static double beta(double r) {
             //return(2.35E-4 * Math.Pow(r, 1.457));
-            //return (0.436 * r - 9.2E-8);
-            return (r * 0.57);
+            return (0.436 * r - 9.2E-8) * (1E-6);
+            //return (r * 0.57);
         }
 
         public static double celsiusToKelvins(double celsius) {

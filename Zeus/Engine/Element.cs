@@ -39,9 +39,11 @@ namespace Zeus.Engine
 
         }
 
+        // Барометрическая формула
+        // Температура должна быть постоянной
         public double getNForHeight(double height) {
             double result = n0;
-            double temperature = Sphere.temperatureForHeight(height);
+            double temperature = t; //Sphere.temperatureForHeight(height); 
             double power = -this.m * (1E-3) * Constants.g * height / (Constants.R * temperature);
             double exp = Math.Exp(power);
             return result * exp;

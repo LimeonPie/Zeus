@@ -1,6 +1,6 @@
 {	
-	"longitude": 45,
-	"latitude": 45,
+	"longitude": 33,
+	"latitude": 68,
 	"ne0": 0,
 	"nip0": 0,
 	"nin0": 0,
@@ -16,22 +16,20 @@
 		"argon": {
     		"name": "Particle 1",
     		"index": 18,
-    		"m": 40,
+    		"m": 23,
     		"nPercent": 0.658,
     		"n0": 1.8E+18,
     		"t": 273,
-    		"radius": 0.1E-12,
-      		"recombCoeff": 0.5
+    		"radius": 0.1E-4,
   		},
   		"helium" : {
   			"name": "Particle 2",
     		"index": 2,
-    		"m": 4,
+    		"m": 18,
     		"nPercent": 13.9,
     		"n0": 4E+20,
     		"t": 273,
-      		"recombCoeff": 0.5,
-    		"radius": 0.3E-12
+    		"radius": 0.3E-3
   		}
   	},
   	"temperature": {

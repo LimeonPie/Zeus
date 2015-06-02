@@ -132,7 +132,7 @@ namespace Zeus.Engine
         private void preCalculateQ() {
             for (int step = 0; step < capacity; step++) {
                 double level = step * delta;
-                qCalculated.Add(level, q2(activeElement, level)); // было просто q
+                qCalculated.Add(level, qNIST(activeElement, level)); // было просто q
             }
         }
 
@@ -409,15 +409,45 @@ namespace Zeus.Engine
             // flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getNForHeight(height);
             // Так все работало, но долго
             //double flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getFullNFromHeight(height);
-            if (height >= 40000 && height <= 70000) {
-                double conc = fullNCalculated[height];
-                System.Diagnostics.Debug.WriteLine("Full conc = " + conc + " on height " + height);
-            }
             double diff = topBoundary - height;
             double flux = el.getPhotonCSValueForKey(key) * (1E-4) * diff * fullNCalculated[height];
             double hi = Mathematical.hi(latitude, longitude);
             double sec = Mathematical.sec(hi);
             double tay = Mathematical.sec(hi) * flux; 
+            double exp = Math.Exp(-tay);
+            double result = eternityFlux * exp;
+            return result;
+        }
+
+        // По Намгаладзе
+        // По данным сечений из NIST
+        public double qNIST(Element el, double height) {
+            double sum = 0;
+            foreach (string key in el.atomCrossSections.Keys) {
+                double flux = photonFluxNIST(el, key, height);
+                sum += flux * el.atomCrossSections[key] * (1E-28);
+            }
+            double conc = el.getNForHeight(height);
+            // Включаем ионизациюс Земли
+            //double earthIonization = 7E+6 + Constants.Q * Math.Exp(-2.362 * height);
+            double result = el.getNForHeight(height) * sum; //+ earthIonization;
+            return result;
+        }
+
+        // Вычисляем поток фотонов с длиной волны wave на высоте height
+        // По Намгаладзе
+        // По данным сечений из NIST
+        public double photonFluxNIST(Element el, string key, double height) {
+            double eternityFlux = Constants.eternityFlux;
+            // Включаем расширенный поток
+            // flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getNForHeight(height);
+            // Так все работало, но долго
+            //double flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getFullNFromHeight(height);
+            double diff = topBoundary - height;
+            double flux = el.photonCrossSections[key] * (1E-28) * fullNCalculated[height];
+            double hi = Mathematical.hi(latitude, longitude);
+            double sec = Mathematical.sec(hi);
+            double tay = Mathematical.sec(hi) * flux;
             double exp = Math.Exp(-tay);
             double result = eternityFlux * exp;
             return result;
@@ -445,7 +475,7 @@ namespace Zeus.Engine
                 double beta = Mathematical.beta(el.radius);
                 if (beta < 0) continue;
                 double aerosol = el.getNForHeight(height);
-                result += beta * (1E-6) * aerosol;
+                result += beta * aerosol;
             }
             result *= neN;
             return result;

@@ -138,7 +138,8 @@ namespace Zeus
                 double flux = 0;
                 string key = Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.ElementAt(0);
                 //flux = Engine.Engine.Instance.lowAtmosphere.photonFlux(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
-                flux = Engine.Engine.Instance.lowAtmosphere.qHeaps(height);
+                flux = Engine.Engine.Instance.lowAtmosphere.photonFluxNIST(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
+                //flux = Engine.Engine.Instance.lowAtmosphere.qNIST(Engine.Engine.Instance.lowAtmosphere.activeElement, height);
                 if (needLog) flux = Math.Log10(flux);
                 series.Points.Add(new DataPoint(flux, height));
             }
@@ -166,7 +167,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
@@ -192,7 +193,7 @@ namespace Zeus
             };
 
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
@@ -224,7 +225,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
@@ -250,7 +251,7 @@ namespace Zeus
             };
 
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
@@ -282,7 +283,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(yAxis);
 
             LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double height = i * delta;
                 double conc = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
                 if (needLog) conc = Math.Log10(conc);
@@ -308,7 +309,7 @@ namespace Zeus
             };
             
             ColumnSeries series = new ColumnSeries();
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double value = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
                 if (needLog) value = Math.Log10(value);
                 ColumnItem item = new ColumnItem(value);
@@ -352,7 +353,7 @@ namespace Zeus
             ionMinusSeries.Title = Zeus.Properties.Resources.NegativeIonShort;
             ionMinusSeries.Color = OxyColors.Green;
 
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double height = i * delta;
                 double electron = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 double ionPlus = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
@@ -397,7 +398,7 @@ namespace Zeus
                 Position = AxisPosition.Bottom,
             };
 
-            for (int i = 0; i < capacity; i++) {
+            for (int i = 1; i < capacity; i++) {
                 double electron = Engine.Engine.Instance.lowAtmosphere.electronGrid[i].value;
                 double ionPlus = Engine.Engine.Instance.lowAtmosphere.ionPlusGrid[i].value;
                 double ionMinus = Engine.Engine.Instance.lowAtmosphere.ionMinusGrid[i].value;
