@@ -22,10 +22,7 @@ namespace ZeusConsole
             Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
             // Запуск вычислений
             double electro = Engine.Instance.launchComputations();
-            Engine.Instance.saveToFile(Constants.appJsonPath + "NISTdataOutput.json");
-            double longitude = Engine.Instance.lowAtmosphere.longitude;
-            double latitude = Engine.Instance.lowAtmosphere.latitude;
-            display("Cos(hi) = " + Mathematical.hi(latitude, longitude));
+            Engine.Instance.saveToFile(Constants.appJsonPath + "output.json");
             display("Electricity = " + electro);
             display("Press any key...");
             Console.ReadKey();

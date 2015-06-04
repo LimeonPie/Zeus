@@ -10,27 +10,20 @@ namespace Zeus.Engine
     public static class Constants
     {
 
-        // Для формул по Хипсу
-        public static double A = 1.74E-18;
-        public static double B = 2.84E-17;
+        // Постоянное сечение ионизации
+        public static double sigma = 2E-22;
+
+        // Постоянное сечение поглощения протона воздухом
+        public static double absorption = 350E-31;
 
         // Масса электрона
         public static double eMass = 9.10938281E-31;
 
-        // Масса электрона обратная (для деления)
-        public static double eMassReverse = 0.10977692E+31;
-
         // Масса протона
         public static double protonMass = 1.6726217E-27;
 
-        // Масса протона обратная (для деления)
-        public static double protonMassReverse = 0.59786382E+27;
-
         // Масса нейтрона
         public static double neutronMass = 1.6749273E-27;
-
-        // Масса нейтрона обратная (для деления)
-        public static double neutronMassReverse = 0.59704083E+27;
 
         // Элементарный электрический заряд
         public static double qe = 1.60217657E-19;
@@ -45,13 +38,17 @@ namespace Zeus.Engine
         public static double R = 8.31;
 
         // Коэффициент нейтрализации
-        public static double gamma = 3E-12;
+        public static double gamma = 3.12E-12;
 
         // Лимит количества итераций по умолчанию
         public static int iterationLimitDefault = 10000;
 
         // Поток фотонов на входе в атмосфер
-        public static double eternityFlux = 0.6E+5; // 3.8E+8 0.6E+5
+        // Раньше были значнения:
+        // 3.8E+8
+        // 0.6E+5
+        // 1E-4
+        public static double eternityFlux = 0.5E+5;
 
         // Лимит атмосферы
         public static double atmosphereLimit = 80000;

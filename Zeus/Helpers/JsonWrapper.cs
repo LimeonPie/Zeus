@@ -148,30 +148,37 @@ namespace Zeus.Helpers
             LogManager.Session.logMessage("Writing " + path + " has been completed");
         }
 
-        public static void writeJsonOutputData(outputData[] data, string path) {
+        public static void writeJsonOutputData(outputData[] data, additionalData info, string path) {
             StreamWriter sw = new StreamWriter(path);
             JsonWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.Indented;
             writer.WriteStartObject();
+            writer.WritePropertyName("electricity");
+            writer.WriteValue(info.electricity.ToString("#.###E0"));
+            writer.WritePropertyName("date");
+            writer.WriteValue(info.date);
+            writer.WritePropertyName("concentrations");
+            writer.WriteStartObject();
             foreach (outputData part in data) {
                 writer.WritePropertyName(part.height.ToString());
                 writer.WriteStartObject();
-                writer.WritePropertyName("ne");
+                writer.WritePropertyName("electronConc");
                 writer.WriteValue(part.ne.ToString("#.###E0"));
-                writer.WritePropertyName("nip");
+                writer.WritePropertyName("ionPlusConc");
                 writer.WriteValue(part.nip.ToString("#.###E0"));
-                writer.WritePropertyName("nin");
+                writer.WritePropertyName("ionMinusConc");
                 writer.WriteValue(part.nin.ToString("#.###E0"));
-                writer.WritePropertyName("total");
+                writer.WritePropertyName("totalConc");
                 writer.WriteValue(part.total.ToString("#.###E0"));
-                writer.WritePropertyName("neVel");
+                writer.WritePropertyName("electronVelocity");
                 writer.WriteValue(part.neVel.ToString("#.###E0"));
-                writer.WritePropertyName("nipVel");
+                writer.WritePropertyName("ionPlusVelocity");
                 writer.WriteValue(part.nipVel.ToString("#.###E0"));
-                writer.WritePropertyName("ninVel");
+                writer.WritePropertyName("ionMinusVelocity");
                 writer.WriteValue(part.ninVel.ToString("#.###E0"));
                 writer.WriteEndObject();
             }
+            writer.WriteEndObject();
             writer.WriteEndObject();
             sw.Close();
             LogManager.Session.logMessage("Writing " + path + " has been completed");

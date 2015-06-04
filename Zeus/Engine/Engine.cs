@@ -50,6 +50,12 @@ namespace Zeus.Engine
         public double ninVel;
     };
 
+    public struct additionalData
+    {
+        public double electricity;
+        public string date;
+    }
+
     public class Engine
     {
         private static Engine instance;
@@ -73,17 +79,22 @@ namespace Zeus.Engine
             inputFilename = path;
             Element active = loadActiveElement(ActiveElement.Nitrogen);
             inputData data = JsonWrapper.parseInputData(path);
-            lowAtmosphere = new Sphere(data, active);
             if (data.time != null) Time.usedTime = DateTime.Parse(data.time);
             if (data.eternityFlux != 0) Constants.eternityFlux = data.eternityFlux;
             if (data.timeInterval != 0) Constants.timeInterval = data.timeInterval;
             else data.timeInterval = Constants.timeInterval;
+
+            lowAtmosphere = new Sphere(data, active);
         }
 
         public double launchComputations() {
             lowAtmosphere.n();
             double electricity = lowAtmosphere.electricity();
             return electricity;
+        }
+
+        public double getElectro() {
+            return lowAtmosphere.electricity();
         }
 
         public Dictionary<int, double> convertArrayToDict(double[] array) {
@@ -97,6 +108,9 @@ namespace Zeus.Engine
 
         public void saveToFile(string filename) {
             outputData[] data = new outputData[lowAtmosphere.capacity];
+            additionalData info = new additionalData();
+            info.electricity = lowAtmosphere.electricity();
+            info.date = DateTime.Now.ToString();
             for (int i = 0; i < lowAtmosphere.capacity; i++) {
                 data[i].height = i * lowAtmosphere.delta;
                 data[i].ne = lowAtmosphere.electronGrid[i].value;
@@ -108,11 +122,11 @@ namespace Zeus.Engine
                 data[i].ninVel = lowAtmosphere.ionMinusVelocityGrid[i].value;
             }
             if (filename != null && !filename.Equals(string.Empty)) {
-                JsonWrapper.writeJsonOutputData(data, filename);
+                JsonWrapper.writeJsonOutputData(data, info, filename);
             }
             else {
                 string path = Constants.appJsonPath + "\\output.json";
-                JsonWrapper.writeJsonOutputData(data, path);
+                JsonWrapper.writeJsonOutputData(data, info, path);
             }
         }
 

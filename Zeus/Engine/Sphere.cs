@@ -38,6 +38,9 @@ namespace Zeus.Engine
         public double latitude;
         public double delta;
         public double epsilum;
+        public double electronMass;
+        public double ionPlusMass;
+        public double ionMinusMass;
         public int iterationLimit;
         public int capacity;
         public double ne0;
@@ -99,10 +102,10 @@ namespace Zeus.Engine
             preCalculateN();
             qCalculated = new Dictionary<double, double>();
             preCalculateQ();
+            calculateMasses();
         }
 
         // Эвенты
-
         protected virtual void OnStateCalculated(SphereEventArgs e) {
             EventHandler<SphereEventArgs> handler = stateCalculated;
             if (handler != null) {
@@ -132,22 +135,25 @@ namespace Zeus.Engine
         private void preCalculateQ() {
             for (int step = 0; step < capacity; step++) {
                 double level = step * delta;
-                qCalculated.Add(level, qNIST(activeElement, level)); // было просто q
+                qCalculated.Add(level, q3(activeElement, level));
             }
+        }
+
+        private void calculateMasses() {
+            // Рассчитаем массы частиц
+            electronMass = Constants.eMass;
+            ionPlusMass = (activeElement.m / Constants.Na) * (1E-3) - Constants.eMass;
+            ionMinusMass = 0;
+            foreach (Element el in aerosolElements) {
+                ionMinusMass += el.m / Constants.Na;
+            }
+            ionMinusMass *= (1E-3);
+            ionMinusMass -= aerosolElements.Count * Constants.eMass;
         }
 
         public double n() {
             double height = 0;
             double result = ne0 + nip0 + nin0;
-
-            double electronMass = Constants.eMass;
-            double positiveIonMass = (activeElement.m / Constants.Na) * (1E-3) - Constants.eMass;
-            double aerosolMass = 0;
-            foreach (Element el in aerosolElements) {
-                aerosolMass += el.m / Constants.Na;
-            }
-            aerosolMass *= (1E-3);
-            aerosolMass -= aerosolElements.Count * Constants.eMass;
 
             for (int i = 1; i < capacity; i++) {
                 height = i * delta;
@@ -183,7 +189,6 @@ namespace Zeus.Engine
                     iteration++;
                     everythingSuits = electronGrid[i].isSuits && ionPlusGrid[i].isSuits && ionMinusGrid[i].isSuits;
                 }
-                //System.Diagnostics.Debug.WriteLine("End up on iteration " + iteration);
 
                 // Концентрации как было без цикла
                 /*electronGrid[i].value = ne(i, electronGrid[i].value, height);
@@ -192,72 +197,35 @@ namespace Zeus.Engine
 
                 // Итерация по скорости посередине
                 // Скорость
-                if (i > 1) {
-                    iteration = 1;
-                    everythingSuits = false;
-                    while ((iteration <= iterationLimit) && !everythingSuits) {
-                        double electronV = velocity2(electronVelocityGrid[i - 1].value, electronGrid[i - 2].value, electronGrid[i - 1].value, electronGrid[i].value, electronMass, height);
-                        if (Mathematical.compareWithFault(electronV, electronVelocityGrid[i - 1].value, epsilum)) {
-                            electronVelocityGrid[i - 1] = new IterationUnit(electronV, true);
-                        }
-                        else {
-                            electronVelocityGrid[i - 1] = new IterationUnit(electronV, false);
-                        }
-
-                        double ionPlusV = velocity2(ionPlusVelocityGrid[i - 1].value, ionPlusGrid[i - 2].value, ionPlusGrid[i - 1].value, ionPlusGrid[i].value, positiveIonMass, height);
-                        if (Mathematical.compareWithFault(ionPlusV, ionPlusVelocityGrid[i - 1].value, epsilum)) {
-                            ionPlusVelocityGrid[i - 1] = new IterationUnit(ionPlusV, true);
-                        }
-                        else {
-                            ionPlusVelocityGrid[i - 1] = new IterationUnit(ionPlusV, false);
-                        }
-
-                        double ionMinusV = velocity2(ionMinusVelocityGrid[i - 1].value, ionMinusGrid[i - 2].value, ionMinusGrid[i - 1].value, ionMinusGrid[i].value, aerosolMass, height);
-                        if (Mathematical.compareWithFault(ionMinusV, ionMinusVelocityGrid[i - 1].value, epsilum)) {
-                            ionMinusVelocityGrid[i - 1] = new IterationUnit(ionMinusV, true);
-                        }
-                        else {
-                            ionMinusVelocityGrid[i - 1] = new IterationUnit(ionMinusV, false);
-                        }
-
-                        iteration++;
-                        everythingSuits = electronVelocityGrid[i - 1].isSuits && ionPlusVelocityGrid[i - 1].isSuits && ionMinusVelocityGrid[i - 1].isSuits;
-                    } 
-                }
-
-                // :(
-                // Итерация по скорости конечная
-                if (i == (capacity - 1)) {
-                    iteration = 1;
-                    everythingSuits = false;
-                    while ((iteration <= iterationLimit) && !everythingSuits) {
-                        double electronV = velocity(electronVelocityGrid[i].value, electronGrid[i - 1].value, electronGrid[i].value, electronMass, height);
-                        if (Mathematical.compareWithFault(electronV, electronVelocityGrid[i].value, epsilum)) {
-                            electronVelocityGrid[i] = new IterationUnit(electronV, true);
-                        }
-                        else {
-                            electronVelocityGrid[i] = new IterationUnit(electronV, false);
-                        }
-
-                        double ionPlusV = velocity(ionPlusVelocityGrid[i].value, ionPlusGrid[i - 1].value, ionPlusGrid[i].value, positiveIonMass, height);
-                        if (Mathematical.compareWithFault(ionPlusV, ionPlusVelocityGrid[i].value, epsilum)) {
-                            ionPlusVelocityGrid[i] = new IterationUnit(ionPlusV, true);
-                        }
-                        else {
-                            ionPlusVelocityGrid[i] = new IterationUnit(ionPlusV, false);
-                        }
-
-                        double ionMinusV = velocity(ionMinusVelocityGrid[i].value, ionMinusGrid[i - 1].value, ionMinusGrid[i].value, aerosolMass, height);
-                        if (Mathematical.compareWithFault(ionMinusV, ionMinusVelocityGrid[i].value, epsilum)) {
-                            ionMinusVelocityGrid[i] = new IterationUnit(ionMinusV, true);
-                        }
-                        else {
-                            ionMinusVelocityGrid[i] = new IterationUnit(ionMinusV, false);
-                        }
-
-                        iteration++;
-                        everythingSuits = electronVelocityGrid[i].isSuits && ionPlusVelocityGrid[i].isSuits && ionMinusVelocityGrid[i].isSuits;
+                iteration = 1;
+                everythingSuits = false;
+                while ((iteration <= iterationLimit) && !everythingSuits) {
+                    double electronV = velocity(electronVelocityGrid[i].value, electronGrid[i - 1].value, electronGrid[i].value, electronMass, height);
+                    if (Mathematical.compareWithFault(electronV, electronVelocityGrid[i].value, epsilum)) {
+                        electronVelocityGrid[i] = new IterationUnit(electronV, true);
                     }
+                    else {
+                        electronVelocityGrid[i] = new IterationUnit(electronV, false);
+                    }
+
+                    double ionPlusV = velocity(ionPlusVelocityGrid[i].value, ionPlusGrid[i - 1].value, ionPlusGrid[i].value, ionPlusMass, height);
+                    if (Mathematical.compareWithFault(ionPlusV, ionPlusVelocityGrid[i].value, epsilum)) {
+                        ionPlusVelocityGrid[i] = new IterationUnit(ionPlusV, true);
+                    }
+                    else {
+                        ionPlusVelocityGrid[i] = new IterationUnit(ionPlusV, false);
+                    }
+
+                    double ionMinusV = velocity(ionMinusVelocityGrid[i].value, ionMinusGrid[i - 1].value, ionMinusGrid[i].value, ionMinusMass, height);
+                    if (Mathematical.compareWithFault(ionMinusV, ionMinusVelocityGrid[i].value, epsilum)) {
+                        ionMinusVelocityGrid[i] = new IterationUnit(ionMinusV, true);
+                    }
+                    else {
+                        ionMinusVelocityGrid[i] = new IterationUnit(ionMinusV, false);
+                    }
+
+                    iteration++;
+                    everythingSuits = electronVelocityGrid[i].isSuits && ionPlusVelocityGrid[i].isSuits && ionMinusVelocityGrid[i].isSuits;
                 }
 
                 // Скорость как было, без цикла
@@ -305,7 +273,6 @@ namespace Zeus.Engine
             double tNext = temperatureForHeight(height + delta);
 
             double gradient = (p(nCur, tCur) - p(nPrev, tPrev))/delta + (p(nNext, nNext) - p(nCur, tCur))/delta;
-            //double mn = 2* mass * nCur;
 
             result += velPrev + Constants.dt * (-Constants.g - (1/(2*mass*nCur))*gradient);
             return result;
@@ -316,9 +283,6 @@ namespace Zeus.Engine
             double result = 0;
             double tCur = temperatureForHeight(height);
             double tPrev = temperatureForHeight(height - delta);
-            //double p1 = p(nCur, tCur);
-            //double p0 = p(nPrev, tPrev);
-            //double diff = p1 - p0;
             double gradient = (p(nCur, tCur) - p(nPrev, tPrev)) / delta;
             result += velPrev + Constants.dt * (-gradient / (mass * nCur) - Constants.g);
             return result;
@@ -342,8 +306,11 @@ namespace Zeus.Engine
             double loss = 0;
             double recombination;
             recombination = recombinate(activeElement, nePrev, nePrev);
+            //recombination = recombinate(activeElement, creation, creation);
             loss += recombination;
-            double sticking = stickTo(nePrev, height);
+            double sticking;
+            sticking = stickTo(nePrev, height);
+            //sticking = stickTo(creation - loss, height);
             loss += sticking;
             return (nePrev + (creation - loss) * Constants.dt);
         }
@@ -359,8 +326,10 @@ namespace Zeus.Engine
             double loss = 0;
             double recombination;
             recombination = recombinate(activeElement, nipPrev, electronGrid[step].value);
+            //recombination = recombinate(activeElement, creation, electronGrid[step].value);
             loss += recombination;
-            double neutralization = neutralize(nipPrev, ionMinusGrid[step].value);
+            double neutralization; 
+            neutralization = neutralize(nipPrev, ionMinusGrid[step].value);
             loss += neutralization;
             return (nipPrev + (creation - loss) * Constants.dt);
         }
@@ -373,21 +342,16 @@ namespace Zeus.Engine
             creation += sticking;
             // Потери
             double loss = 0;
-            double neutralization = neutralize(ionPlusGrid[step].value, ninPrev);
+            double neutralization;
+            neutralization = neutralize(ionPlusGrid[step].value, ninPrev);
+            //neutralization = neutralize(ionPlusGrid[step].value, creation);
             loss += neutralization;
             return (ninPrev + (creation - loss) * Constants.dt);
         }
 
-        public double qHeaps(double height) {
-            double latToRad = Mathematical.degreesToRadians(latitude);
-            double sin = Math.Pow(Math.Sin(latToRad), 4);
-            double part = Constants.A + Constants.B * sin;
-            double result = part * fullNCalculated[height];
-            return (result/(1E+6));
-        }
-
         // Скорость фотоионизации
         // По Намгаладзе
+        // Старый метод, для солнечных лучей
         public double q(Element el, double height) {
             double sum = 0;
             foreach (string key in el.atomCrossSections.Keys) {
@@ -403,6 +367,7 @@ namespace Zeus.Engine
 
         // Вычисляем поток фотонов с длиной волны wave на высоте height
         // По Намгаладзе
+        // Старый метод, для сонечных лучей
         public double photonFlux(Element el, string key, double height) {
             double eternityFlux = Constants.eternityFlux;
             // Включаем расширенный поток
@@ -419,58 +384,37 @@ namespace Zeus.Engine
             return result;
         }
 
-        // По Намгаладзе
-        // По данным сечений из NIST
-        public double qNIST(Element el, double height) {
-            double sum = 0;
-            foreach (string key in el.atomCrossSections.Keys) {
-                double flux = photonFluxNIST(el, key, height);
-                sum += flux * el.atomCrossSections[key] * (1E-28);
-            }
-            double conc = el.getNForHeight(height);
-            // Включаем ионизациюс Земли
-            //double earthIonization = 7E+6 + Constants.Q * Math.Exp(-2.362 * height);
-            double result = el.getNForHeight(height) * sum; //+ earthIonization;
+        // Скорость фотоионизации
+        // По Ермакову, Стожкову
+        public double q3(Element el, double height) {
+            double flux = photonFlux3(el, height);
+            double result = el.getNForHeight(height) * flux * Constants.sigma;
             return result;
         }
 
         // Вычисляем поток фотонов с длиной волны wave на высоте height
-        // По Намгаладзе
-        // По данным сечений из NIST
-        public double photonFluxNIST(Element el, string key, double height) {
-            double eternityFlux = Constants.eternityFlux;
-            // Включаем расширенный поток
-            // flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getNForHeight(height);
-            // Так все работало, но долго
-            //double flux = el.getPhotonCSValueForKey(key) * (1E-4) * el.getFullNFromHeight(height);
-            double diff = topBoundary - height;
-            double flux = el.photonCrossSections[key] * (1E-28) * fullNCalculated[height];
+        // По Ермакову, Стожкову
+        public double photonFlux3(Element el, double height) {
+            double flux = Constants.absorption * fullNCalculated[height];
             double hi = Mathematical.hi(latitude, longitude);
-            double sec = Mathematical.sec(hi);
             double tay = Mathematical.sec(hi) * flux;
             double exp = Math.Exp(-tay);
-            double result = eternityFlux * exp;
-            return result;
-        }
-
-        public double q2(Element el, double height) {
-            double result;
-            result = el.getNForHeight(height) * (1E-18);
+            double result = Constants.eternityFlux * exp;
             return result;
         }
 
         // Рекомбинация
         private double recombinate(Element el, double elN, double neN) {
             double result = 0;
-            if (elN <= 0 || neN <= 0) return result;
+            // с самого начала было так:
             result = neN * el.recombCoeff * elN;
+            //result = elN * el.recombCoeff;
             return result;
         }
 
         // Прилипание
         private double stickTo(double neN, double height) {
             double result = 0;
-            if (neN <= 0) return result;
             foreach (Element el in aerosolElements) {
                 double beta = Mathematical.beta(el.radius);
                 if (beta < 0) continue;
@@ -484,7 +428,6 @@ namespace Zeus.Engine
         // Нейтрализация
         private double neutralize(double niP, double niN) {
             double result = 0;
-            if (niP <= 0 || niN <= 0) return result;
             result = Constants.gamma * niP * niN;
             return result;
         }

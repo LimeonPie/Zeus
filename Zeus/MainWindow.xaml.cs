@@ -99,7 +99,8 @@ namespace Zeus
         private void OnCalculationsEnded(object sender, SphereEventArgs e) {
             writeToStatusBar(Properties.Resources.CalculationsEndText);
             MessageBoxResult alert = MessageBox.Show(Properties.Resources.CalculationsEndAlertDescText, Properties.Resources.CalculationsEndText, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            resultTextBlock.Text = String.Format("{0} = {1}", Zeus.Properties.Resources.Electricity, e.result.ToString("#.###E0"));
+            double electicity = Engine.Engine.Instance.getElectro();
+            resultTextBlock.Text = String.Format("{0} = {1}", Zeus.Properties.Resources.Electricity, electicity.ToString("#.###E0"));
             clearStatusWithDelay(2000);
             drawPlot();
         }

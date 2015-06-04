@@ -6,30 +6,30 @@
 	"nin0": 0,
 	"delta": 1000,
   	"epsilum": 0.001,
-  	"eternityFlux": 0.6E+4,
+  	"eternityFlux": 0.6E+5,
   	"timeInterval": 1,
 	"time": "13:00",
 	"botBoundary": 0,
 	"topBoundary": 80000,
 	"velocity": 0,
 	"aerosols": {
-		"argon": {
-    		"name": "Particle 1",
-    		"index": 18,
-    		"m": 23,
+		"dust": {
+    		"name": "Dust",
+    		"index": 0,
+    		"m": 46,
     		"nPercent": 0.658,
-    		"n0": 1.8E+9,
+    		"n0": 1.8E+5,
     		"t": 273,
-    		"radius": 0.1E-4,
+    		"radius": 0.1E-6,
   		},
-  		"helium" : {
-  			"name": "Particle 2",
-    		"index": 2,
+  		"water" : {
+  			"name": "Water",
+    		"index": 0,
     		"m": 18,
     		"nPercent": 13.9,
     		"n0": 4E+10,
     		"t": 273,
-    		"radius": 0.3E-3
+    		"radius": 0.8E-4
   		}
   	},
   	"temperature": {

@@ -1,0 +1,735 @@
+{
+  "electricity": "-1,263E-9",
+  "date": "03.06.2015 22:39:51",
+  "concentrations": {
+    "0": {
+      "electronConc": "0E0",
+      "ionPlusConc": "0E0",
+      "ionMinusConc": "0E0",
+      "totalConc": "0E0",
+      "electronVelocity": "0E0",
+      "ionPlusVelocity": "0E0",
+      "ionMinusVelocity": "0E0"
+    },
+    "1000": {
+      "electronConc": "7,653E-55",
+      "ionPlusConc": "7,653E-55",
+      "ionMinusConc": "3,707E-54",
+      "totalConc": "5,238E-54",
+      "electronVelocity": "0E0",
+      "ionPlusVelocity": "0E0",
+      "ionMinusVelocity": "0E0"
+    },
+    "2000": {
+      "electronConc": "8,78E-48",
+      "ionPlusConc": "8,78E-48",
+      "ionMinusConc": "3,934E-47",
+      "totalConc": "5,69E-47",
+      "electronVelocity": "-4,168E6",
+      "ionPlusVelocity": "-9,144E1",
+      "ionMinusVelocity": "-6,556E1"
+    },
+    "3000": {
+      "electronConc": "1,556E-41",
+      "ionPlusConc": "1,556E-41",
+      "ionMinusConc": "6,451E-41",
+      "totalConc": "9,564E-41",
+      "electronVelocity": "-4,062E6",
+      "ionPlusVelocity": "-8,936E1",
+      "ionMinusVelocity": "-6,414E1"
+    },
+    "4000": {
+      "electronConc": "5,274E-36",
+      "ionPlusConc": "5,274E-36",
+      "ionMinusConc": "2,022E-35",
+      "totalConc": "3,077E-35",
+      "electronVelocity": "-3,971E6",
+      "ionPlusVelocity": "-8,758E1",
+      "ionMinusVelocity": "-6,292E1"
+    },
+    "5000": {
+      "electronConc": "4,126E-31",
+      "ionPlusConc": "4,126E-31",
+      "ionMinusConc": "1,464E-30",
+      "totalConc": "2,289E-30",
+      "electronVelocity": "-3,865E6",
+      "ionPlusVelocity": "-8,55E1",
+      "ionMinusVelocity": "-6,15E1"
+    },
+    "6000": {
+      "electronConc": "8,81E-27",
+      "ionPlusConc": "8,81E-27",
+      "ionMinusConc": "2,891E-26",
+      "totalConc": "4,653E-26",
+      "electronVelocity": "-3,774E6",
+      "ionPlusVelocity": "-8,372E1",
+      "ionMinusVelocity": "-6,029E1"
+    },
+    "7000": {
+      "electronConc": "5,953E-23",
+      "ionPlusConc": "5,953E-23",
+      "ionMinusConc": "1,807E-22",
+      "totalConc": "2,998E-22",
+      "electronVelocity": "-3,773E6",
+      "ionPlusVelocity": "-8,371E1",
+      "ionMinusVelocity": "-6,028E1"
+    },
+    "8000": {
+      "electronConc": "1,451E-19",
+      "ionPlusConc": "1,451E-19",
+      "ionMinusConc": "4,076E-19",
+      "totalConc": "6,978E-19",
+      "electronVelocity": "-3,575E6",
+      "ionPlusVelocity": "-7,984E1",
+      "ionMinusVelocity": "-5,763E1"
+    },
+    "9000": {
+      "electronConc": "1,434E-16",
+      "ionPlusConc": "1,434E-16",
+      "ionMinusConc": "3,725E-16",
+      "totalConc": "6,593E-16",
+      "electronVelocity": "-3,573E6",
+      "ionPlusVelocity": "-7,979E1",
+      "ionMinusVelocity": "-5,76E1"
+    },
+    "10000": {
+      "electronConc": "6,364E-14",
+      "ionPlusConc": "6,364E-14",
+      "ionMinusConc": "1,53E-13",
+      "totalConc": "2,802E-13",
+      "electronVelocity": "-3,372E6",
+      "ionPlusVelocity": "-7,585E1",
+      "ionMinusVelocity": "-5,49E1"
+    },
+    "11000": {
+      "electronConc": "1,39E-11",
+      "ionPlusConc": "1,39E-11",
+      "ionMinusConc": "3,091E-11",
+      "totalConc": "5,872E-11",
+      "electronVelocity": "-3,364E6",
+      "ionPlusVelocity": "-7,57E1",
+      "ionMinusVelocity": "-5,479E1"
+    },
+    "12000": {
+      "electronConc": "1,621E-9",
+      "ionPlusConc": "1,621E-9",
+      "ionMinusConc": "3,334E-9",
+      "totalConc": "6,576E-9",
+      "electronVelocity": "-3,351E6",
+      "ionPlusVelocity": "-7,544E1",
+      "ionMinusVelocity": "-5,46E1"
+    },
+    "13000": {
+      "electronConc": "1,083E-7",
+      "ionPlusConc": "1,083E-7",
+      "ionMinusConc": "2,061E-7",
+      "totalConc": "4,228E-7",
+      "electronVelocity": "-3,329E6",
+      "ionPlusVelocity": "-7,502E1",
+      "ionMinusVelocity": "-5,429E1"
+    },
+    "14000": {
+      "electronConc": "4,421E-6",
+      "ionPlusConc": "4,421E-6",
+      "ionMinusConc": "7,783E-6",
+      "totalConc": "1,663E-5",
+      "electronVelocity": "-3,297E6",
+      "ionPlusVelocity": "-7,438E1",
+      "ionMinusVelocity": "-5,382E1"
+    },
+    "15000": {
+      "electronConc": "1,166E-4",
+      "ionPlusConc": "1,166E-4",
+      "ionMinusConc": "1,899E-4",
+      "totalConc": "4,231E-4",
+      "electronVelocity": "-3,115E6",
+      "ionPlusVelocity": "-7,082E1",
+      "ionMinusVelocity": "-5,134E1"
+    },
+    "16000": {
+      "electronConc": "2,088E-3",
+      "ionPlusConc": "2,088E-3",
+      "ionMinusConc": "3,146E-3",
+      "totalConc": "7,323E-3",
+      "electronVelocity": "-3,062E6",
+      "ionPlusVelocity": "-6,979E1",
+      "ionMinusVelocity": "-5,057E1"
+    },
+    "17000": {
+      "electronConc": "2,655E-2",
+      "ionPlusConc": "2,655E-2",
+      "ionMinusConc": "3,7E-2",
+      "totalConc": "9,01E-2",
+      "electronVelocity": "-2,988E6",
+      "ionPlusVelocity": "-6,834E1",
+      "ionMinusVelocity": "-4,95E1"
+    },
+    "18000": {
+      "electronConc": "2,491E-1",
+      "ionPlusConc": "2,491E-1",
+      "ionMinusConc": "3,211E-1",
+      "totalConc": "8,193E-1",
+      "electronVelocity": "-2,898E6",
+      "ionPlusVelocity": "-6,656E1",
+      "ionMinusVelocity": "-4,819E1"
+    },
+    "19000": {
+      "electronConc": "1,786E0",
+      "ionPlusConc": "1,786E0",
+      "ionMinusConc": "2,13E0",
+      "totalConc": "5,701E0",
+      "electronVelocity": "-2,791E6",
+      "ionPlusVelocity": "-6,447E1",
+      "ionMinusVelocity": "-4,665E1"
+    },
+    "20000": {
+      "electronConc": "1,008E1",
+      "ionPlusConc": "1,008E1",
+      "ionMinusConc": "1,113E1",
+      "totalConc": "3,13E1",
+      "electronVelocity": "-2,669E6",
+      "ionPlusVelocity": "-6,209E1",
+      "ionMinusVelocity": "-4,489E1"
+    },
+    "21000": {
+      "electronConc": "4,611E1",
+      "ionPlusConc": "4,611E1",
+      "ionMinusConc": "4,706E1",
+      "totalConc": "1,393E2",
+      "electronVelocity": "-2,534E6",
+      "ionPlusVelocity": "-5,944E1",
+      "ionMinusVelocity": "-4,294E1"
+    },
+    "22000": {
+      "electronConc": "1,748E2",
+      "ionPlusConc": "1,748E2",
+      "ionMinusConc": "1,651E2",
+      "totalConc": "5,148E2",
+      "electronVelocity": "-2,388E6",
+      "ionPlusVelocity": "-5,658E1",
+      "ionMinusVelocity": "-4,083E1"
+    },
+    "23000": {
+      "electronConc": "5,617E2",
+      "ionPlusConc": "5,617E2",
+      "ionMinusConc": "4,907E2",
+      "totalConc": "1,614E3",
+      "electronVelocity": "-2,234E6",
+      "ionPlusVelocity": "-5,356E1",
+      "ionMinusVelocity": "-3,86E1"
+    },
+    "24000": {
+      "electronConc": "1,558E3",
+      "ionPlusConc": "1,558E3",
+      "ionMinusConc": "1,259E3",
+      "totalConc": "4,375E3",
+      "electronVelocity": "-2,074E6",
+      "ionPlusVelocity": "-5,043E1",
+      "ionMinusVelocity": "-3,629E1"
+    },
+    "25000": {
+      "electronConc": "3,794E3",
+      "ionPlusConc": "3,794E3",
+      "ionMinusConc": "2,836E3",
+      "totalConc": "1,043E4",
+      "electronVelocity": "-1,912E6",
+      "ionPlusVelocity": "-4,725E1",
+      "ionMinusVelocity": "-3,394E1"
+    },
+    "26000": {
+      "electronConc": "8,234E3",
+      "ionPlusConc": "8,234E3",
+      "ionMinusConc": "5,694E3",
+      "totalConc": "2,216E4",
+      "electronVelocity": "-1,749E6",
+      "ionPlusVelocity": "-4,406E1",
+      "ionMinusVelocity": "-3,158E1"
+    },
+    "27000": {
+      "electronConc": "1,613E4",
+      "ionPlusConc": "1,613E4",
+      "ionMinusConc": "1,032E4",
+      "totalConc": "4,259E4",
+      "electronVelocity": "-1,588E6",
+      "ionPlusVelocity": "-4,091E1",
+      "ionMinusVelocity": "-2,926E1"
+    },
+    "28000": {
+      "electronConc": "2,887E4",
+      "ionPlusConc": "2,887E4",
+      "ionMinusConc": "1,709E4",
+      "totalConc": "7,484E4",
+      "electronVelocity": "-1,431E6",
+      "ionPlusVelocity": "-3,784E1",
+      "ionMinusVelocity": "-2,699E1"
+    },
+    "29000": {
+      "electronConc": "4,769E4",
+      "ionPlusConc": "4,769E4",
+      "ionMinusConc": "2,611E4",
+      "totalConc": "1,215E5",
+      "electronVelocity": "-1,28E6",
+      "ionPlusVelocity": "-3,488E1",
+      "ionMinusVelocity": "-2,48E1"
+    },
+    "30000": {
+      "electronConc": "7,338E4",
+      "ionPlusConc": "7,338E4",
+      "ionMinusConc": "3,717E4",
+      "totalConc": "1,839E5",
+      "electronVelocity": "-1,302E6",
+      "ionPlusVelocity": "-3,531E1",
+      "ionMinusVelocity": "-2,494E1"
+    },
+    "31000": {
+      "electronConc": "1,06E5",
+      "ionPlusConc": "1,06E5",
+      "ionMinusConc": "4,968E4",
+      "totalConc": "2,617E5",
+      "electronVelocity": "-1,05E6",
+      "ionPlusVelocity": "-3,037E1",
+      "ionMinusVelocity": "-2,129E1"
+    },
+    "32000": {
+      "electronConc": "1,449E5",
+      "ionPlusConc": "1,449E5",
+      "ionMinusConc": "6,279E4",
+      "totalConc": "3,525E5",
+      "electronVelocity": "-9,144E5",
+      "ionPlusVelocity": "-2,772E1",
+      "ionMinusVelocity": "-1,934E1"
+    },
+    "33000": {
+      "electronConc": "1,884E5",
+      "ionPlusConc": "1,884E5",
+      "ionMinusConc": "7,555E4",
+      "totalConc": "4,523E5",
+      "electronVelocity": "-7,88E5",
+      "ionPlusVelocity": "-2,524E1",
+      "ionMinusVelocity": "-1,751E1"
+    },
+    "34000": {
+      "electronConc": "2,345E5",
+      "ionPlusConc": "2,345E5",
+      "ionMinusConc": "8,7E4",
+      "totalConc": "5,56E5",
+      "electronVelocity": "-6,707E5",
+      "ionPlusVelocity": "-2,295E1",
+      "ionMinusVelocity": "-1,581E1"
+    },
+    "35000": {
+      "electronConc": "2,808E5",
+      "ionPlusConc": "2,808E5",
+      "ionMinusConc": "9,637E4",
+      "totalConc": "6,58E5",
+      "electronVelocity": "-5,623E5",
+      "ionPlusVelocity": "-2,082E1",
+      "ionMinusVelocity": "-1,425E1"
+    },
+    "36000": {
+      "electronConc": "3,249E5",
+      "ionPlusConc": "3,249E5",
+      "ionMinusConc": "1,032E5",
+      "totalConc": "7,53E5",
+      "electronVelocity": "-4,628E5",
+      "ionPlusVelocity": "-1,887E1",
+      "ionMinusVelocity": "-1,281E1"
+    },
+    "37000": {
+      "electronConc": "3,647E5",
+      "ionPlusConc": "3,647E5",
+      "ionMinusConc": "1,071E5",
+      "totalConc": "8,364E5",
+      "electronVelocity": "-3,717E5",
+      "ionPlusVelocity": "-1,709E1",
+      "ionMinusVelocity": "-1,149E1"
+    },
+    "38000": {
+      "electronConc": "3,984E5",
+      "ionPlusConc": "3,984E5",
+      "ionMinusConc": "1,082E5",
+      "totalConc": "9,05E5",
+      "electronVelocity": "-2,887E5",
+      "ionPlusVelocity": "-1,546E1",
+      "ionMinusVelocity": "-1,029E1"
+    },
+    "39000": {
+      "electronConc": "4,249E5",
+      "ionPlusConc": "4,249E5",
+      "ionMinusConc": "1,068E5",
+      "totalConc": "9,567E5",
+      "electronVelocity": "-2,132E5",
+      "ionPlusVelocity": "-1,399E1",
+      "ionMinusVelocity": "-9,199E0"
+    },
+    "40000": {
+      "electronConc": "4,438E5",
+      "ionPlusConc": "4,438E5",
+      "ionMinusConc": "1,032E5",
+      "totalConc": "9,907E5",
+      "electronVelocity": "-7,965E5",
+      "ionPlusVelocity": "-2,541E1",
+      "ionMinusVelocity": "-1,693E1"
+    },
+    "41000": {
+      "electronConc": "4,548E5",
+      "ionPlusConc": "4,548E5",
+      "ionMinusConc": "9,785E4",
+      "totalConc": "1,008E6",
+      "electronVelocity": "-9,882E4",
+      "ionPlusVelocity": "-1,175E1",
+      "ionMinusVelocity": "-6,84E0"
+    },
+    "42000": {
+      "electronConc": "4,585E5",
+      "ionPlusConc": "4,585E5",
+      "ionMinusConc": "9,125E4",
+      "totalConc": "1,008E6",
+      "electronVelocity": "-3,242E4",
+      "ionPlusVelocity": "-1,044E1",
+      "ionMinusVelocity": "-5,88E0"
+    },
+    "43000": {
+      "electronConc": "4,554E5",
+      "ionPlusConc": "4,554E5",
+      "ionMinusConc": "8,385E4",
+      "totalConc": "9,947E5",
+      "electronVelocity": "2,733E4",
+      "ionPlusVelocity": "-9,274E0",
+      "ionMinusVelocity": "-5,016E0"
+    },
+    "44000": {
+      "electronConc": "4,465E5",
+      "ionPlusConc": "4,465E5",
+      "ionMinusConc": "7,605E4",
+      "totalConc": "9,691E5",
+      "electronVelocity": "8,101E4",
+      "ionPlusVelocity": "-8,223E0",
+      "ionMinusVelocity": "-4,24E0"
+    },
+    "45000": {
+      "electronConc": "4,328E5",
+      "ionPlusConc": "4,328E5",
+      "ionMinusConc": "6,819E4",
+      "totalConc": "9,337E5",
+      "electronVelocity": "1,292E5",
+      "ionPlusVelocity": "-7,28E0",
+      "ionMinusVelocity": "-3,544E0"
+    },
+    "46000": {
+      "electronConc": "4,152E5",
+      "ionPlusConc": "4,152E5",
+      "ionMinusConc": "6,051E4",
+      "totalConc": "8,908E5",
+      "electronVelocity": "1,723E5",
+      "ionPlusVelocity": "-6,435E0",
+      "ionMinusVelocity": "-2,92E0"
+    },
+    "47000": {
+      "electronConc": "3,947E5",
+      "ionPlusConc": "3,947E5",
+      "ionMinusConc": "5,322E4",
+      "totalConc": "8,426E5",
+      "electronVelocity": "2,109E5",
+      "ionPlusVelocity": "-5,68E0",
+      "ionMinusVelocity": "-2,363E0"
+    },
+    "48000": {
+      "electronConc": "3,722E5",
+      "ionPlusConc": "3,722E5",
+      "ionMinusConc": "4,643E4",
+      "totalConc": "7,908E5",
+      "electronVelocity": "2,453E5",
+      "ionPlusVelocity": "-5,005E0",
+      "ionMinusVelocity": "-1,864E0"
+    },
+    "49000": {
+      "electronConc": "3,485E5",
+      "ionPlusConc": "3,485E5",
+      "ionMinusConc": "4,022E4",
+      "totalConc": "7,372E5",
+      "electronVelocity": "2,761E5",
+      "ionPlusVelocity": "-4,402E0",
+      "ionMinusVelocity": "-1,419E0"
+    },
+    "50000": {
+      "electronConc": "3,243E5",
+      "ionPlusConc": "3,243E5",
+      "ionMinusConc": "3,462E4",
+      "totalConc": "6,831E5",
+      "electronVelocity": "1,823E5",
+      "ionPlusVelocity": "-6,239E0",
+      "ionMinusVelocity": "-2,644E0"
+    },
+    "51000": {
+      "electronConc": "3E5",
+      "ionPlusConc": "3E5",
+      "ionMinusConc": "2,963E4",
+      "totalConc": "6,297E5",
+      "electronVelocity": "3,378E5",
+      "ionPlusVelocity": "-3,194E0",
+      "ionMinusVelocity": "-3,959E-1"
+    },
+    "52000": {
+      "electronConc": "2,762E5",
+      "ionPlusConc": "2,762E5",
+      "ionMinusConc": "2,524E4",
+      "totalConc": "5,777E5",
+      "electronVelocity": "3,602E5",
+      "ionPlusVelocity": "-2,754E0",
+      "ionMinusVelocity": "-7,154E-2"
+    },
+    "53000": {
+      "electronConc": "2,532E5",
+      "ionPlusConc": "2,532E5",
+      "ionMinusConc": "2,14E4",
+      "totalConc": "5,279E5",
+      "electronVelocity": "3,802E5",
+      "ionPlusVelocity": "-2,363E0",
+      "ionMinusVelocity": "2,172E-1"
+    },
+    "54000": {
+      "electronConc": "2,312E5",
+      "ionPlusConc": "2,312E5",
+      "ionMinusConc": "1,808E4",
+      "totalConc": "4,805E5",
+      "electronVelocity": "3,98E5",
+      "ionPlusVelocity": "-2,015E0",
+      "ionMinusVelocity": "4,741E-1"
+    },
+    "55000": {
+      "electronConc": "2,104E5",
+      "ionPlusConc": "2,104E5",
+      "ionMinusConc": "1,522E4",
+      "totalConc": "4,36E5",
+      "electronVelocity": "4,138E5",
+      "ionPlusVelocity": "-1,705E0",
+      "ionMinusVelocity": "7,025E-1"
+    },
+    "56000": {
+      "electronConc": "1,909E5",
+      "ionPlusConc": "1,909E5",
+      "ionMinusConc": "1,277E4",
+      "totalConc": "3,945E5",
+      "electronVelocity": "4,278E5",
+      "ionPlusVelocity": "-1,43E0",
+      "ionMinusVelocity": "9,056E-1"
+    },
+    "57000": {
+      "electronConc": "1,727E5",
+      "ionPlusConc": "1,727E5",
+      "ionMinusConc": "1,069E4",
+      "totalConc": "3,561E5",
+      "electronVelocity": "4,403E5",
+      "ionPlusVelocity": "-1,186E0",
+      "ionMinusVelocity": "1,086E0"
+    },
+    "58000": {
+      "electronConc": "1,559E5",
+      "ionPlusConc": "1,559E5",
+      "ionMinusConc": "8,928E3",
+      "totalConc": "3,207E5",
+      "electronVelocity": "4,514E5",
+      "ionPlusVelocity": "-9,69E-1",
+      "ionMinusVelocity": "1,246E0"
+    },
+    "59000": {
+      "electronConc": "1,404E5",
+      "ionPlusConc": "1,404E5",
+      "ionMinusConc": "7,439E3",
+      "totalConc": "2,882E5",
+      "electronVelocity": "4,612E5",
+      "ionPlusVelocity": "-7,762E-1",
+      "ionMinusVelocity": "1,388E0"
+    },
+    "60000": {
+      "electronConc": "1,262E5",
+      "ionPlusConc": "1,262E5",
+      "ionMinusConc": "6,187E3",
+      "totalConc": "2,586E5",
+      "electronVelocity": "7,125E5",
+      "ionPlusVelocity": "4,144E0",
+      "ionMinusVelocity": "4,758E0"
+    },
+    "61000": {
+      "electronConc": "1,133E5",
+      "ionPlusConc": "1,133E5",
+      "ionMinusConc": "5,137E3",
+      "totalConc": "2,317E5",
+      "electronVelocity": "4,5E5",
+      "ionPlusVelocity": "-9,957E-1",
+      "ionMinusVelocity": "9,639E-1"
+    },
+    "62000": {
+      "electronConc": "1,015E5",
+      "ionPlusConc": "1,015E5",
+      "ionMinusConc": "4,259E3",
+      "totalConc": "2,073E5",
+      "electronVelocity": "4,565E5",
+      "ionPlusVelocity": "-8,687E-1",
+      "ionMinusVelocity": "1,058E0"
+    },
+    "63000": {
+      "electronConc": "9,086E4",
+      "ionPlusConc": "9,086E4",
+      "ionMinusConc": "3,526E3",
+      "totalConc": "1,853E5",
+      "electronVelocity": "4,623E5",
+      "ionPlusVelocity": "-7,561E-1",
+      "ionMinusVelocity": "1,141E0"
+    },
+    "64000": {
+      "electronConc": "8,123E4",
+      "ionPlusConc": "8,123E4",
+      "ionMinusConc": "2,916E3",
+      "totalConc": "1,654E5",
+      "electronVelocity": "4,674E5",
+      "ionPlusVelocity": "-6,562E-1",
+      "ionMinusVelocity": "1,214E0"
+    },
+    "65000": {
+      "electronConc": "7,254E4",
+      "ionPlusConc": "7,254E4",
+      "ionMinusConc": "2,409E3",
+      "totalConc": "1,475E5",
+      "electronVelocity": "4,719E5",
+      "ionPlusVelocity": "-5,676E-1",
+      "ionMinusVelocity": "1,28E0"
+    },
+    "66000": {
+      "electronConc": "6,473E4",
+      "ionPlusConc": "6,473E4",
+      "ionMinusConc": "1,989E3",
+      "totalConc": "1,314E5",
+      "electronVelocity": "4,759E5",
+      "ionPlusVelocity": "-4,89E-1",
+      "ionMinusVelocity": "1,338E0"
+    },
+    "67000": {
+      "electronConc": "5,771E4",
+      "ionPlusConc": "5,771E4",
+      "ionMinusConc": "1,64E3",
+      "totalConc": "1,171E5",
+      "electronVelocity": "4,795E5",
+      "ionPlusVelocity": "-4,193E-1",
+      "ionMinusVelocity": "1,389E0"
+    },
+    "68000": {
+      "electronConc": "5,141E4",
+      "ionPlusConc": "5,141E4",
+      "ionMinusConc": "1,352E3",
+      "totalConc": "1,042E5",
+      "electronVelocity": "4,826E5",
+      "ionPlusVelocity": "-3,575E-1",
+      "ionMinusVelocity": "1,435E0"
+    },
+    "69000": {
+      "electronConc": "4,577E4",
+      "ionPlusConc": "4,577E4",
+      "ionMinusConc": "1,113E3",
+      "totalConc": "9,265E4",
+      "electronVelocity": "4,854E5",
+      "ionPlusVelocity": "-3,027E-1",
+      "ionMinusVelocity": "1,475E0"
+    },
+    "70000": {
+      "electronConc": "4,073E4",
+      "ionPlusConc": "4,073E4",
+      "ionMinusConc": "9,165E2",
+      "totalConc": "8,237E4",
+      "electronVelocity": "1,109E6",
+      "ionPlusVelocity": "1,192E1",
+      "ionMinusVelocity": "9,823E0"
+    },
+    "71000": {
+      "electronConc": "3,622E4",
+      "ionPlusConc": "3,622E4",
+      "ionMinusConc": "7,541E2",
+      "totalConc": "7,32E4",
+      "electronVelocity": "4,128E5",
+      "ionPlusVelocity": "-1,725E0",
+      "ionMinusVelocity": "-2,474E-1"
+    },
+    "72000": {
+      "electronConc": "3,22E4",
+      "ionPlusConc": "3,22E4",
+      "ionMinusConc": "6,202E2",
+      "totalConc": "6,502E4",
+      "electronVelocity": "4,144E5",
+      "ionPlusVelocity": "-1,693E0",
+      "ionMinusVelocity": "-2,236E-1"
+    },
+    "73000": {
+      "electronConc": "2,862E4",
+      "ionPlusConc": "2,862E4",
+      "ionMinusConc": "5,099E2",
+      "totalConc": "5,774E4",
+      "electronVelocity": "4,159E5",
+      "ionPlusVelocity": "-1,664E0",
+      "ionMinusVelocity": "-2,026E-1"
+    },
+    "74000": {
+      "electronConc": "2,542E4",
+      "ionPlusConc": "2,542E4",
+      "ionMinusConc": "4,19E2",
+      "totalConc": "5,126E4",
+      "electronVelocity": "4,172E5",
+      "ionPlusVelocity": "-1,639E0",
+      "ionMinusVelocity": "-1,84E-1"
+    },
+    "75000": {
+      "electronConc": "2,258E4",
+      "ionPlusConc": "2,258E4",
+      "ionMinusConc": "3,442E2",
+      "totalConc": "4,55E4",
+      "electronVelocity": "4,183E5",
+      "ionPlusVelocity": "-1,617E0",
+      "ionMinusVelocity": "-1,675E-1"
+    },
+    "76000": {
+      "electronConc": "2,004E4",
+      "ionPlusConc": "2,004E4",
+      "ionMinusConc": "2,827E2",
+      "totalConc": "4,037E4",
+      "electronVelocity": "4,193E5",
+      "ionPlusVelocity": "-1,597E0",
+      "ionMinusVelocity": "-1,529E-1"
+    },
+    "77000": {
+      "electronConc": "1,779E4",
+      "ionPlusConc": "1,779E4",
+      "ionMinusConc": "2,322E2",
+      "totalConc": "3,581E4",
+      "electronVelocity": "4,202E5",
+      "ionPlusVelocity": "-1,579E0",
+      "ionMinusVelocity": "-1,399E-1"
+    },
+    "78000": {
+      "electronConc": "1,579E4",
+      "ionPlusConc": "1,579E4",
+      "ionMinusConc": "1,906E2",
+      "totalConc": "3,177E4",
+      "electronVelocity": "4,21E5",
+      "ionPlusVelocity": "-1,564E0",
+      "ionMinusVelocity": "-1,284E-1"
+    },
+    "79000": {
+      "electronConc": "1,401E4",
+      "ionPlusConc": "1,401E4",
+      "ionMinusConc": "1,565E2",
+      "totalConc": "2,817E4",
+      "electronVelocity": "4,217E5",
+      "ionPlusVelocity": "-1,55E0",
+      "ionMinusVelocity": "-1,182E-1"
+    },
+    "80000": {
+      "electronConc": "1,243E4",
+      "ionPlusConc": "1,243E4",
+      "ionMinusConc": "1,284E2",
+      "totalConc": "2,498E4",
+      "electronVelocity": "6,346E5",
+      "ionPlusVelocity": "2,618E0",
+      "ionMinusVelocity": "2,729E0"
+    }
+  }
+}

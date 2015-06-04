@@ -6,7 +6,7 @@
 	"nin0": 0,
 	"delta": 1000,
   	"epsilum": 0.001,
-  	"eternityFlux": 0.6E+4,
+  	"eternityFlux": 0.6E+5,
   	"timeInterval": 1,
 	"time": "13:00",
 	"botBoundary": 0,
