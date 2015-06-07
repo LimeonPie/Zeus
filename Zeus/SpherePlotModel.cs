@@ -138,7 +138,7 @@ namespace Zeus
                 double flux = 0;
                 string key = Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.ElementAt(0);
                 //flux = Engine.Engine.Instance.lowAtmosphere.photonFlux(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
-                flux = Engine.Engine.Instance.lowAtmosphere.photonFlux3(Engine.Engine.Instance.lowAtmosphere.activeElement, height);
+                flux = Engine.Engine.Instance.lowAtmosphere.photonFlux3(height);
                 //flux = Engine.Engine.Instance.lowAtmosphere.qNIST(Engine.Engine.Instance.lowAtmosphere.activeElement, height);
                 if (needLog) flux = Math.Log10(flux);
                 series.Points.Add(new DataPoint(flux, height));

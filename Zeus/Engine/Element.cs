@@ -58,16 +58,6 @@ namespace Zeus.Engine
             return result;
         }
 
-        public double integralN(double start, double end) {
-            double result;
-            double Ha = H(start);
-            double Hb = H(end);
-            double first = Math.Exp(-Ha * start);
-            double second = Math.Exp(-Hb * end);
-            result = (getNForHeight(start) / Ha) * (first - second);
-            return result;
-        }
-
         private double H(double height) {
             return (m * Constants.g / (Constants.R * Sphere.temperatureForHeight(height)));
         }

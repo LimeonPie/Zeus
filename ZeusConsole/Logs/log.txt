@@ -256,3 +256,26 @@
 04.06.2015 10:05:39: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
 04.06.2015 10:15:58: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
 04.06.2015 10:15:58: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+04.06.2015 18:37:44: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+04.06.2015 18:37:45: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+04.06.2015 18:53:54: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+04.06.2015 19:37:09: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+04.06.2015 19:37:13: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+04.06.2015 19:39:21: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+04.06.2015 19:41:48: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+04.06.2015 19:54:51: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+04.06.2015 19:54:51: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 8:19:31: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 8:29:23: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 8:30:08: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 8:30:09: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 8:30:40: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 8:30:40: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 8:32:59: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 8:32:59: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 8:43:47: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 12:38:36: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 12:38:37: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 12:39:59: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+07.06.2015 12:39:59: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
+07.06.2015 13:18:30: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
