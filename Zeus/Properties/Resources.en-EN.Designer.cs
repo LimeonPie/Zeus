@@ -61,6 +61,60 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performer: Minyaev I. D., student of CSE(b)-411.
+        /// </summary>
+        public static string AboutAuthorText {
+            get {
+                return ResourceManager.GetString("AboutAuthorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thesis of the topic &quot;Development and computer realization of mathematical model of vertical current formation between lithosphere and ionosphere of Earth&quot;.
+        /// </summary>
+        public static string AboutDiplomaText {
+            get {
+                return ResourceManager.GetString("AboutDiplomaText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail: ayli.veaynim@gmail.com.
+        /// </summary>
+        public static string AboutEmailText {
+            get {
+                return ResourceManager.GetString("AboutEmailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Murmansk, 2015.
+        /// </summary>
+        public static string AboutPlaceText {
+            get {
+                return ResourceManager.GetString("AboutPlaceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/LimeonPie/Zeus.
+        /// </summary>
+        public static string AboutSiteText {
+            get {
+                return ResourceManager.GetString("AboutSiteText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supervisor: Namgaladze A. A., professor of CSE facility.
+        /// </summary>
+        public static string AboutSupervisorText {
+            get {
+                return ResourceManager.GetString("AboutSupervisorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aerosol.
         /// </summary>
         public static string Aerosol {

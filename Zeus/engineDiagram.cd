@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zeus.Engine.Constants">
+    <Position X="14.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQEAQiAEgIAIBAAAABgAAAAAAAgAAAAYgEQABIAgAQA=</HashCode>
+      <FileName>Engine\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Element">
+    <Position X="6.75" Y="4.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACAACQAAAAAAAAAAAgAAEAAEAAwAAoQAAEABAAA=</HashCode>
+      <FileName>Engine\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Engine">
+    <Position X="7" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAIAEBAAgECBAIAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="lowAtmosphere" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zeus.Engine.Mathematical">
+    <Position X="9.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAoAAAAQABAhAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Engine\Mathematical.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Sphere">
+    <Position X="3.75" Y="0.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Events" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>TAICQAQAAADAIQQACQJwgAoAiQBEAAgVEEVggGAIgEA=</HashCode>
+      <FileName>Engine\Sphere.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="activeElement" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="aerosolElements" />
+      <Field Name="electronGrid" />
+      <Field Name="electronVelocityGrid" />
+      <Field Name="ionNegativeGrid" />
+      <Field Name="ionNegVelocityGrid" />
+      <Field Name="ionPositiveGrid" />
+      <Field Name="ionPosVelocityGrid" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Zeus.Engine.Time">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Zeus.Engine.inputData">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADQAAAgACAAAAAAAAgAAIAiAgAAAAAgAQAAEAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Zeus.Engine.outputData">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAEQAAAAgAAAAAAAAAAAAAEBAAAAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Zeus.Engine.additionalData">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Zeus.Engine.IterationUnit">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAEAAAAAAAAAAAAAAAACAAIAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Sphere.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

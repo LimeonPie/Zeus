@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutAuthorText" xml:space="preserve">
+    <value>Performer: Minyaev I. D., student of CSE(b)-411</value>
+  </data>
+  <data name="AboutDiplomaText" xml:space="preserve">
+    <value>Thesis of the topic "Development and computer realization of mathematical model of vertical current formation between lithosphere and ionosphere of Earth"</value>
+  </data>
+  <data name="AboutEmailText" xml:space="preserve">
+    <value>E-mail: ayli.veaynim@gmail.com</value>
+  </data>
+  <data name="AboutPlaceText" xml:space="preserve">
+    <value>Murmansk, 2015</value>
+  </data>
+  <data name="AboutSiteText" xml:space="preserve">
+    <value>https://github.com/LimeonPie/Zeus</value>
+  </data>
+  <data name="AboutSupervisorText" xml:space="preserve">
+    <value>Supervisor: Namgaladze A. A., professor of CSE facility</value>
+  </data>
   <data name="Aerosol" xml:space="preserve">
     <value>Aerosol</value>
   </data>

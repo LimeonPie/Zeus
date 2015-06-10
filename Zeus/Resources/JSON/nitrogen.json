@@ -7,7 +7,7 @@
 		"t": 273,	
 		"nPercent": 78.08,
 		"n0": 2E+25,
-		"recombCoeff": 5.9E-13,
+		"recombCoeff": 2.9E-13,
 		"radius": 92E-12,
 		"atomCrossSections": {
 			"1.000E+03": 6.014E-02, 

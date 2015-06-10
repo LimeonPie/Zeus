@@ -19,12 +19,6 @@ namespace Zeus.Engine
         // Масса электрона
         public static double eMass = 9.10938281E-31;
 
-        // Масса протона
-        public static double protonMass = 1.6726217E-27;
-
-        // Масса нейтрона
-        public static double neutronMass = 1.6749273E-27;
-
         // Элементарный электрический заряд
         public static double qe = 1.60217657E-19;
 
@@ -63,7 +57,7 @@ namespace Zeus.Engine
         public static double earthRotVel = 7.9221158553E-5;
  
         // Дельта t
-        public static double dt = 1;
+        public static double dt = 100;
 
         // Период времени
         public static int timeInterval = 1;

@@ -27,6 +27,7 @@ namespace Zeus
 
         public MainWindow() {
             InitializeComponent();
+            //hideVelocities();
             LogManager.Session.logMessage("Program is starting");
         }
 
@@ -54,6 +55,24 @@ namespace Zeus
             statusLabel.Content = message;
         }
 
+        private void hideVelocities() {
+            electronVelocityPlotView.Visibility = Visibility.Collapsed;
+            ionPlusVelocityPlotView.Visibility = Visibility.Collapsed;
+            ionMinusVelocityPlotView.Visibility = Visibility.Collapsed;
+            electronVelocityTab.Visibility = Visibility.Collapsed;
+            ionPlusVelocityTab.Visibility = Visibility.Collapsed;
+            ionMinusVelocityTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void showVelocities() {
+            electronVelocityPlotView.Visibility = Visibility.Visible;
+            ionPlusVelocityPlotView.Visibility = Visibility.Visible;
+            ionMinusVelocityPlotView.Visibility = Visibility.Visible;
+            electronVelocityTab.Visibility = Visibility.Visible;
+            ionPlusVelocityTab.Visibility = Visibility.Visible;
+            ionMinusVelocityTab.Visibility = Visibility.Visible;
+        }
+
         private void drawPlot() {
             //SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
             //plotView.Model = model.CurrentModel;
@@ -73,7 +92,7 @@ namespace Zeus
             SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE, needLog);
             allChargesPlotView.Model = allModel.CurrentModel;
 
-            SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog);
+            SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog); //PLOT.ELECTRON_VELOCITY_LINE
             electronVelocityPlotView.Model = electronVelocityModel.CurrentModel;
 
             SpherePlotModel ionPlusVelocityModel = new SpherePlotModel(PLOT.ION_PLUS_VELOCITY_LINE, needLog);
@@ -168,6 +187,11 @@ namespace Zeus
 
         private void OnRedraw(object sender, RoutedEventArgs e) {
             drawPlot();
+        }
+
+        private void OnAbout(object sender, RoutedEventArgs e) {
+            AboutWindow about = new AboutWindow();
+            about.Show();
         }
     }
 }

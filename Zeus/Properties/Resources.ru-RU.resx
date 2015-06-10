@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutAuthorText" xml:space="preserve">
+    <value>Исполнитель: Миняев И. Д., студент ИВТ(б)-411</value>
+  </data>
+  <data name="AboutDiplomaText" xml:space="preserve">
+    <value>Дипломная работа по теме "Разработка и компьютерная реализация математической модели формирования вертикальных токов между литосферой и ионосферой Земли"</value>
+  </data>
+  <data name="AboutEmailText" xml:space="preserve">
+    <value>Почта: ayli.veaynim@gmail.com</value>
+  </data>
+  <data name="AboutPlaceText" xml:space="preserve">
+    <value>Мурманск, 2015</value>
+  </data>
+  <data name="AboutSiteText" xml:space="preserve">
+    <value>Сайт: https://github.com/LimeonPie/Zeus</value>
+  </data>
+  <data name="AboutSupervisorText" xml:space="preserve">
+    <value>Руководитель: Намгаладзе А. А., профессор каф. ВМ и ПО ЭВМ</value>
+  </data>
   <data name="Aerosol" xml:space="preserve">
     <value>Аэрозоль</value>
   </data>

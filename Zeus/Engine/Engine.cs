@@ -60,7 +60,6 @@ namespace Zeus.Engine
     {
         private static Engine instance;
         public Sphere lowAtmosphere;
-        private string inputFilename;
 
         private Engine() {
             
@@ -76,7 +75,6 @@ namespace Zeus.Engine
         }
 
         public void initSphereWithInputFile(string path) {
-            inputFilename = path;
             Element active = loadActiveElement(ActiveElement.Nitrogen);
             inputData data = JsonWrapper.parseInputData(path);
             if (data.time != null) Time.usedTime = DateTime.Parse(data.time);
@@ -102,10 +100,6 @@ namespace Zeus.Engine
             return dict;
         }
 
-        public void setCoordinates(double longitude, double latitude) {
-            lowAtmosphere.changeCoordinates(longitude, latitude);
-        }
-
         public void saveToFile(string filename) {
             outputData[] data = new outputData[lowAtmosphere.capacity];
             additionalData info = new additionalData();
@@ -114,12 +108,12 @@ namespace Zeus.Engine
             for (int i = 0; i < lowAtmosphere.capacity; i++) {
                 data[i].height = i * lowAtmosphere.delta;
                 data[i].ne = lowAtmosphere.electronGrid[i].value;
-                data[i].nip = lowAtmosphere.ionPlusGrid[i].value;
-                data[i].nin = lowAtmosphere.ionMinusGrid[i].value;
+                data[i].nip = lowAtmosphere.ionPositiveGrid[i].value;
+                data[i].nin = lowAtmosphere.ionNegativeGrid[i].value;
                 data[i].total = data[i].ne + data[i].nip + data[i].nin;
                 data[i].neVel = lowAtmosphere.electronVelocityGrid[i].value;
-                data[i].nipVel = lowAtmosphere.ionPlusVelocityGrid[i].value;
-                data[i].ninVel = lowAtmosphere.ionMinusVelocityGrid[i].value;
+                data[i].nipVel = lowAtmosphere.ionPosVelocityGrid[i].value;
+                data[i].ninVel = lowAtmosphere.ionNegVelocityGrid[i].value;
             }
             if (filename != null && !filename.Equals(string.Empty)) {
                 JsonWrapper.writeJsonOutputData(data, info, filename);

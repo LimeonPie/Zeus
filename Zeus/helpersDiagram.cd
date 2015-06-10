@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zeus.Helpers.JsonWrapper">
+    <Position X="1" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABBgAAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgAg=</HashCode>
+      <FileName>Helpers\JsonWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Helpers.LogManager">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAASAAAAAAAQAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\LogManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Helpers.Validator">
+    <Position X="5.25" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Zeus.Helpers.VALIDATION_TYPE">
+    <Position X="7.25" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAAAAAAAAAAEAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Helpers\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

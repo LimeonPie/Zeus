@@ -279,3 +279,5 @@
 07.06.2015 12:39:59: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
 07.06.2015 12:39:59: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed
 07.06.2015 13:18:30: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+08.06.2015 9:00:33: Reading json file E:\Projects\Zeus\ZeusConsole\Resources\JSON\input.json
+08.06.2015 9:00:37: Writing E:\Projects\Zeus\ZeusConsole\Resources\JSON\output.json has been completed

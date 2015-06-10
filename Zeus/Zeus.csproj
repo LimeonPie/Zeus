@@ -78,7 +78,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SpherePlotModel.cs" />
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +144,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="engineDiagram.cd" />
+    <None Include="helpersDiagram.cd" />
     <None Include="Resources\JSON\nitro.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -144,8 +153,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="umlEngine.cd" />
-    <None Include="umlHelpers.cd" />
+    <None Include="viewDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

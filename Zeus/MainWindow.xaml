@@ -21,7 +21,7 @@
             <MenuItem Header="{x:Static l:Resources.ViewMenuText}"/>
             <MenuItem Header="{x:Static l:Resources.HelpMenuText}">
                 <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}"/>
-                <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}"/>
+                <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}" Click="OnAbout"/>
             </MenuItem>
         </Menu>
         <StatusBar x:Name="statusBar" Height="31" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">

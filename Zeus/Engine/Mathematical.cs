@@ -37,12 +37,6 @@ namespace Zeus.Engine
             }
         }
 
-        public static void concentrationArrayWithInitial(ref IterationUnit[] array, IterationUnit value) {
-            for (int i = 0; i < array.Length; i++) {
-                array[i] = value;
-            }
-        }
-
         public static double radiansToDegrees(double radians) {
             if (radians != 0) return (radians * 180 / Math.PI);
             else return 0; 

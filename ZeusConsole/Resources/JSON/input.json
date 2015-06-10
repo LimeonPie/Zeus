@@ -4,7 +4,7 @@
 	"ne0": 0,
 	"nip0": 0,
 	"nin0": 0,
-	"delta": 1000,
+	"delta": 100,
   	"epsilum": 0.001,
   	"eternityFlux": 0.6E+5,
   	"timeInterval": 1,
@@ -27,7 +27,7 @@
     		"index": 2,
     		"m": 18,
     		"nPercent": 13.9,
-    		"n0": 4E+7,
+    		"n0": 4E+9,
     		"t": 273,
     		"radius": 0.5E-4
   		}

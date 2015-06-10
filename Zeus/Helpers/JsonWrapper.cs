@@ -133,15 +133,15 @@ namespace Zeus.Helpers
             return result;
         }
 
-        public static void writeJson(Dictionary<int, double> dict, string filename) {
+        public static void writeJson(Dictionary<double, double> dict, string filename) {
             string path = Constants.appJsonPath + filename;
             StreamWriter sw = new StreamWriter(path);
             JsonWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.Indented;
             writer.WriteStartObject();
-            foreach (int key in dict.Keys) {
-                writer.WritePropertyName(key.ToString());
-                writer.WriteValue(dict[key].ToString());
+            foreach (double key in dict.Keys) {
+                writer.WritePropertyName(key.ToString("#.#####E0"));
+                writer.WriteValue(dict[key].ToString("#.#####E0"));
             }
             writer.WriteEndObject();
             sw.Close();
@@ -163,19 +163,19 @@ namespace Zeus.Helpers
                 writer.WritePropertyName(part.height.ToString());
                 writer.WriteStartObject();
                 writer.WritePropertyName("electronConc");
-                writer.WriteValue(part.ne.ToString("#.###E0"));
+                writer.WriteValue(part.ne.ToString("#.#####E0"));
                 writer.WritePropertyName("ionPlusConc");
-                writer.WriteValue(part.nip.ToString("#.###E0"));
+                writer.WriteValue(part.nip.ToString("#.#####E0"));
                 writer.WritePropertyName("ionMinusConc");
-                writer.WriteValue(part.nin.ToString("#.###E0"));
+                writer.WriteValue(part.nin.ToString("#.#####E0"));
                 writer.WritePropertyName("totalConc");
-                writer.WriteValue(part.total.ToString("#.###E0"));
+                writer.WriteValue(part.total.ToString("#.#####E0"));
                 writer.WritePropertyName("electronVelocity");
-                writer.WriteValue(part.neVel.ToString("#.###E0"));
+                writer.WriteValue(part.neVel.ToString("#.#####E0"));
                 writer.WritePropertyName("ionPlusVelocity");
-                writer.WriteValue(part.nipVel.ToString("#.###E0"));
+                writer.WriteValue(part.nipVel.ToString("#.#####E0"));
                 writer.WritePropertyName("ionMinusVelocity");
-                writer.WriteValue(part.ninVel.ToString("#.###E0"));
+                writer.WriteValue(part.ninVel.ToString("#.#####E0"));
                 writer.WriteEndObject();
             }
             writer.WriteEndObject();
