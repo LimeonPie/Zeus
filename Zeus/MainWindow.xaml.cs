@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -27,7 +29,8 @@ namespace Zeus
 
         public MainWindow() {
             InitializeComponent();
-            //hideVelocities();
+            hideVelocities();
+            progressBar.Visibility = Visibility.Hidden;
             LogManager.Session.logMessage("Program is starting");
         }
 
@@ -74,11 +77,7 @@ namespace Zeus
         }
 
         private void drawPlot() {
-            //SpherePlotModel model = new SpherePlotModel("test", Engine.Engine.Instance.lowAtmosphere.neGrid);
-            //plotView.Model = model.CurrentModel;
             bool needLog = false;
-            if (normalPlot.IsChecked == true) needLog = false;
-            else if (logPlot.IsChecked == true) needLog = true;
 
             SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE, needLog);
             electronPlotView.Model = electronModel.CurrentModel;
@@ -125,10 +124,41 @@ namespace Zeus
         }
 
         private void OnProgressValueChanged(object sender, SphereEventArgs e) {
-            double value = ((double)(e.state+1) / (double)Engine.Engine.Instance.lowAtmosphere.capacity) * 100;
-            writeToStatusBar(String.Format(Properties.Resources.CalculationsCurrentState, e.state));
-            progressBar.Value = value;
-            procentLabel.Content = Math.Round(value).ToString() + " %";
+            this.Dispatcher.Invoke(new Action(delegate() {
+                this.updateStatus(e);
+            }));
+        }
+
+        private void updateStatus(SphereEventArgs e) {
+            double statusPercentage = ((double)((int)e.state + 1) / (double)Engine.Engine.Instance.lowAtmosphere.capacity) * 100;
+            string status = string.Empty;
+            double number = 0;
+            switch (e.process) {
+                case PROCESS.CALCULATION_MAIN:
+                    status = Properties.Resources.CalculationsCurrentState;
+                    number = e.state;
+                    break;
+                case PROCESS.PRECALCULATION_N:
+                    status = Properties.Resources.PreCalculateNProgress;
+                    number = e.height;
+                    break;
+                case PROCESS.PRECALCULATION_Q:
+                    status = Properties.Resources.PreCalculateQProgress;
+                    number = e.height;
+                    break;
+                default:
+                    status = Properties.Resources.CalculationsCurrentState;
+                    number = e.state;
+                    break;
+            }
+            writeToStatusBar(String.Format(status, number));
+            progressBar.Value = statusPercentage;
+            procentLabel.Content = Math.Round(statusPercentage).ToString() + " %";
+            // Если все закончилось
+            if ((e.process == PROCESS.PRECALCULATION_Q) && (statusPercentage == 100)) {
+                writeToStatusBar(Properties.Resources.PreCalculationsEnd);
+                clearStatusWithDelay(2000);
+            }
         }
 
         private async void clearStatusWithDelay(int delay) {
@@ -136,6 +166,7 @@ namespace Zeus
             statusLabel.Content = "";
             procentLabel.Content = "";
             progressBar.Value = 0;
+            progressBar.Visibility = Visibility.Hidden;
         }
 
         private void OnSave(object sender, RoutedEventArgs e) {
@@ -163,7 +194,12 @@ namespace Zeus
             if (openFileDialog.ShowDialog() == true) {
                 LogManager.Session.logMessage("Opening " + openFileDialog.FileName + " input file");
                 try {
+                    progressBar.Visibility = Visibility.Visible;
                     Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
+                    Engine.Engine.Instance.lowAtmosphere.preCalculateNProgessChanged += OnProgressValueChanged;
+                    Engine.Engine.Instance.lowAtmosphere.preCalculateQProgessChanged += OnProgressValueChanged;
+                    Thread thread = new Thread(Engine.Engine.Instance.preCaluculate);
+                    thread.Start();
                     setInformation();
                     Engine.Engine.Instance.lowAtmosphere.stateCalculated += OnProgressValueChanged;
                     Engine.Engine.Instance.lowAtmosphere.calculationsDone += OnCalculationsEnded;
@@ -185,13 +221,14 @@ namespace Zeus
             this.Close();
         }
 
-        private void OnRedraw(object sender, RoutedEventArgs e) {
-            drawPlot();
-        }
-
         private void OnAbout(object sender, RoutedEventArgs e) {
             AboutWindow about = new AboutWindow();
             about.Show();
+        }
+
+        private void OnSettings(object sender, RoutedEventArgs e) {
+            SettingsWindow settings = new SettingsWindow();
+            settings.Show();
         }
     }
 }

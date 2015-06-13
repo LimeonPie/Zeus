@@ -529,6 +529,33 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Precalculating active element concentration on height  {0} ....
+        /// </summary>
+        public static string PreCalculateNProgress {
+            get {
+                return ResourceManager.GetString("PreCalculateNProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precalculating ionization rate on height  {0} ....
+        /// </summary>
+        public static string PreCalculateQProgress {
+            get {
+                return ResourceManager.GetString("PreCalculateQProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precalculations are done.
+        /// </summary>
+        public static string PreCalculationsEnd {
+            get {
+                return ResourceManager.GetString("PreCalculationsEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redraw.
         /// </summary>
         public static string Redraw {

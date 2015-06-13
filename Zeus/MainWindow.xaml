@@ -18,7 +18,9 @@
                 <MenuItem x:Name="copyEditMenu" Header="{x:Static l:Resources.EditCopyText}" Command="ApplicationCommands.Copy"/>
                 <MenuItem x:Name="pasteEditMenu" Header="{x:Static l:Resources.EditPasteText}"/>
             </MenuItem>
-            <MenuItem Header="{x:Static l:Resources.ViewMenuText}"/>
+            <MenuItem Header="{x:Static l:Resources.ViewMenuText}">
+                <MenuItem x:Name="settingsViewMenu" Header="{x:Static l:Resources.FileSettingsText}" Click="OnSettings"/>
+            </MenuItem>
             <MenuItem Header="{x:Static l:Resources.HelpMenuText}">
                 <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}"/>
                 <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}" Click="OnAbout"/>
@@ -118,11 +120,6 @@
                             <TextBlock x:Name="resultTextBlock" TextWrapping="Wrap" Margin="0,5,0,0"/>
                         </StackPanel>
                     </GroupBox>
-                    <StackPanel Height="27" Orientation="Horizontal" Margin="0,5,0,0">
-                        <RadioButton x:Name="normalPlot" Content="{x:Static l:Resources.NormalPlotMode}" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="82" IsChecked="True" GroupName="plotType"/>
-                        <RadioButton x:Name="logPlot" Content="{x:Static l:Resources.LogPlotMode}" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="82" GroupName="plotType"/>
-                        <Button x:Name="redrawButton" Content="{x:Static l:Resources.Redraw}" Margin="20,0,30,0" Width="81" Click="OnRedraw"/>
-                    </StackPanel>
                 </StackPanel>
             </GroupBox>
         </Grid>

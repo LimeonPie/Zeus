@@ -16,7 +16,16 @@ namespace Zeus.Engine
     public class SphereEventArgs : EventArgs
     {
         public int state { get; set; }
-        public double result { get; set; }
+        public double value { get; set; }
+        public double height { get; set; }
+        public PROCESS process { get; set; }
+    }
+
+    public enum PROCESS
+    {
+        PRECALCULATION_N,
+        PRECALCULATION_Q,
+        CALCULATION_MAIN,
     }
 
     public struct IterationUnit
@@ -35,7 +44,6 @@ namespace Zeus.Engine
 
     public class Sphere
     {
-
         public double botBoundary;
         public double topBoundary;
         public double longitude;
@@ -69,6 +77,8 @@ namespace Zeus.Engine
 
         public event EventHandler<SphereEventArgs> stateCalculated;
         public event EventHandler<SphereEventArgs> calculationsDone;
+        public event EventHandler<SphereEventArgs> preCalculateNProgessChanged;
+        public event EventHandler<SphereEventArgs> preCalculateQProgessChanged;
 
         public Sphere(inputData data, Element active) {
             this.ne0 = data.ne0;
@@ -100,7 +110,9 @@ namespace Zeus.Engine
                 ionPosVelocityGrid[i] = new IterationUnit(data.velocity, false);
                 ionNegVelocityGrid[i] = new IterationUnit(data.velocity, false);
             }
+        }
 
+        public void preCalculateData() {
             // Предвычисление полных концентраций и
             // потока частицы на разной высоте
             fullNCalculated = new Dictionary<double, double>();
@@ -125,19 +137,47 @@ namespace Zeus.Engine
             }
         }
 
+        protected virtual void OnPreCalculateNProgressChanged(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = preCalculateNProgessChanged;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnPreCalculateQProgressChanged(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = preCalculateQProgessChanged;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
         // Рассчитываем полные концентрации на всех высотых
         private void preCalculateN() {
             for (int step = 0; step < capacity; step++) {
-                double level = step * delta;
-                fullNCalculated.Add(level, activeElement.getFullNFromHeight(level));
+                double height = step * delta;
+                double value = activeElement.getFullNFromHeight(height);
+                fullNCalculated.Add(height, value);
+                SphereEventArgs args = new SphereEventArgs();
+                args.height = height;
+                args.state = step;
+                args.value = value;
+                args.process = PROCESS.PRECALCULATION_N;
+                OnPreCalculateNProgressChanged(args);
             }
         }
 
         // Рассчитываем ионизацию на всех высотах
         private void preCalculateQ() {
             for (int step = 0; step < capacity; step++) {
-                double level = step * delta;
-                qCalculated.Add(level, q3(level));
+                double height = step * delta;
+                double value = q3(height);
+                qCalculated.Add(height, value);
+                SphereEventArgs args = new SphereEventArgs();
+                args.height = height;
+                args.state = step;
+                args.value = value;
+                args.process = PROCESS.PRECALCULATION_Q;
+                OnPreCalculateQProgressChanged(args);
             }
         }
 
@@ -227,14 +267,18 @@ namespace Zeus.Engine
                 // Вызываем эвент о каждой стадии
                 SphereEventArgs args = new SphereEventArgs();
                 args.state = i;
-                args.result = result;
+                args.value = result;
+                args.height = height;
+                args.process = PROCESS.CALCULATION_MAIN;
                 OnStateCalculated(args);
             }
             allVelocities();
             // Сообщаем что закончили вычисления
             SphereEventArgs finalArgs = new SphereEventArgs();
             finalArgs.state = capacity;
-            finalArgs.result = result;
+            finalArgs.value = result;
+            finalArgs.height = height;
+            finalArgs.process = PROCESS.CALCULATION_MAIN;
             OnCalculationsDone(finalArgs);
             totalContent = result;
             return result;

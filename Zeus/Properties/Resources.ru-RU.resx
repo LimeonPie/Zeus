@@ -145,7 +145,7 @@
     <value>Все</value>
   </data>
   <data name="CalculationsCurrentState" xml:space="preserve">
-    <value>Считаю {0} стадию...</value>
+    <value>Считаю {0} узел...</value>
   </data>
   <data name="CalculationsEndAlertDescText" xml:space="preserve">
     <value>Вычисления завершены, нажмите OK чтобы продолжить работу с программой</value>
@@ -272,6 +272,15 @@
   </data>
   <data name="PositiveIonShort" xml:space="preserve">
     <value>Ионы+</value>
+  </data>
+  <data name="PreCalculateNProgress" xml:space="preserve">
+    <value>Рассчитываю концентрацию активного элемента на высоте  {0} ...</value>
+  </data>
+  <data name="PreCalculateQProgress" xml:space="preserve">
+    <value>Рассчитываю скорость ионизации на высоте  {0} ...</value>
+  </data>
+  <data name="PreCalculationsEnd" xml:space="preserve">
+    <value>Предварительные вычисления завершены</value>
   </data>
   <data name="Redraw" xml:space="preserve">
     <value>Отрисовка</value>

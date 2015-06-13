@@ -85,10 +85,12 @@ namespace Zeus.Engine
             lowAtmosphere = new Sphere(data, active);
         }
 
-        public double launchComputations() {
+        public void preCaluculate() {
+            lowAtmosphere.preCalculateData();
+        }
+
+        public void launchComputations() {
             lowAtmosphere.n();
-            double electricity = lowAtmosphere.electricity();
-            return electricity;
         }
 
         public double getElectro() {

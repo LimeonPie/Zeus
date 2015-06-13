@@ -273,6 +273,15 @@
   <data name="PositiveIonShort" xml:space="preserve">
     <value>Ion+</value>
   </data>
+  <data name="PreCalculateNProgress" xml:space="preserve">
+    <value>Precalculating active element concentration on height  {0} ...</value>
+  </data>
+  <data name="PreCalculateQProgress" xml:space="preserve">
+    <value>Precalculating ionization rate on height  {0} ...</value>
+  </data>
+  <data name="PreCalculationsEnd" xml:space="preserve">
+    <value>Precalculations are done</value>
+  </data>
   <data name="Redraw" xml:space="preserve">
     <value>Redraw</value>
   </data>

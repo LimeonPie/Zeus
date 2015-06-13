@@ -706,3 +706,62 @@
 09.06.2015 14:08:26: Writing E:\Projects\Zeus\Zeus\Resources\JSON\12.json has been completed
 09.06.2015 21:34:47: Program is starting
 09.06.2015 21:47:48: Program is starting
+13.06.2015 8:31:19: Program is starting
+13.06.2015 8:32:33: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 8:32:34: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 8:57:24: Program is starting
+13.06.2015 8:57:29: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 8:57:30: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 8:59:56: Program is starting
+13.06.2015 9:00:01: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:00:02: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:05:37: Program is starting
+13.06.2015 9:05:41: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:05:41: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:06:47: Program is starting
+13.06.2015 9:06:51: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:06:51: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:10:00: Program is starting
+13.06.2015 9:10:05: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:10:05: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:19:01: Program is starting
+13.06.2015 9:19:15: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:19:16: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:19:50: Program is starting
+13.06.2015 9:19:53: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:19:54: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:20:13: Program is starting
+13.06.2015 9:20:16: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:20:16: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:22:25: Program is starting
+13.06.2015 9:22:41: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:22:41: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:37:53: Program is starting
+13.06.2015 9:37:59: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:37:59: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:38:13: Program is starting
+13.06.2015 9:38:16: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:38:17: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 9:40:07: Program is starting
+13.06.2015 9:40:12: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 9:40:13: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:34:55: Program is starting
+13.06.2015 10:35:01: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:35:01: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:46:08: Program is starting
+13.06.2015 10:46:12: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:46:12: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:48:46: Program is starting
+13.06.2015 10:48:50: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:48:51: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:49:53: Program is starting
+13.06.2015 10:49:58: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:52:57: Program is starting
+13.06.2015 10:53:01: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:53:01: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:57:21: Program is starting
+13.06.2015 10:57:27: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:57:27: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+13.06.2015 10:59:47: Program is starting
+13.06.2015 10:59:53: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+13.06.2015 10:59:53: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
