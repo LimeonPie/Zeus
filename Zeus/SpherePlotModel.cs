@@ -115,7 +115,7 @@ namespace Zeus
             }
         }
 
-        public void createPressureModel(bool needLog) {
+        private void createPressureModel(bool needLog) {
             this.CurrentModel.Title = "Pressure";
 
             LinearAxis xAxis = new LinearAxis() {
@@ -150,7 +150,7 @@ namespace Zeus
         }
 
 
-        public void createFluxModel(bool needLog) {
+        private void createFluxModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.EternityFlux;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -175,17 +175,14 @@ namespace Zeus
             for (int i = 0; i < capacity; i++) {
                 double height = i * delta;
                 double flux = 0;
-                string key = Engine.Engine.Instance.lowAtmosphere.activeElement.photonCrossSections.Keys.ElementAt(0);
-                //flux = Engine.Engine.Instance.lowAtmosphere.photonFlux(Engine.Engine.Instance.lowAtmosphere.activeElement, key, height);
                 flux = Engine.Engine.Instance.lowAtmosphere.photonFlux3(height);
-                //flux = Engine.Engine.Instance.lowAtmosphere.qNIST(Engine.Engine.Instance.lowAtmosphere.activeElement, height);
                 if (needLog) flux = Math.Log10(flux);
                 series.Points.Add(new DataPoint(flux, height));
             }
             this.CurrentModel.Series.Add(series);
         }
 
-        public void createElectronPolyLineModel(bool needLog) {
+        private void createElectronPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.ElectronConc;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -243,7 +240,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(xAxis);
         }
 
-        public void createIonPlusPolyLineModel(bool needLog) {
+        private void createIonPlusPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.PositiveIonConc;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -301,7 +298,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(xAxis);
         }
 
-        public void createIonMinusPolyLineModel(bool needLog) {
+        private void createIonMinusPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.NegativeIonConc;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -359,7 +356,7 @@ namespace Zeus
             this.CurrentModel.Axes.Add(xAxis);
         }
 
-        public void createAllPolyLineModel(bool needLog) {
+        private void createAllPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.AllChargesConc;
             this.CurrentModel.LegendPlacement = LegendPlacement.Outside;
             this.CurrentModel.LegendPosition = LegendPosition.BottomCenter;
@@ -534,7 +531,7 @@ namespace Zeus
             this.CurrentModel.Series.Add(series);
         }
 
-        public void createElectronVelocityPolyLineModel(bool needLog) {
+        private void createElectronVelocityPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.ElectronVelocity;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -564,7 +561,7 @@ namespace Zeus
             this.CurrentModel.Series.Add(series);
         }
 
-        public void createIonPlusVelocityPolyLineModel(bool needLog) {
+        private void createIonPlusVelocityPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.IonPlusVelocity;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -594,7 +591,7 @@ namespace Zeus
             this.CurrentModel.Series.Add(series);
         }
 
-        public void createIonMinusVelocityPolyLineModel(bool needLog) {
+        private void createIonMinusVelocityPolyLineModel(bool needLog) {
             this.CurrentModel.Title = Zeus.Properties.Resources.IonMinusVelocity;
 
             LinearAxis xAxis = new LinearAxis() {
@@ -624,7 +621,7 @@ namespace Zeus
             this.CurrentModel.Series.Add(series);
         }
 
-        public void createTemperatureHeatModel() {
+        private void createTemperatureHeatModel() {
             this.CurrentModel.Title = Zeus.Properties.Resources.TemperatureDistribution;
 
             LinearAxis xAxis = new LinearAxis() {

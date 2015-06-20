@@ -2,8 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:Zeus.Properties"
-        Title="{x:Static l:Resources.FileSettingsText}" Height="335.106" Width="435.106">
+        Title="{x:Static l:Resources.FileSettingsText}" Height="335.106" Width="435.106" Icon="Resources/Images/icon.png" FontSize="14">
     <Grid>
-        
+        <StackPanel Margin="0,1,0,0">
+            <StackPanel>
+                <Label Content="{x:Static l:Resources.PlotMeasurements}"/>
+                <RadioButton x:Name="normalPlotMode" Content="{x:Static l:Resources.NormalPlotMode}" GroupName="PlotMode" IsChecked="True" Margin="20,0,0,0"/>
+                <RadioButton x:Name="logPlotMode" Content="{x:Static l:Resources.LogPlotMode}" GroupName="PlotMode" Margin="20,0,0,0"/>
+            </StackPanel>
+            <CheckBox x:Name="additionalPlots" Content="{x:Static l:Resources.AdditionPlotsEnable}" Margin="5,10,0,0"/>
+            <CheckBox x:Name="specifyPlaceToSave" Content="{x:Static l:Resources.ShowSaveDialogEnable}" Margin="5,10,0,0" IsChecked="True"/>
+        </StackPanel>
+
     </Grid>
 </Window>

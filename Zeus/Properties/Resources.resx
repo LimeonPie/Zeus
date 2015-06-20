@@ -135,6 +135,9 @@
   <data name="AboutSupervisorText" xml:space="preserve">
     <value>Supervisor: Namgaladze A. A., professor of CSE facility</value>
   </data>
+  <data name="AdditionPlotsEnable" xml:space="preserve">
+    <value>Show additional plots</value>
+  </data>
   <data name="Aerosol" xml:space="preserve">
     <value>Aerosol</value>
   </data>
@@ -226,7 +229,7 @@
     <value>Height</value>
   </data>
   <data name="HelpAboutText" xml:space="preserve">
-    <value>About</value>
+    <value>About Zeus</value>
   </data>
   <data name="HelpInfoText" xml:space="preserve">
     <value>View Help</value>
@@ -245,6 +248,9 @@
   </data>
   <data name="LaunchButtonText" xml:space="preserve">
     <value>Launch</value>
+  </data>
+  <data name="LaunchTooltip" xml:space="preserve">
+    <value>Launch computations</value>
   </data>
   <data name="LogPlotMode" xml:space="preserve">
     <value>Log</value>
@@ -266,6 +272,12 @@
   </data>
   <data name="NormalPlotMode" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="OpenFileTooltip" xml:space="preserve">
+    <value>Choose input file</value>
+  </data>
+  <data name="PlotMeasurements" xml:space="preserve">
+    <value>Measurements:</value>
   </data>
   <data name="PositiveIonConc" xml:space="preserve">
     <value>Positive Ion Concentration</value>
@@ -290,6 +302,9 @@
   </data>
   <data name="SaveStatusSucces" xml:space="preserve">
     <value>File has been succesfully saved</value>
+  </data>
+  <data name="ShowSaveDialogEnable" xml:space="preserve">
+    <value>Specify the location to save</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Temperature</value>

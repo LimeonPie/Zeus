@@ -135,8 +135,11 @@
   <data name="AboutSupervisorText" xml:space="preserve">
     <value>Руководитель: Намгаладзе А. А., профессор каф. ВМ и ПО ЭВМ</value>
   </data>
+  <data name="AdditionPlotsEnable" xml:space="preserve">
+    <value>Отобразить дополнительные графики</value>
+  </data>
   <data name="Aerosol" xml:space="preserve">
-    <value>Аэрозоль</value>
+    <value>Аэрозоли</value>
   </data>
   <data name="AllChargesConc" xml:space="preserve">
     <value>Концентрации всех частиц</value>
@@ -246,6 +249,9 @@
   <data name="LaunchButtonText" xml:space="preserve">
     <value>Запустить</value>
   </data>
+  <data name="LaunchTooltip" xml:space="preserve">
+    <value>Запустить вычисления</value>
+  </data>
   <data name="LogPlotMode" xml:space="preserve">
     <value>Логарифм</value>
   </data>
@@ -266,6 +272,12 @@
   </data>
   <data name="NormalPlotMode" xml:space="preserve">
     <value>Обычный</value>
+  </data>
+  <data name="OpenFileTooltip" xml:space="preserve">
+    <value>Выберите входной файл</value>
+  </data>
+  <data name="PlotMeasurements" xml:space="preserve">
+    <value>Измерения:</value>
   </data>
   <data name="PositiveIonConc" xml:space="preserve">
     <value>Концентрация положительных ионов</value>
@@ -290,6 +302,9 @@
   </data>
   <data name="SaveStatusSucces" xml:space="preserve">
     <value>Файл успешно сохранен</value>
+  </data>
+  <data name="ShowSaveDialogEnable" xml:space="preserve">
+    <value>Указывать место для сохранения</value>
   </data>
   <data name="Temperature" xml:space="preserve">
     <value>Температура</value>

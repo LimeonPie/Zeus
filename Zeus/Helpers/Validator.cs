@@ -17,7 +17,9 @@ namespace Zeus.Helpers
 		LONGITUDE,
 		LATITUDE,
 		CONCENTRATION,
-		HEIGHT
+        VELOCITY,
+		HEIGHT,
+        TIME,
 	};
 
 	public static class Validator 

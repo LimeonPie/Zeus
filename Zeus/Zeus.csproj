@@ -160,6 +160,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="thesisHelpersDiagram.cd" />
     <None Include="viewDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\about.png" />
+    <Resource Include="Resources\Images\save.png" />
+    <Resource Include="Resources\Images\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

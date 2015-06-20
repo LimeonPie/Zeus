@@ -194,6 +194,7 @@ namespace Zeus
             if (openFileDialog.ShowDialog() == true) {
                 LogManager.Session.logMessage("Opening " + openFileDialog.FileName + " input file");
                 try {
+                    launchButton.IsEnabled = true;
                     progressBar.Visibility = Visibility.Visible;
                     Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
                     Engine.Engine.Instance.lowAtmosphere.preCalculateNProgessChanged += OnProgressValueChanged;

@@ -3,27 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:Zeus.Properties"
         xmlns:oxy="http://oxyplot.org/wpf" x:Name="mainWindow" x:Class="Zeus.MainWindow"
-        Title="{x:Static l:Resources.MainWindowTitle}" Height="600" Width="800" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinWidth="800" MinHeight="600">
+        Title="{x:Static l:Resources.MainWindowTitle}" Height="600" Width="800" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinWidth="800" MinHeight="600" Icon="Resources/Images/icon.png">
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
             <MenuItem Header="{x:Static l:Resources.FileMenuText}">
-                <MenuItem x:Name="openFileMenu" Header="{x:Static l:Resources.FileOpenText}" Click="OnOpenFile"/>
-                <MenuItem x:Name="saveFileMenu" Header="{x:Static l:Resources.FileSaveText}" Click="OnSave"/>
-                <MenuItem x:Name="closeFileMenu" Header="{x:Static l:Resources.FileCloseText}" Click="OnClose"/>
-            </MenuItem>
-            <MenuItem Header="{x:Static l:Resources.EditMenuText}">
-                <MenuItem x:Name="undoEditMenu" Header="{x:Static l:Resources.EditUndoText}" Command="ApplicationCommands.Undo"/>
-                <MenuItem x:Name="redoEditMenu" Header="{x:Static l:Resources.EditRedoText}" Command="ApplicationCommands.Redo"/>
-                <MenuItem x:Name="cutEditMenu" Header="{x:Static l:Resources.EditCutText}"/>
-                <MenuItem x:Name="copyEditMenu" Header="{x:Static l:Resources.EditCopyText}" Command="ApplicationCommands.Copy"/>
-                <MenuItem x:Name="pasteEditMenu" Header="{x:Static l:Resources.EditPasteText}"/>
+                <MenuItem x:Name="openFileMenu" Header="{x:Static l:Resources.FileOpenText}" Click="OnOpenFile">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/open.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="saveFileMenu" Header="{x:Static l:Resources.FileSaveText}" Click="OnSave">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/save.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="closeFileMenu" Header="{x:Static l:Resources.FileCloseText}" Click="OnClose">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/close.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="{x:Static l:Resources.ViewMenuText}">
-                <MenuItem x:Name="settingsViewMenu" Header="{x:Static l:Resources.FileSettingsText}" Click="OnSettings"/>
+                <MenuItem x:Name="settingsViewMenu" Header="{x:Static l:Resources.FileSettingsText}" Click="OnSettings">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/settings.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="{x:Static l:Resources.HelpMenuText}">
-                <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}"/>
-                <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}" Click="OnAbout"/>
+                <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/help.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="aboutHelpMenu" Header="{x:Static l:Resources.HelpAboutText}" Click="OnAbout">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/about.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <StatusBar x:Name="statusBar" Height="31" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
@@ -101,7 +118,7 @@
                 <StackPanel Width="275" Margin="0,1,-2,-1">
                     <StackPanel Height="27" Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="{x:Static l:Resources.ElementContentText}" Width="161"/>
-                        <Button x:Name="inputFileButton" Content="{x:Static l:Resources.FileOpenText}" Margin="20,0,30,0" Width="81" Click="OnOpenFile"/>
+                        <Button x:Name="inputFileButton" Content="{x:Static l:Resources.FileOpenText}" Margin="20,0,30,0" Width="81" Click="OnOpenFile" ToolTip="{x:Static l:Resources.OpenFileTooltip}"/>
                     </StackPanel>
                     <GroupBox Header="{x:Static l:Resources.DataText}" Height="260" Margin="0,9.7,0,0">
                         <StackPanel Margin="0,-1,-2,-3" Width="265">
@@ -114,7 +131,7 @@
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
-                    <Button x:Name="calculateButton" Content="{x:Static l:Resources.LaunchButtonText}" Margin="0,10,10,0" HorizontalAlignment="Right" Width="100" Height="27" Click="OnLaunch"/>
+                    <Button x:Name="launchButton" Content="{x:Static l:Resources.LaunchButtonText}" Margin="0,10,10,0" HorizontalAlignment="Right" Width="100" Height="27" Click="OnLaunch" IsEnabled="False" ToolTip="{x:Static l:Resources.LaunchTooltip}"/>
                     <GroupBox x:Name="resultBox" Header="{x:Static l:Resources.ResultText}" Height="76" Margin="0,10,0,0">
                         <StackPanel Margin="0,0,-2,0" Width="265">
                             <TextBlock x:Name="resultTextBlock" TextWrapping="Wrap" Margin="0,5,0,0"/>

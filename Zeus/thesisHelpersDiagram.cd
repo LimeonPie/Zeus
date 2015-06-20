@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zeus.Engine.Mathematical">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAoAAAAQABAhAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Engine\Mathematical.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Constants">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQEAQiAEgIAIBAAAABgAAAAAAAgAAAAYgEQABIAgAQA=</HashCode>
+      <FileName>Engine\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Engine.Time">
+    <Position X="6.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Helpers.JsonWrapper">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABBgAAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgAg=</HashCode>
+      <FileName>Helpers\JsonWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Helpers.LogManager">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAASAAAAAAAQAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\LogManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeus.Helpers.Validator">
+    <Position X="6.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Zeus.Engine.inputData">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADQAAAgACAAAAAAAAgAAIAiAgAAAAAgAQAAEAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Zeus.Engine.outputData">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAEQAAAAgAAAAAAAAAAAAAEBAAAAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Zeus.Engine.additionalData">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Zeus.Helpers.VALIDATION_TYPE">
+    <Position X="2.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAhAAAAAAAAAAAAUAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Helpers\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -115,6 +115,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show additional plots.
+        /// </summary>
+        public static string AdditionPlotsEnable {
+            get {
+                return ResourceManager.GetString("AdditionPlotsEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aerosol.
         /// </summary>
         public static string Aerosol {
@@ -385,7 +394,7 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to About Zeus.
         /// </summary>
         public static string HelpAboutText {
             get {
@@ -444,6 +453,15 @@ namespace Zeus.Properties {
         public static string LaunchButtonText {
             get {
                 return ResourceManager.GetString("LaunchButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launch computations.
+        /// </summary>
+        public static string LaunchTooltip {
+            get {
+                return ResourceManager.GetString("LaunchTooltip", resourceCulture);
             }
         }
         
@@ -507,6 +525,24 @@ namespace Zeus.Properties {
         public static string NormalPlotMode {
             get {
                 return ResourceManager.GetString("NormalPlotMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose input file.
+        /// </summary>
+        public static string OpenFileTooltip {
+            get {
+                return ResourceManager.GetString("OpenFileTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measurements:.
+        /// </summary>
+        public static string PlotMeasurements {
+            get {
+                return ResourceManager.GetString("PlotMeasurements", resourceCulture);
             }
         }
         
@@ -579,6 +615,15 @@ namespace Zeus.Properties {
         public static string SaveStatusSucces {
             get {
                 return ResourceManager.GetString("SaveStatusSucces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify the location to save.
+        /// </summary>
+        public static string ShowSaveDialogEnable {
+            get {
+                return ResourceManager.GetString("ShowSaveDialogEnable", resourceCulture);
             }
         }
         

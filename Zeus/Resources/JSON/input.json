@@ -4,7 +4,7 @@
 	"ne0": 0,
 	"nip0": 0,
 	"nin0": 0,
-	"delta": 10,
+	"delta": 1000,
   	"epsilum": 0.001,
   	"eternityFlux": 0.6E+5,
   	"timeInterval": 1,
@@ -15,15 +15,15 @@
 	"aerosols": {
 		"Dust": {
     		"name": "Dust",
-    		"m": 25,
-    		"n0": 1.8E+7,
+    		"m": 57,
+    		"n0": 1.8E+8,
     		"t": 273,
     		"radius": 0.001E-4,
   		},
   		"Water" : {
   			"name": "Water",
     		"m": 18,
-    		"n0": 4E+8,
+    		"n0": 4E+10,
     		"t": 273,
     		"radius": 0.5E-4
   		}

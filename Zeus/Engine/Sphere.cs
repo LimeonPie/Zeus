@@ -224,7 +224,6 @@ namespace Zeus.Engine
                     double ionsPlus = ionPositiveGrid[i].value + Constants.dt * (ionPositiveGrid[i].creation - ionPositiveGrid[i].loss);
                     double ionsMinus = ionNegativeGrid[i].value + Constants.dt * (ionNegativeGrid[i].creation - ionNegativeGrid[i].loss);
 
-                    //double electrons = ne(i, electronGrid[i].value, height);
                     if (electronGrid[i].isSuits == false) {
                         if (Mathematical.compareWithFault(electrons, electronGrid[i].value, epsilum)) {
                             electronGrid[i].value = electrons;
@@ -236,7 +235,6 @@ namespace Zeus.Engine
                         }
                     }
 
-                    //double ionsPlus = niPositive(i, ionPlusGrid[i].value, height);
                     if (ionPositiveGrid[i].isSuits == false) {
                         if (Mathematical.compareWithFault(ionsPlus, ionPositiveGrid[i].value, epsilum)) {
                             ionPositiveGrid[i].value = ionsPlus;
@@ -248,7 +246,6 @@ namespace Zeus.Engine
                         }
                     }
 
-                    //double ionsMinus = niNegative(i, ionMinusGrid[i].value, height);
                     if (ionNegativeGrid[i].isSuits == false) {
                         if (Mathematical.compareWithFault(ionsMinus, ionNegativeGrid[i].value, epsilum)) {
                             ionNegativeGrid[i].value = ionsMinus;
@@ -314,12 +311,10 @@ namespace Zeus.Engine
         // Скорость от двух узлов, верхнего и нижнего
         public double velocity2(double velPrev, double nPrev, double nCur, double nNext, double mass, double height) {
             double result = 0;
-            double tCur = 273; // temperatureForHeight(height);
             double tPrev = 273; // temperatureForHeight(height - delta);
             double tNext = 273; // temperatureForHeight(height + delta);
-            double p0 = (p(nCur, tCur) - p(nPrev, tPrev)) / delta;
-            double p1 = (p(nNext, tNext) - p(nCur, tCur)) / delta;
-            double gradient = ((p(nCur, tCur) - p(nPrev, tPrev))/delta + (p(nNext, tNext) - p(nCur, tCur))/delta)/2;
+            double pressure = (p(nNext, tNext) - p(nPrev, tPrev)) / delta;
+            double gradient = pressure/2;
 
             result += velPrev + Constants.dt * (-gradient / (mass * nCur) - Constants.g);
             return result;
@@ -421,9 +416,6 @@ namespace Zeus.Engine
         // По Ермакову, Стожкову
         public double photonFlux3(double height) {
             double flux = Constants.absorption * fullNCalculated[height];
-            /*double hi = Mathematical.hi(latitude, longitude);
-            double tay = Mathematical.sec(hi) * flux;
-            double exp = Math.Exp(-tay);*/
             double exp = Math.Exp(-flux);
             double result = Constants.eternityFlux * exp;
             return result;

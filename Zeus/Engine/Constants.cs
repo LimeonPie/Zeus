@@ -57,7 +57,7 @@ namespace Zeus.Engine
         public static double earthRotVel = 7.9221158553E-5;
  
         // Дельта t
-        public static double dt = 100;
+        public static double dt = 1;
 
         // Период времени
         public static int timeInterval = 1;

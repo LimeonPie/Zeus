@@ -153,10 +153,6 @@ namespace Zeus.Helpers
             JsonWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.Indented;
             writer.WriteStartObject();
-            writer.WritePropertyName("electricity");
-            writer.WriteValue(info.electricity.ToString("#.###E0"));
-            writer.WritePropertyName("date");
-            writer.WriteValue(info.date);
             writer.WritePropertyName("concentrations");
             writer.WriteStartObject();
             foreach (outputData part in data) {
@@ -179,6 +175,10 @@ namespace Zeus.Helpers
                 writer.WriteEndObject();
             }
             writer.WriteEndObject();
+            writer.WritePropertyName("electricity");
+            writer.WriteValue(info.electricity.ToString("#.###E0"));
+            writer.WritePropertyName("date");
+            writer.WriteValue(info.date);
             writer.WriteEndObject();
             sw.Close();
             LogManager.Session.logMessage("Writing " + path + " has been completed");
