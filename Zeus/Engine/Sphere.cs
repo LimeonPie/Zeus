@@ -9,9 +9,11 @@ using Zeus.Helpers;
 namespace Zeus.Engine
 {
 	
-	// Класс сферы, черт знает почему такое название
-	// Ассоциация со слоем атмофсферы Земли, там все процессы происходят
-	// Так или иначе, здесь происходят вычисления концентраций частиц и тока
+	// Основной вычислительный класс
+    // Занимается вычислением концентраций, скоростей
+    // Ну и тока само собой
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
 
     public class SphereEventArgs : EventArgs
     {
@@ -63,11 +65,9 @@ namespace Zeus.Engine
         public IterationUnit[] ionNegativeGrid;
         public double totalContent;
         public IterationUnit[] electronVelocityGrid;
-        public double neVel0;
         public IterationUnit[] ionPosVelocityGrid;
-        public double nipVel0;
         public IterationUnit[] ionNegVelocityGrid;
-        public double ninVel0;
+        public double velocitity0;
         public List<Element> aerosolElements;
         public Dictionary<double, double> fullNCalculated;
         public Dictionary<double, double> qCalculated;
@@ -84,6 +84,7 @@ namespace Zeus.Engine
             this.ne0 = data.ne0;
             this.nip0 = data.nip0;
             this.nin0 = data.nin0;
+            this.velocitity0 = data.velocity;
             this.delta = data.delta;
             this.botBoundary = data.botBoundary;
             this.topBoundary = data.topBoundary;
@@ -101,14 +102,17 @@ namespace Zeus.Engine
             electronVelocityGrid = new IterationUnit[this.capacity];
             ionPosVelocityGrid = new IterationUnit[this.capacity];
             ionNegVelocityGrid = new IterationUnit[this.capacity];
-            
+            preCalculateData();
+        }
+
+        private void refreshGrids() {
             for (int i = 0; i < this.capacity; i++) {
                 electronGrid[i] = new IterationUnit(ne0, false);
                 ionPositiveGrid[i] = new IterationUnit(nip0, false);
                 ionNegativeGrid[i] = new IterationUnit(nin0, false);
-                electronVelocityGrid[i] = new IterationUnit(data.velocity, false);
-                ionPosVelocityGrid[i] = new IterationUnit(data.velocity, false);
-                ionNegVelocityGrid[i] = new IterationUnit(data.velocity, false);
+                electronVelocityGrid[i] = new IterationUnit(velocitity0, false);
+                ionPosVelocityGrid[i] = new IterationUnit(velocitity0, false);
+                ionNegVelocityGrid[i] = new IterationUnit(velocitity0, false);
             }
         }
 
@@ -120,35 +124,6 @@ namespace Zeus.Engine
             qCalculated = new Dictionary<double, double>();
             preCalculateQ();
             calculateMasses();
-        }
-
-        // Эвенты
-        protected virtual void OnStateCalculated(SphereEventArgs e) {
-            EventHandler<SphereEventArgs> handler = stateCalculated;
-            if (handler != null) {
-                handler(this, e);
-            }
-        }
-
-        protected virtual void OnCalculationsDone(SphereEventArgs e) {
-            EventHandler<SphereEventArgs> handler = calculationsDone;
-            if (handler != null) {
-                handler(this, e);
-            }
-        }
-
-        protected virtual void OnPreCalculateNProgressChanged(SphereEventArgs e) {
-            EventHandler<SphereEventArgs> handler = preCalculateNProgessChanged;
-            if (handler != null) {
-                handler(this, e);
-            }
-        }
-
-        protected virtual void OnPreCalculateQProgressChanged(SphereEventArgs e) {
-            EventHandler<SphereEventArgs> handler = preCalculateQProgessChanged;
-            if (handler != null) {
-                handler(this, e);
-            }
         }
 
         // Рассчитываем полные концентрации на всех высотых
@@ -194,9 +169,10 @@ namespace Zeus.Engine
         }
 
         public double n() {
+            refreshGrids();
+
             double height = 0;
             double result = ne0 + nip0 + nin0;
-
             for (int i = 1; i < capacity; i++) {
                 height = i * delta;
 
@@ -281,6 +257,7 @@ namespace Zeus.Engine
             return result;
         }
 
+        // Нахождение скоростей
         public void allVelocities() {
             double height = 0;
             for (int i = 1; i < (capacity-1); i++) {
@@ -299,11 +276,8 @@ namespace Zeus.Engine
             double result = 1;
             int last = capacity - 1;
             double electronCurrent = -Constants.qe * electronGrid[last].value * electronVelocityGrid[last].value;
-            System.Diagnostics.Debug.WriteLine("Electron = " + electronCurrent);
             double ionPlusCurrent = Constants.qe * ionPositiveGrid[last].value * ionPosVelocityGrid[last].value;
-            System.Diagnostics.Debug.WriteLine("Ion plus = " + ionPlusCurrent);
             double ionMinusCurrent = -Constants.qe * ionNegativeGrid[last].value * 300 * ionNegVelocityGrid[last].value;
-            System.Diagnostics.Debug.WriteLine("Ion minus = " + ionMinusCurrent);
             result = electronCurrent + ionPlusCurrent + ionMinusCurrent;
             return result;
         }
@@ -466,6 +440,35 @@ namespace Zeus.Engine
                 }
             }
             return result;
+        }
+
+        // Эвенты
+        protected virtual void OnStateCalculated(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = stateCalculated;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnCalculationsDone(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = calculationsDone;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnPreCalculateNProgressChanged(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = preCalculateNProgessChanged;
+            if (handler != null) {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnPreCalculateQProgressChanged(SphereEventArgs e) {
+            EventHandler<SphereEventArgs> handler = preCalculateQProgessChanged;
+            if (handler != null) {
+                handler(this, e);
+            }
         }
     }
 }

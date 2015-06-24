@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Zeus.Engine
 {
+
+    // Всякие дополнительные функции
+    // Которые удобнее вывести в отдельный класс
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
+
     public static class Mathematical
     {
 

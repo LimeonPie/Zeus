@@ -7,6 +7,11 @@ using System.IO;
 
 namespace Zeus.Engine
 {
+
+    // Константы и прочие неоходимые переменные
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
+
     public static class Constants
     {
 
@@ -90,6 +95,13 @@ namespace Zeus.Engine
         public static string appResourcesPath {
             get {
                 return (appRootPath + "\\Resources\\");
+            }
+        }
+
+        // Путь к файлам справки
+        public static string appHelpPath {
+            get {
+                return (appRootPath + "\\Resources\\Help\\");
             }
         }
 

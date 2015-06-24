@@ -156,6 +156,9 @@
   <data name="CalculationsEndText" xml:space="preserve">
     <value>Calculations ended</value>
   </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Concentration" xml:space="preserve">
     <value>Concentration</value>
   </data>
@@ -273,6 +276,9 @@
   <data name="NormalPlotMode" xml:space="preserve">
     <value>Normal</value>
   </data>
+  <data name="okButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="OpenFileTooltip" xml:space="preserve">
     <value>Choose input file</value>
   </data>
@@ -320,5 +326,14 @@
   </data>
   <data name="ViewMenuText" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="HelpUniversity" xml:space="preserve">
+    <value>Murmansk State Technical University, Computer Science and Engineering</value>
+  </data>
+  <data name="ErrorSeeLogs" xml:space="preserve">
+    <value>Look for detail description of the problem in logs</value>
+  </data>
+  <data name="ErrorCritical" xml:space="preserve">
+    <value>Critical error</value>
   </data>
 </root>

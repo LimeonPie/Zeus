@@ -26,24 +26,36 @@ namespace Zeus.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool LogMeasure {
+        public bool isLogMeasurements {
             get {
-                return ((bool)(this["LogMeasure"]));
+                return ((bool)(this["isLogMeasurements"]));
             }
             set {
-                this["LogMeasure"] = value;
+                this["isLogMeasurements"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultSaveFileName {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isShowAdditionalPlots {
             get {
-                return ((string)(this["DefaultSaveFileName"]));
+                return ((bool)(this["isShowAdditionalPlots"]));
             }
             set {
-                this["DefaultSaveFileName"] = value;
+                this["isShowAdditionalPlots"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool isSpecifySaveLocation {
+            get {
+                return ((bool)(this["isSpecifySaveLocation"]));
+            }
+            set {
+                this["isSpecifySaveLocation"] = value;
             }
         }
     }

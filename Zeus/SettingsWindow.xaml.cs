@@ -21,6 +21,48 @@ namespace Zeus
     {
         public SettingsWindow() {
             InitializeComponent();
+            if (Properties.Settings.Default.isLogMeasurements == true) {
+                logPlotMode.IsChecked = true;
+                normalPlotMode.IsChecked = false;
+            }
+            else {
+                normalPlotMode.IsChecked = true;
+            }
+            additionalPlots.IsChecked = Properties.Settings.Default.isShowAdditionalPlots;
+            specifyPlaceToSave.IsChecked = Properties.Settings.Default.isSpecifySaveLocation;
+        }
+
+        private void OnCancel(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        private void OnSaveChanges(object sender, RoutedEventArgs e) {
+            // Сохраняем настройки размерности графиков
+            if (logPlotMode.IsChecked == true) {
+                Properties.Settings.Default.isLogMeasurements = true;
+            }
+            else if (normalPlotMode.IsChecked == true) {
+                Properties.Settings.Default.isLogMeasurements = false;
+            }
+
+            // Сохраняем настройки показа дополнительных графиков
+            if (additionalPlots.IsChecked == true) {
+                Properties.Settings.Default.isShowAdditionalPlots = true;
+            }
+            else {
+                Properties.Settings.Default.isShowAdditionalPlots = false;
+            }
+
+            // Сохраняем настройки выбора места сохранения
+            if (specifyPlaceToSave.IsChecked == true) {
+                Properties.Settings.Default.isSpecifySaveLocation = true;
+            }
+            else {
+                Properties.Settings.Default.isSpecifySaveLocation = false;
+            }
+            Properties.Settings.Default.Save();
+
+            this.Close();
         }
     }
 }

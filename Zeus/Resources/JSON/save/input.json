@@ -13,23 +13,19 @@
 	"topBoundary": 80000,
 	"velocity": 0,
 	"aerosols": {
-		"dust": {
+		"Dust": {
     		"name": "Dust",
-    		"index": 0,
-    		"m": 46,
-    		"nPercent": 0.658,
-    		"n0": 9.8E+8,
+    		"m": 57,
+    		"n0": 1.8E+8,
     		"t": 273,
-    		"radius": 0.1E-6,
+    		"radius": 0.001E-4,
   		},
-  		"water" : {
+  		"Water" : {
   			"name": "Water",
-    		"index": 0,
     		"m": 18,
-    		"nPercent": 13.9,
-    		"n0": 6E+14,
+    		"n0": 4E+10,
     		"t": 273,
-    		"radius": 0.8E-4
+    		"radius": 0.5E-4
   		}
   	},
   	"temperature": {

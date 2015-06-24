@@ -8,6 +8,9 @@ using GeoTimeZone;
 namespace Zeus.Engine
 {
     // Класс, отвечающий за операциями с временем
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
+
     public static class Time
     {
 

@@ -24,12 +24,18 @@ using OxyPlot.Wpf;
 namespace Zeus
 {
 
+    // Файл интерфейса основого окна
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
+
     public partial class MainWindow : Window
     {
 
         public MainWindow() {
             InitializeComponent();
-            hideVelocities();
+            if (Properties.Settings.Default.isShowAdditionalPlots == false) {
+                hideVelocities();
+            }
             progressBar.Visibility = Visibility.Hidden;
             LogManager.Session.logMessage("Program is starting");
         }
@@ -76,41 +82,43 @@ namespace Zeus
             ionMinusVelocityTab.Visibility = Visibility.Visible;
         }
 
-        private void drawPlot() {
-            bool needLog = false;
+        private void drawPlots() {
+            if (Engine.Engine.Instance.lowAtmosphere != null) {
+                bool needLog = Properties.Settings.Default.isLogMeasurements;
 
-            SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE, needLog);
-            electronPlotView.Model = electronModel.CurrentModel;
+                SpherePlotModel electronModel = new SpherePlotModel(PLOT.ELECTRON_LINE, needLog);
+                electronPlotView.Model = electronModel.CurrentModel;
 
-            SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS_LINE, needLog);
-            ionPositivePlotView.Model = ionPlusModel.CurrentModel;
+                SpherePlotModel ionPlusModel = new SpherePlotModel(PLOT.ION_PLUS_LINE, needLog);
+                ionPositivePlotView.Model = ionPlusModel.CurrentModel;
 
-            SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS_LINE, needLog);
-            ionNegativePlotView.Model = ionMinusModel.CurrentModel;
+                SpherePlotModel ionMinusModel = new SpherePlotModel(PLOT.ION_MINUS_LINE, needLog);
+                ionNegativePlotView.Model = ionMinusModel.CurrentModel;
 
-            SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE, needLog);
-            allChargesPlotView.Model = allModel.CurrentModel;
+                SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE, needLog);
+                allChargesPlotView.Model = allModel.CurrentModel;
 
-            SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog); //PLOT.ELECTRON_VELOCITY_LINE
-            electronVelocityPlotView.Model = electronVelocityModel.CurrentModel;
+                SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog); //PLOT.ELECTRON_VELOCITY_LINE
+                electronVelocityPlotView.Model = electronVelocityModel.CurrentModel;
 
-            SpherePlotModel ionPlusVelocityModel = new SpherePlotModel(PLOT.ION_PLUS_VELOCITY_LINE, needLog);
-            ionPlusVelocityPlotView.Model = ionPlusVelocityModel.CurrentModel;
+                SpherePlotModel ionPlusVelocityModel = new SpherePlotModel(PLOT.ION_PLUS_VELOCITY_LINE, needLog);
+                ionPlusVelocityPlotView.Model = ionPlusVelocityModel.CurrentModel;
 
-            SpherePlotModel ionMinusVelocityModel = new SpherePlotModel(PLOT.ION_MINUS_VELOCITY_LINE, needLog);
-            ionMinusVelocityPlotView.Model = ionMinusVelocityModel.CurrentModel;
+                SpherePlotModel ionMinusVelocityModel = new SpherePlotModel(PLOT.ION_MINUS_VELOCITY_LINE, needLog);
+                ionMinusVelocityPlotView.Model = ionMinusVelocityModel.CurrentModel;
 
-            SpherePlotModel fluxModel = new SpherePlotModel(PLOT.FLUX_LINE, needLog);
-            eternityFluxPlotView.Model = fluxModel.CurrentModel;
+                SpherePlotModel fluxModel = new SpherePlotModel(PLOT.FLUX_LINE, needLog);
+                eternityFluxPlotView.Model = fluxModel.CurrentModel;
 
-            SpherePlotModel activeElementModel = new SpherePlotModel(PLOT.ACTIVE_ELEMENT_LINE, needLog);
-            nitrogenPlotView.Model = activeElementModel.CurrentModel;
+                SpherePlotModel activeElementModel = new SpherePlotModel(PLOT.ACTIVE_ELEMENT_LINE, needLog);
+                nitrogenPlotView.Model = activeElementModel.CurrentModel;
 
-            SpherePlotModel aerosolsModel = new SpherePlotModel(PLOT.AEROSOL_LINE, needLog);
-            aerosolPlotView.Model = aerosolsModel.CurrentModel;
+                SpherePlotModel aerosolsModel = new SpherePlotModel(PLOT.AEROSOL_LINE, needLog);
+                aerosolPlotView.Model = aerosolsModel.CurrentModel;
 
-            SpherePlotModel temperatureModel = new SpherePlotModel(PLOT.TEMPERATURE_HEAT, needLog);
-            temperaturePlotView.Model = temperatureModel.CurrentModel;
+                SpherePlotModel temperatureModel = new SpherePlotModel(PLOT.TEMPERATURE_HEAT, needLog);
+                temperaturePlotView.Model = temperatureModel.CurrentModel;
+            }
             
         }
 
@@ -120,7 +128,7 @@ namespace Zeus
             double electicity = Engine.Engine.Instance.getElectro();
             resultTextBlock.Text = String.Format("{0} = {1}", Zeus.Properties.Resources.Electricity, electicity.ToString("#.###E0"));
             clearStatusWithDelay(2000);
-            drawPlot();
+            drawPlots();
         }
 
         private void OnProgressValueChanged(object sender, SphereEventArgs e) {
@@ -170,19 +178,30 @@ namespace Zeus
         }
 
         private void OnSave(object sender, RoutedEventArgs e) {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Json files (*.json)|*.json";
-            saveFileDialog.AddExtension = true;
-            if (saveFileDialog.ShowDialog() == true) {
-                LogManager.Session.logMessage("Saving to " + saveFileDialog.FileName + " output file");
+            string filename = string.Empty;
+            if (Properties.Settings.Default.isSpecifySaveLocation == true) {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Json files (*.json)|*.json";
+                saveFileDialog.AddExtension = true;
+                if (saveFileDialog.ShowDialog() == true) {
+                    filename = saveFileDialog.FileName;
+                }
+            }
+            else {
+                filename = Constants.appJsonPath + "/output.json";
+            }
+
+            if (string.IsNullOrEmpty(filename) == false) {
+                // Сохраняем в файл
+                LogManager.Session.logMessage("Saving to " + filename + " output file");
                 try {
-                    Engine.Engine.Instance.saveToFile(saveFileDialog.FileName);
+                    Engine.Engine.Instance.saveToFile(filename);
                     writeToStatusBar(Zeus.Properties.Resources.SaveStatusSucces);
                     clearStatusWithDelay(2000);
                 }
                 catch (IOException error) {
                     MessageBoxResult alert = MessageBox.Show(error.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    LogManager.Session.logMessage("Cannot save output file to " + saveFileDialog.FileName + " cause of " + error.Message);
+                    LogManager.Session.logMessage("Cannot save output file to " + filename + " cause of " + error.Message);
                 }
             }
         }
@@ -196,14 +215,22 @@ namespace Zeus
                 try {
                     launchButton.IsEnabled = true;
                     progressBar.Visibility = Visibility.Visible;
-                    Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
-                    Engine.Engine.Instance.lowAtmosphere.preCalculateNProgessChanged += OnProgressValueChanged;
-                    Engine.Engine.Instance.lowAtmosphere.preCalculateQProgessChanged += OnProgressValueChanged;
-                    Thread thread = new Thread(Engine.Engine.Instance.preCaluculate);
-                    thread.Start();
-                    setInformation();
-                    Engine.Engine.Instance.lowAtmosphere.stateCalculated += OnProgressValueChanged;
-                    Engine.Engine.Instance.lowAtmosphere.calculationsDone += OnCalculationsEnded;
+                    bool error = Engine.Engine.Instance.initSphereWithInputFile(openFileDialog.FileName);
+                    if (error == false) {
+                        MessageBoxResult alert = MessageBox.Show(Properties.Resources.ErrorSeeLogs, Properties.Resources.ErrorCritical, MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (alert == MessageBoxResult.OK || alert == MessageBoxResult.Cancel) {
+                            Application.Current.Shutdown();
+                        }
+                    }
+                    else {
+                        Engine.Engine.Instance.lowAtmosphere.preCalculateNProgessChanged += OnProgressValueChanged;
+                        Engine.Engine.Instance.lowAtmosphere.preCalculateQProgessChanged += OnProgressValueChanged;
+                        Thread thread = new Thread(Engine.Engine.Instance.preCaluculate);
+                        thread.Start();
+                        setInformation();
+                        Engine.Engine.Instance.lowAtmosphere.stateCalculated += OnProgressValueChanged;
+                        Engine.Engine.Instance.lowAtmosphere.calculationsDone += OnCalculationsEnded;
+                    }
                 }
                 catch (IOException error) {
                     MessageBoxResult alert = MessageBox.Show(error.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
@@ -215,6 +242,7 @@ namespace Zeus
 
         // Запуск расчета
         private void OnLaunch(object sender, RoutedEventArgs e) {
+            progressBar.Visibility = Visibility.Visible;
             Engine.Engine.Instance.launchComputations();
         }
 
@@ -229,7 +257,29 @@ namespace Zeus
 
         private void OnSettings(object sender, RoutedEventArgs e) {
             SettingsWindow settings = new SettingsWindow();
+            settings.Closing += updateMainForSettings;
             settings.Show();
+        }
+
+        private void updateMainForSettings(object sender, CancelEventArgs e) {
+            if (Properties.Settings.Default.isShowAdditionalPlots == false) {
+                hideVelocities();
+            }
+            else {
+                showVelocities();
+            }
+            drawPlots();
+        }
+
+        private void OnHelp(object sender, RoutedEventArgs e) {
+            LogManager.Session.logMessage("Opening help file");
+            try {
+                System.Diagnostics.Process.Start(Constants.appHelpPath + "ZeusHelp.chm");
+            }
+            catch (IOException error) {
+                MessageBoxResult alert = MessageBox.Show(error.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                LogManager.Session.logMessage("Cannot open help file cause of " + error.Message);
+            }
         }
     }
 }

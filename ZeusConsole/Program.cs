@@ -19,12 +19,14 @@ namespace ZeusConsole
         static void Main(string[] args) {
             display("Process initilized");
 
-            Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json");
-            // Запуск вычислений
-            double electro = Engine.Instance.launchComputations();
-            Engine.Instance.saveToFile(Constants.appJsonPath + "output.json");
-            display("Electricity = " + electro);
-            display("Press any key...");
+            if (Engine.Instance.initSphereWithInputFile(Constants.appJsonPath + "input.json")) {
+                // Запуск вычислений
+                Engine.Instance.launchComputations();
+                double electro = Engine.Instance.getElectro();
+                Engine.Instance.saveToFile(Constants.appJsonPath + "output.json");
+                display("Electricity = " + electro);
+            }
+            Console.Write("Please enter a key...");
             Console.ReadKey();
         }
     }

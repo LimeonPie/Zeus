@@ -8,6 +8,12 @@ using Zeus.Engine;
 
 namespace Zeus.Helpers
 {
+
+    // Логирование, и этим все сказано
+    // Создает файл логов в папке программы/Logs/log.txt
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
+
     public class LogManager
     {
         private static LogManager instance;
@@ -34,7 +40,8 @@ namespace Zeus.Helpers
         public bool logMessage(string message) {
             try {
                 StreamWriter sw = File.AppendText(currentPath);
-                sw.WriteLine(DateTime.Now.ToUniversalTime().ToString() + ": " + message);
+                sw.Write(DateTime.Now.ToLocalTime().ToString() + ": " + message);
+                sw.WriteLine();
                 sw.Close();
                 return true;
             }

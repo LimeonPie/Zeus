@@ -12,76 +12,86 @@ namespace Zeus.Helpers
 {
 
     // Обертка для джейсона
-    // Парс, считывание, запись
-    // Все здесь и работает
-    // P.S. вроде как
+    // Отвечает за считывание файлов JSON
+    // Десериализацию из файлов JSON
+    // Запись в файлы JSON
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
 
     public static class JsonWrapper
     {
 
         public static inputData parseInputData(string filename) {
-            inputData data = new inputData();
-            JObject o = JObject.Parse(File.ReadAllText(filename));
             LogManager.Session.logMessage("Reading json file " + filename);
-            foreach (JProperty prop in o.Properties()) {
-                switch (prop.Name) {
-                    case "longitude":
-                        double longitude = prop.Value.ToObject<double>();
-                        if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
-                           data.longitude = longitude; 
-                        }
-                        else data.longitude = 45;
-                        break;
-                    case "latitude":
-                        double latitude = prop.Value.ToObject<double>();
-                        if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
-                           data.latitude = latitude; 
-                        }
-                        else data.latitude = 45;
-                        break;
-                    case "ne0":
-                        data.ne0 = prop.Value.ToObject<double>();
-                        break;
-                    case "nin0":
-                        data.nin0 = prop.Value.ToObject<double>();
-                        break;
-                    case "nip0":
-                        data.nip0 = prop.Value.ToObject<double>();
-                        break;
-                    case "delta":
-                        data.delta = prop.Value.ToObject<double>();
-                        break;
-                    case "epsilum":
-                        data.epsilum = prop.Value.ToObject<double>();
-                        break;
-                    case "timeInterval":
-                        data.timeInterval = prop.Value.ToObject<int>();
-                        break;
-                    case "eternityFlux":
-                        data.eternityFlux = prop.Value.ToObject<int>();
-                        break;
-                    case "velocity":
-                        data.velocity = prop.Value.ToObject<double>();
-                        break;
-                    case "time":
-                        data.time = prop.Value.ToObject<string>();
-                        break;
-                    case "botBoundary":
-                        data.botBoundary = prop.Value.ToObject<double>();
-                        break;
-                    case "topBoundary":
-                        data.topBoundary = prop.Value.ToObject<double>();
-                        break;
-                    case "aerosols":
-                        data.aerosols = parseJsonForElements(prop.Value.ToString());
-                        break;
-                    case "temperature":
-                        data.temperature = deserializeJsonToDict(prop.Value.ToString());
-                        break;
-                    default:
-                        LogManager.Session.logMessage("Unknown key " + prop.Name);
-                        break;
+            inputData data = new inputData();
+            data.error = false;
+            try {
+                JObject o = JObject.Parse(File.ReadAllText(filename));
+                foreach (JProperty prop in o.Properties()) {
+                    switch (prop.Name) {
+                        case "longitude":
+                            double longitude = prop.Value.ToObject<double>();
+                            if (Validator.validateItemForType(longitude, VALIDATION_TYPE.LONGITUDE)) {
+                                data.longitude = longitude;
+                            }
+                            else data.longitude = 45;
+                            break;
+                        case "latitude":
+                            double latitude = prop.Value.ToObject<double>();
+                            if (Validator.validateItemForType(latitude, VALIDATION_TYPE.LATITUDE)) {
+                                data.latitude = latitude;
+                            }
+                            else data.latitude = 45;
+                            break;
+                        case "ne0":
+                            data.ne0 = prop.Value.ToObject<double>();
+                            break;
+                        case "nin0":
+                            data.nin0 = prop.Value.ToObject<double>();
+                            break;
+                        case "nip0":
+                            data.nip0 = prop.Value.ToObject<double>();
+                            break;
+                        case "delta":
+                            data.delta = prop.Value.ToObject<double>();
+                            break;
+                        case "epsilum":
+                            data.epsilum = prop.Value.ToObject<double>();
+                            break;
+                        case "timeInterval":
+                            data.timeInterval = prop.Value.ToObject<int>();
+                            break;
+                        case "eternityFlux":
+                            data.eternityFlux = prop.Value.ToObject<int>();
+                            break;
+                        case "velocity":
+                            data.velocity = prop.Value.ToObject<double>();
+                            break;
+                        case "time":
+                            data.time = prop.Value.ToObject<string>();
+                            break;
+                        case "botBoundary":
+                            data.botBoundary = prop.Value.ToObject<double>();
+                            break;
+                        case "topBoundary":
+                            data.topBoundary = prop.Value.ToObject<double>();
+                            break;
+                        case "aerosols":
+                            data.aerosols = parseJsonForElements(prop.Value.ToString());
+                            break;
+                        case "temperature":
+                            data.temperature = deserializeJsonToDict(prop.Value.ToString());
+                            break;
+                        default:
+                            LogManager.Session.logMessage("Unknown key " + prop.Name);
+                            break;
+                    }
                 }
+            }
+            catch (Exception error) {
+                data.error = true;
+                LogManager.Session.logMessage("Unexpected error: " + error.ToString());
+                LogManager.Session.logMessage("Ты мне гонишь какую-то дичь");
             }
             return data;
         }

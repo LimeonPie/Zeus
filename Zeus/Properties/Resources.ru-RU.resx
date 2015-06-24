@@ -133,7 +133,7 @@
     <value>Сайт: https://github.com/LimeonPie/Zeus</value>
   </data>
   <data name="AboutSupervisorText" xml:space="preserve">
-    <value>Руководитель: Намгаладзе А. А., профессор каф. ВМ и ПО ЭВМ</value>
+    <value>Руководитель: Намгаладзе А. А., д-р ф.-м. н., проф., г. н. с. кафедры ОиПФ</value>
   </data>
   <data name="AdditionPlotsEnable" xml:space="preserve">
     <value>Отобразить дополнительные графики</value>
@@ -155,6 +155,9 @@
   </data>
   <data name="CalculationsEndText" xml:space="preserve">
     <value>Вычисления завершены</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Отменить</value>
   </data>
   <data name="Concentration" xml:space="preserve">
     <value>Концентрация</value>
@@ -273,6 +276,9 @@
   <data name="NormalPlotMode" xml:space="preserve">
     <value>Обычный</value>
   </data>
+  <data name="okButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="OpenFileTooltip" xml:space="preserve">
     <value>Выберите входной файл</value>
   </data>
@@ -320,5 +326,14 @@
   </data>
   <data name="ViewMenuText" xml:space="preserve">
     <value>Вид</value>
+  </data>
+  <data name="HelpUniversity" xml:space="preserve">
+    <value>Мурманский Государственный Технический университет, кафедра ВМ И ПО ЭВМ</value>
+  </data>
+  <data name="ErrorSeeLogs" xml:space="preserve">
+    <value>Подробное описание проблемы смотрите в логах</value>
+  </data>
+  <data name="ErrorCritical" xml:space="preserve">
+    <value>Критическая ошибка</value>
   </data>
 </root>

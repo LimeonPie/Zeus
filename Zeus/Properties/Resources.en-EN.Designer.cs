@@ -178,6 +178,15 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string cancelButton {
+            get {
+                return ResourceManager.GetString("cancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Concentration.
         /// </summary>
         public static string Concentration {
@@ -322,6 +331,24 @@ namespace Zeus.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Critical error.
+        /// </summary>
+        public static string ErrorCritical {
+            get {
+                return ResourceManager.GetString("ErrorCritical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Look for detail description of the problem in logs.
+        /// </summary>
+        public static string ErrorSeeLogs {
+            get {
+                return ResourceManager.GetString("ErrorSeeLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flux.
         /// </summary>
         public static string EternityFlux {
@@ -417,6 +444,15 @@ namespace Zeus.Properties {
         public static string HelpMenuText {
             get {
                 return ResourceManager.GetString("HelpMenuText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Murmansk State Technical University, Computer Science and Engineering.
+        /// </summary>
+        public static string HelpUniversity {
+            get {
+                return ResourceManager.GetString("HelpUniversity", resourceCulture);
             }
         }
         
@@ -525,6 +561,15 @@ namespace Zeus.Properties {
         public static string NormalPlotMode {
             get {
                 return ResourceManager.GetString("NormalPlotMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string okButton {
+            get {
+                return ResourceManager.GetString("okButton", resourceCulture);
             }
         }
         

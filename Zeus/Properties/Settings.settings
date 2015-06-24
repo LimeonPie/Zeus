@@ -2,11 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Zeus.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="LogMeasure" Type="System.Boolean" Scope="User">
+    <Setting Name="isLogMeasurements" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DefaultSaveFileName" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="isShowAdditionalPlots" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="isSpecifySaveLocation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -17,21 +17,19 @@
                         <Image Source="Resources/Images/save.png" Stretch="UniformToFill" />
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="settingsViewMenu" Header="{x:Static l:Resources.FileSettingsText}" Click="OnSettings">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/settings.png" Stretch="UniformToFill" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem x:Name="closeFileMenu" Header="{x:Static l:Resources.FileCloseText}" Click="OnClose">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/close.png" Stretch="UniformToFill" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{x:Static l:Resources.ViewMenuText}">
-                <MenuItem x:Name="settingsViewMenu" Header="{x:Static l:Resources.FileSettingsText}" Click="OnSettings">
-                    <MenuItem.Icon>
-                        <Image Source="Resources/Images/settings.png" Stretch="UniformToFill" />
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
             <MenuItem Header="{x:Static l:Resources.HelpMenuText}">
-                <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}">
+                <MenuItem x:Name="infoHelpMenu" Header="{x:Static l:Resources.HelpInfoText}" Click="OnHelp">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/help.png" Stretch="UniformToFill" />
                     </MenuItem.Icon>

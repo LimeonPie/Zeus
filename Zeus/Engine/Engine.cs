@@ -9,9 +9,14 @@ namespace Zeus.Engine
 {
 
     // Основной класс, ответственен за
-    // Управление работой комплекса
     // Взаимодействием с UI
-    // Да в принципе все
+    // Управление работой комплекса, куда входит
+    // Загрузка входного файла
+    // Создание вычислительного класса
+    // Сохранение результата
+    // и другие мелкие задачи
+    // Дипломная работа
+    // ИВТ(б)-411 Миняев Илья
 
     public enum ActiveElement
     {
@@ -36,6 +41,7 @@ namespace Zeus.Engine
         public double topBoundary;
         public List<Element> aerosols;
         public Dictionary<string, double> temperature;
+        public bool error;
     };
 
     public struct outputData 
@@ -74,15 +80,44 @@ namespace Zeus.Engine
             }
         }
 
-        public void initSphereWithInputFile(string path) {
+        public bool initSphereWithInputFile(string path) {
             Element active = loadActiveElement(ActiveElement.Nitrogen);
             inputData data = JsonWrapper.parseInputData(path);
+            if (data.error == true) {
+                return false;
+            }
+            if (!Validator.validateItemForType(data.delta, VALIDATION_TYPE.DELTA)) {
+                LogManager.Session.logMessage("Critical error: delta is incorrect or not exist");
+                return false;
+            }
+            if (!Validator.validateItemForType(data.longitude, VALIDATION_TYPE.LONGITUDE)) {
+                LogManager.Session.logMessage("Critical error: longitude is incorrect or not exist");
+                return false;
+            }
+            if (!Validator.validateItemForType(data.latitude, VALIDATION_TYPE.LATITUDE)) {
+                LogManager.Session.logMessage("Critical error: latitude is incorrect or not exist");
+                return false;
+            }
+            if (!Validator.validateItemForType(data.ne0, VALIDATION_TYPE.CONCENTRATION)) {
+                LogManager.Session.logMessage("Critical error: electron conc is incorrect or not exist");
+                return false;
+            }
+            if (!Validator.validateItemForType(data.nip0, VALIDATION_TYPE.CONCENTRATION)) {
+                LogManager.Session.logMessage("Critical error: positive conc is incorrect or not exist");
+                return false;
+            }
+            if (!Validator.validateItemForType(data.nin0, VALIDATION_TYPE.CONCENTRATION)) {
+                LogManager.Session.logMessage("Critical error: negative conc is incorrect or not exist");
+                return false;
+            }
+
             if (data.time != null) Time.usedTime = DateTime.Parse(data.time);
             if (data.eternityFlux != 0) Constants.eternityFlux = data.eternityFlux;
             if (data.timeInterval != 0) Constants.timeInterval = data.timeInterval;
             else data.timeInterval = Constants.timeInterval;
 
             lowAtmosphere = new Sphere(data, active);
+            return true;
         }
 
         public void preCaluculate() {
