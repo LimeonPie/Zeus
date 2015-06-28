@@ -11,7 +11,7 @@
 	"time": "13:00",
 	"botBoundary": 0,
 	"topBoundary": 80000,
-	"velocity": 0,
+	"velocity": 4,
 	"aerosols": {
 		"Dust": {
     		"name": "Dust",

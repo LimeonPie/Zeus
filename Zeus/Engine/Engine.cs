@@ -51,9 +51,6 @@ namespace Zeus.Engine
         public double nip;
         public double nin;
         public double total;
-        public double neVel;
-        public double nipVel;
-        public double ninVel;
     };
 
     public struct additionalData
@@ -148,9 +145,6 @@ namespace Zeus.Engine
                 data[i].nip = lowAtmosphere.ionPositiveGrid[i].value;
                 data[i].nin = lowAtmosphere.ionNegativeGrid[i].value;
                 data[i].total = data[i].ne + data[i].nip + data[i].nin;
-                data[i].neVel = lowAtmosphere.electronVelocityGrid[i].value;
-                data[i].nipVel = lowAtmosphere.ionPosVelocityGrid[i].value;
-                data[i].ninVel = lowAtmosphere.ionNegVelocityGrid[i].value;
             }
             if (filename != null && !filename.Equals(string.Empty)) {
                 JsonWrapper.writeJsonOutputData(data, info, filename);

@@ -33,9 +33,6 @@ namespace Zeus
 
         public MainWindow() {
             InitializeComponent();
-            if (Properties.Settings.Default.isShowAdditionalPlots == false) {
-                hideVelocities();
-            }
             progressBar.Visibility = Visibility.Hidden;
             LogManager.Session.logMessage("Program is starting");
         }
@@ -64,24 +61,6 @@ namespace Zeus
             statusLabel.Content = message;
         }
 
-        private void hideVelocities() {
-            electronVelocityPlotView.Visibility = Visibility.Collapsed;
-            ionPlusVelocityPlotView.Visibility = Visibility.Collapsed;
-            ionMinusVelocityPlotView.Visibility = Visibility.Collapsed;
-            electronVelocityTab.Visibility = Visibility.Collapsed;
-            ionPlusVelocityTab.Visibility = Visibility.Collapsed;
-            ionMinusVelocityTab.Visibility = Visibility.Collapsed;
-        }
-
-        private void showVelocities() {
-            electronVelocityPlotView.Visibility = Visibility.Visible;
-            ionPlusVelocityPlotView.Visibility = Visibility.Visible;
-            ionMinusVelocityPlotView.Visibility = Visibility.Visible;
-            electronVelocityTab.Visibility = Visibility.Visible;
-            ionPlusVelocityTab.Visibility = Visibility.Visible;
-            ionMinusVelocityTab.Visibility = Visibility.Visible;
-        }
-
         private void drawPlots() {
             if (Engine.Engine.Instance.lowAtmosphere != null) {
                 bool needLog = Properties.Settings.Default.isLogMeasurements;
@@ -97,15 +76,6 @@ namespace Zeus
 
                 SpherePlotModel allModel = new SpherePlotModel(PLOT.ALL_LINE, needLog);
                 allChargesPlotView.Model = allModel.CurrentModel;
-
-                SpherePlotModel electronVelocityModel = new SpherePlotModel(PLOT.ELECTRON_VELOCITY_LINE, needLog); //PLOT.ELECTRON_VELOCITY_LINE
-                electronVelocityPlotView.Model = electronVelocityModel.CurrentModel;
-
-                SpherePlotModel ionPlusVelocityModel = new SpherePlotModel(PLOT.ION_PLUS_VELOCITY_LINE, needLog);
-                ionPlusVelocityPlotView.Model = ionPlusVelocityModel.CurrentModel;
-
-                SpherePlotModel ionMinusVelocityModel = new SpherePlotModel(PLOT.ION_MINUS_VELOCITY_LINE, needLog);
-                ionMinusVelocityPlotView.Model = ionMinusVelocityModel.CurrentModel;
 
                 SpherePlotModel fluxModel = new SpherePlotModel(PLOT.FLUX_LINE, needLog);
                 eternityFluxPlotView.Model = fluxModel.CurrentModel;
@@ -262,12 +232,6 @@ namespace Zeus
         }
 
         private void updateMainForSettings(object sender, CancelEventArgs e) {
-            if (Properties.Settings.Default.isShowAdditionalPlots == false) {
-                hideVelocities();
-            }
-            else {
-                showVelocities();
-            }
             drawPlots();
         }
 

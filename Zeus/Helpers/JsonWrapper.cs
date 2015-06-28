@@ -176,12 +176,6 @@ namespace Zeus.Helpers
                 writer.WriteValue(part.nin.ToString("#.#####E0"));
                 writer.WritePropertyName("totalConc");
                 writer.WriteValue(part.total.ToString("#.#####E0"));
-                writer.WritePropertyName("electronVelocity");
-                writer.WriteValue(part.neVel.ToString("#.#####E0"));
-                writer.WritePropertyName("ionPlusVelocity");
-                writer.WriteValue(part.nipVel.ToString("#.#####E0"));
-                writer.WritePropertyName("ionMinusVelocity");
-                writer.WriteValue(part.ninVel.ToString("#.#####E0"));
                 writer.WriteEndObject();
             }
             writer.WriteEndObject();

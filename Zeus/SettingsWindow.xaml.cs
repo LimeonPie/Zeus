@@ -28,7 +28,6 @@ namespace Zeus
             else {
                 normalPlotMode.IsChecked = true;
             }
-            additionalPlots.IsChecked = Properties.Settings.Default.isShowAdditionalPlots;
             specifyPlaceToSave.IsChecked = Properties.Settings.Default.isSpecifySaveLocation;
         }
 
@@ -43,14 +42,6 @@ namespace Zeus
             }
             else if (normalPlotMode.IsChecked == true) {
                 Properties.Settings.Default.isLogMeasurements = false;
-            }
-
-            // Сохраняем настройки показа дополнительных графиков
-            if (additionalPlots.IsChecked == true) {
-                Properties.Settings.Default.isShowAdditionalPlots = true;
-            }
-            else {
-                Properties.Settings.Default.isShowAdditionalPlots = false;
             }
 
             // Сохраняем настройки выбора места сохранения

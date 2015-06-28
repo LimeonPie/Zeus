@@ -64,10 +64,7 @@ namespace Zeus.Engine
         public double nin0;
         public IterationUnit[] ionNegativeGrid;
         public double totalContent;
-        public IterationUnit[] electronVelocityGrid;
-        public IterationUnit[] ionPosVelocityGrid;
-        public IterationUnit[] ionNegVelocityGrid;
-        public double velocitity0;
+        public double velocitity;
         public List<Element> aerosolElements;
         public Dictionary<double, double> fullNCalculated;
         public Dictionary<double, double> qCalculated;
@@ -84,7 +81,7 @@ namespace Zeus.Engine
             this.ne0 = data.ne0;
             this.nip0 = data.nip0;
             this.nin0 = data.nin0;
-            this.velocitity0 = data.velocity;
+            this.velocitity = data.velocity;
             this.delta = data.delta;
             this.botBoundary = data.botBoundary;
             this.topBoundary = data.topBoundary;
@@ -99,9 +96,6 @@ namespace Zeus.Engine
             electronGrid = new IterationUnit[this.capacity];
             ionPositiveGrid = new IterationUnit[this.capacity];
             ionNegativeGrid = new IterationUnit[this.capacity];
-            electronVelocityGrid = new IterationUnit[this.capacity];
-            ionPosVelocityGrid = new IterationUnit[this.capacity];
-            ionNegVelocityGrid = new IterationUnit[this.capacity];
             preCalculateData();
         }
 
@@ -110,9 +104,6 @@ namespace Zeus.Engine
                 electronGrid[i] = new IterationUnit(ne0, false);
                 ionPositiveGrid[i] = new IterationUnit(nip0, false);
                 ionNegativeGrid[i] = new IterationUnit(nin0, false);
-                electronVelocityGrid[i] = new IterationUnit(velocitity0, false);
-                ionPosVelocityGrid[i] = new IterationUnit(velocitity0, false);
-                ionNegVelocityGrid[i] = new IterationUnit(velocitity0, false);
             }
         }
 
@@ -245,7 +236,6 @@ namespace Zeus.Engine
                 args.process = PROCESS.CALCULATION_MAIN;
                 OnStateCalculated(args);
             }
-            allVelocities();
             // Сообщаем что закончили вычисления
             SphereEventArgs finalArgs = new SphereEventArgs();
             finalArgs.state = capacity;
@@ -257,27 +247,13 @@ namespace Zeus.Engine
             return result;
         }
 
-        // Нахождение скоростей
-        public void allVelocities() {
-            double height = 0;
-            for (int i = 1; i < (capacity-1); i++) {
-                height = i * delta;
-                electronVelocityGrid[i].value = velocity2(electronVelocityGrid[i].value, electronGrid[i - 1].value, electronGrid[i].value, electronGrid[i + 1].value, electronMass, height);
-                ionPosVelocityGrid[i].value = velocity2(ionPosVelocityGrid[i].value, ionPositiveGrid[i - 1].value, ionPositiveGrid[i].value, ionPositiveGrid[i + 1].value, ionPositiveMass, height);
-                ionNegVelocityGrid[i].value = velocity2(ionNegVelocityGrid[i].value, ionNegativeGrid[i - 1].value, ionNegativeGrid[i].value, ionNegativeGrid[i + 1].value, ionNegativeMass, height);
-            }
-            electronVelocityGrid[capacity - 1].value = electronVelocityGrid[capacity - 2].value;
-            ionPosVelocityGrid[capacity - 1].value = ionPosVelocityGrid[capacity - 2].value;
-            ionNegVelocityGrid[capacity - 1].value = ionNegVelocityGrid[capacity - 2].value;
-        }
-
         // Находим силу тока
         public double electricity() {
             double result = 1;
             int last = capacity - 1;
-            double electronCurrent = -Constants.qe * electronGrid[last].value * electronVelocityGrid[last].value;
-            double ionPlusCurrent = Constants.qe * ionPositiveGrid[last].value * ionPosVelocityGrid[last].value;
-            double ionMinusCurrent = -Constants.qe * ionNegativeGrid[last].value * 300 * ionNegVelocityGrid[last].value;
+            double electronCurrent = -Constants.qe * electronGrid[last].value * velocitity;
+            double ionPlusCurrent = Constants.qe * ionPositiveGrid[last].value * velocitity;
+            double ionMinusCurrent = -Constants.qe * ionNegativeGrid[last].value * 300 * velocitity;
             result = electronCurrent + ionPlusCurrent + ionMinusCurrent;
             return result;
         }

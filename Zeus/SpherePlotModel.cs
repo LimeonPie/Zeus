@@ -38,7 +38,7 @@ namespace Zeus
 
         public PlotModel CurrentModel { get; private set; }
         public double delta { get; set; }
-        public double capacity { get; set; }
+        public int capacity { get; set; }
 
         public SpherePlotModel(string title, double[] data) {
             this.CurrentModel = new PlotModel { Title = title };
@@ -67,26 +67,17 @@ namespace Zeus
                 case PLOT.ELECTRON_LINE:
                     createElectronPolyLineModel(needLog);
                     break;
-                case PLOT.ELECTRON_VELOCITY_LINE:
-                    createElectronVelocityPolyLineModel(needLog);
-                    break;
                 case PLOT.ION_PLUS_BAR:
                     createIonPlusBarModel(needLog);
                     break;
                 case PLOT.ION_PLUS_LINE:
                     createIonPlusPolyLineModel(needLog);
                     break;
-                case PLOT.ION_PLUS_VELOCITY_LINE:
-                    createIonPlusVelocityPolyLineModel(needLog);
-                    break;
                 case PLOT.ION_MINUS_BAR:
                     createIonMinusBarModel(needLog);
                     break;
                 case PLOT.ION_MINUS_LINE:
                     createIonMinusPolyLineModel(needLog);
-                    break;
-                case PLOT.ION_MINUS_VELOCITY_LINE:
-                    createIonMinusVelocityPolyLineModel(needLog);
                     break;
                 case PLOT.ALL_LINE:
                     createAllPolyLineModel(needLog);
@@ -191,6 +182,7 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.electronGrid[capacity - 1].value;
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -249,6 +241,7 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionPositiveGrid[capacity - 1].value;
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -307,6 +300,7 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -368,6 +362,7 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -469,6 +464,7 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            List<double> concentrations = new List<double>();
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -488,13 +484,17 @@ namespace Zeus
             }
 
             for (double height = 0; height <= Engine.Engine.Instance.lowAtmosphere.topBoundary; height += 5000) {
-
+                double concentration = 0;
                 for (int i = 0; i < aerosolSeries.Length; i++) {
-                    double concentration = Engine.Engine.Instance.lowAtmosphere.aerosolElements.ElementAt(i).getNForHeight(height);
+                    concentration = Engine.Engine.Instance.lowAtmosphere.aerosolElements.ElementAt(i).getNForHeight(height);
                     if (needLog) concentration = Math.Log10(concentration);
                     aerosolSeries[i].Points.Add(new DataPoint(concentration, height));
-                }
+                    concentrations.Add(concentration);
+                }  
             }
+
+            double minConc = concentrations.Min();
+            xAxis.Minimum = minConc;
 
             foreach (LineSeries series in aerosolSeries) {
                 this.CurrentModel.Series.Add(series);
@@ -510,6 +510,8 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
+            double maxHeight = Engine.Engine.Instance.lowAtmosphere.topBoundary;
+            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.activeElement.getNForHeight(maxHeight);
             if (needLog) xAxis.StringFormat = "#.#";
             this.CurrentModel.Axes.Add(xAxis);
 
@@ -527,96 +529,6 @@ namespace Zeus
                 double concentration = Engine.Engine.Instance.lowAtmosphere.activeElement.getNForHeight(height);
                 if (needLog) concentration = Math.Log10(concentration);
                 series.Points.Add(new DataPoint(concentration, height));
-            }
-            this.CurrentModel.Series.Add(series);
-        }
-
-        private void createElectronVelocityPolyLineModel(bool needLog) {
-            this.CurrentModel.Title = Zeus.Properties.Resources.ElectronVelocity;
-
-            LinearAxis xAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Velocity,
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                StringFormat = "#.###E0",
-            };
-            if (needLog) xAxis.StringFormat = "#.#";
-            this.CurrentModel.Axes.Add(xAxis);
-
-            LinearAxis yAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Height,
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                StringFormat = "#",
-            };
-            this.CurrentModel.Axes.Add(yAxis);
-
-            LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
-                double height = i * delta;
-                double electronVelocity = Engine.Engine.Instance.lowAtmosphere.electronVelocityGrid[i].value;
-                if (needLog) electronVelocity = Math.Log10(electronVelocity);
-                series.Points.Add(new DataPoint(electronVelocity, height));
-            }
-            this.CurrentModel.Series.Add(series);
-        }
-
-        private void createIonPlusVelocityPolyLineModel(bool needLog) {
-            this.CurrentModel.Title = Zeus.Properties.Resources.IonPlusVelocity;
-
-            LinearAxis xAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Velocity,
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                StringFormat = "#.###E0",
-            };
-            if (needLog) xAxis.StringFormat = "#.#";
-            this.CurrentModel.Axes.Add(xAxis);
-
-            LinearAxis yAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Height,
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                StringFormat = "#",
-            };
-            this.CurrentModel.Axes.Add(yAxis);
-
-            LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
-                double height = i * delta;
-                double ionPlusVelocity = Engine.Engine.Instance.lowAtmosphere.ionPosVelocityGrid[i].value;
-                if (needLog) ionPlusVelocity = Math.Log10(ionPlusVelocity);
-                series.Points.Add(new DataPoint(ionPlusVelocity, height));
-            }
-            this.CurrentModel.Series.Add(series);
-        }
-
-        private void createIonMinusVelocityPolyLineModel(bool needLog) {
-            this.CurrentModel.Title = Zeus.Properties.Resources.IonMinusVelocity;
-
-            LinearAxis xAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Velocity,
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                StringFormat = "#.###E0",
-            };
-            if (needLog) xAxis.StringFormat = "#.#";
-            this.CurrentModel.Axes.Add(xAxis);
-
-            LinearAxis yAxis = new LinearAxis() {
-                Title = Zeus.Properties.Resources.Height,
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                StringFormat = "#",
-            };
-            this.CurrentModel.Axes.Add(yAxis);
-
-            LineSeries series = new LineSeries();
-            for (int i = 0; i < capacity; i++) {
-                double height = i * delta;
-                double ionMinusVelocity = Engine.Engine.Instance.lowAtmosphere.ionNegVelocityGrid[i].value;
-                if (needLog) ionMinusVelocity = Math.Log10(ionMinusVelocity);
-                series.Points.Add(new DataPoint(ionMinusVelocity, height));
             }
             this.CurrentModel.Series.Add(series);
         }

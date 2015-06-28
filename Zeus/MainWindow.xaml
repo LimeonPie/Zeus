@@ -90,21 +90,6 @@
                             <oxy:PlotView x:Name="aerosolPlotView" Model="{Binding CurrentModel}" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="electronVelocityTab" Header="{x:Static l:Resources.ElectronVelocity}">
-                        <Grid Background="#FFE5E5E5">
-                            <oxy:PlotView x:Name="electronVelocityPlotView" Model="{Binding CurrentModel}" />
-                        </Grid>
-                    </TabItem>
-                    <TabItem x:Name="ionPlusVelocityTab" Header="{x:Static l:Resources.IonPlusVelocity}">
-                        <Grid Background="#FFE5E5E5">
-                            <oxy:PlotView x:Name="ionPlusVelocityPlotView" Model="{Binding CurrentModel}" />
-                        </Grid>
-                    </TabItem>
-                    <TabItem x:Name="ionMinusVelocityTab" Header="{x:Static l:Resources.IonMinusVelocity}">
-                        <Grid Background="#FFE5E5E5">
-                            <oxy:PlotView x:Name="ionMinusVelocityPlotView" Model="{Binding CurrentModel}" />
-                        </Grid>
-                    </TabItem>
                     <TabItem x:Name="temperatureTab" Header="{x:Static l:Resources.Temperature}">
                         <Grid Background="#FFE5E5E5">
                             <oxy:PlotView x:Name="temperaturePlotView" Model="{Binding CurrentModel}" />
