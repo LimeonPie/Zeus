@@ -57,3 +57,14 @@
 28.06.2015 18:14:23: Program is starting
 28.06.2015 18:14:37: Opening help file
 28.06.2015 18:16:39: Program is starting
+29.06.2015 8:47:43: Program is starting
+30.06.2015 16:59:16: Program is starting
+30.06.2015 16:59:31: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+30.06.2015 16:59:34: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+30.06.2015 21:35:13: Program is starting
+01.07.2015 22:10:39: Program is starting
+01.07.2015 22:10:44: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+01.07.2015 22:10:44: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json
+01.07.2015 22:14:57: Program is starting
+01.07.2015 22:15:02: Opening E:\Projects\Zeus\Zeus\Resources\JSON\input.json input file
+01.07.2015 22:15:02: Reading json file E:\Projects\Zeus\Zeus\Resources\JSON\input.json

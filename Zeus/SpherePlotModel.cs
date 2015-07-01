@@ -52,14 +52,8 @@ namespace Zeus
 
         public SpherePlotModel(PLOT plotType, bool needLog) {
             this.CurrentModel = new PlotModel();
-            /*if (Engine.Engine.Instance.lowAtmosphere.delta < 1000) {
-                delta = 1000;
-                capacity = (Engine.Engine.Instance.lowAtmosphere.topBoundary - Engine.Engine.Instance.lowAtmosphere.botBoundary) / delta + 1;
-            }*/
-            //else {
-                delta = Engine.Engine.Instance.lowAtmosphere.delta;
-                capacity = Engine.Engine.Instance.lowAtmosphere.capacity;
-            //}
+            delta = Engine.Engine.Instance.lowAtmosphere.delta;
+            capacity = Engine.Engine.Instance.lowAtmosphere.capacity;
             switch (plotType) {
                 case PLOT.ELECTRON_BAR:
                     createElectronBarModel(needLog);
@@ -182,8 +176,13 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
-            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.electronGrid[capacity - 1].value;
-            if (needLog) xAxis.StringFormat = "#.#";
+
+            if (needLog) {
+                xAxis.StringFormat = "#.#";
+            }
+            else {
+                xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.electronGrid[capacity - 1].value;
+            }
             this.CurrentModel.Axes.Add(xAxis);
 
             LinearAxis yAxis = new LinearAxis() {
@@ -241,8 +240,13 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
-            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionPositiveGrid[capacity - 1].value;
-            if (needLog) xAxis.StringFormat = "#.#";
+
+            if (needLog) {
+                xAxis.StringFormat = "#.#";
+            }
+            else {
+                xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionPositiveGrid[capacity - 1].value;
+            }
             this.CurrentModel.Axes.Add(xAxis);
 
             LinearAxis yAxis = new LinearAxis() {
@@ -300,8 +304,13 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
-            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
-            if (needLog) xAxis.StringFormat = "#.#";
+
+            if (needLog) {
+                xAxis.StringFormat = "#.#";
+            }
+            else {
+                xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
+            }
             this.CurrentModel.Axes.Add(xAxis);
 
             LinearAxis yAxis = new LinearAxis() {
@@ -362,8 +371,13 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
-            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
-            if (needLog) xAxis.StringFormat = "#.#";
+
+            if (needLog) {
+                xAxis.StringFormat = "#.#";
+            }
+            else {
+                xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.ionNegativeGrid[capacity - 1].value;
+            }
             this.CurrentModel.Axes.Add(xAxis);
 
             LinearAxis yAxis = new LinearAxis() {
@@ -493,8 +507,10 @@ namespace Zeus
                 }  
             }
 
-            double minConc = concentrations.Min();
-            xAxis.Minimum = minConc;
+            if (!needLog) {
+                double minConc = concentrations.Min();
+                xAxis.Minimum = minConc;
+            }
 
             foreach (LineSeries series in aerosolSeries) {
                 this.CurrentModel.Series.Add(series);
@@ -510,9 +526,14 @@ namespace Zeus
                 Minimum = 0,
                 StringFormat = "#.###E0",
             };
-            double maxHeight = Engine.Engine.Instance.lowAtmosphere.topBoundary;
-            xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.activeElement.getNForHeight(maxHeight);
-            if (needLog) xAxis.StringFormat = "#.#";
+
+            if (needLog) {
+                xAxis.StringFormat = "#.#";
+            }
+            else {
+                double maxHeight = Engine.Engine.Instance.lowAtmosphere.topBoundary;
+                xAxis.Minimum = Engine.Engine.Instance.lowAtmosphere.activeElement.getNForHeight(maxHeight);
+            }
             this.CurrentModel.Axes.Add(xAxis);
 
             LinearAxis yAxis = new LinearAxis() {

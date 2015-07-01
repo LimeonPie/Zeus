@@ -91,7 +91,7 @@ namespace Zeus.Helpers
             catch (Exception error) {
                 data.error = true;
                 LogManager.Session.logMessage("Unexpected error: " + error.ToString());
-                LogManager.Session.logMessage("Ты мне гонишь какую-то дичь");
+                LogManager.Session.logMessage("Входной файл имеет неправильный формат");
             }
             return data;
         }
